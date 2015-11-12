@@ -22,10 +22,11 @@ group :development do
   gem 'quiet_assets',       '~> 1.1.0'
 end
 
-group :development, :test do
+group :test do
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'faker',              '~> 1.5.0'
   gem 'rspec-rails',        '~> 3.3.3'
+  gem 'shoulda-matchers',   '~> 2.8.0'
 end
 
 group :production do
