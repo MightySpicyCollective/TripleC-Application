@@ -9,6 +9,7 @@ gem 'jquery-rails',       '~> 4.0.5'
 gem 'foundation-rails',   '~> 5.5.3.2'
 gem 'high_voltage',       '~> 2.4.0'
 gem 'pg',                 '~> 0.18.3'
+gem 'devise',             '~> 3.4.1'
 
 group :development, :test do
   gem 'byebug',           '~> 8.0.1'
