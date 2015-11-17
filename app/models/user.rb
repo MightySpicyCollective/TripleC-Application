@@ -11,6 +11,10 @@ class User < ActiveRecord::Base
 
   before_validation :set_role
 
+  def email_required?
+    false
+  end
+
   private
 
   def set_role
