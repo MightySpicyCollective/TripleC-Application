@@ -1,5 +1,5 @@
 ActiveAdmin.register Role do
-  permit_params :name
+  permit_params :name, :identifier
 
   index do
     id_column
@@ -14,6 +14,7 @@ ActiveAdmin.register Role do
   form do |f|
     f.inputs "Role Details" do
       f.input :name
+      f.input :identifier
     end
     f.actions
   end

@@ -1,10 +1,9 @@
 ActiveAdmin.register Project do
-  actions :index
-
-  config.filters = false
+  filter :name
 
   index do
     id_column
     column :user_id
+    column :name
   end
 end
