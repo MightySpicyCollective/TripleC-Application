@@ -5,10 +5,15 @@ class User < ActiveRecord::Base
   belongs_to :role
   belongs_to :classroom
   has_many :projects, dependent: :destroy
+
   validates :first_name, :last_name, :username, :role, :role_id, presence: true
   validates :username, uniqueness: true
 
   before_validation :set_role
+
+  def email_required?
+    false
+  end
 
   private
 
