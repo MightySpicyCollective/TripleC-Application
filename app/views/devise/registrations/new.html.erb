@@ -41,6 +41,16 @@
     <%= f.select :role_id, Role.all.pluck(:name, :id) %>
   </div>
 
+  <div class="field">
+    <%= f.label :school_id %><br />
+    <%= f.select :school_id, School.all.pluck(:name, :id) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :classroom_id %><br />
+    <%= f.select :classroom_id, Classroom.all.pluck(:name, :id) %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

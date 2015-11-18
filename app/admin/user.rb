@@ -31,6 +31,7 @@ ActiveAdmin.register User do
   filter :last_name
   filter :email
   filter :username
+  filter :approved
 
   form do |f|
     f.inputs "User Details" do
@@ -38,8 +39,9 @@ ActiveAdmin.register User do
       f.input :last_name
       f.input :email
       f.input :username
-      f.input :classroom
       f.input :role
+      f.input :school
+      f.input :classroom
     end
     f.actions
   end
