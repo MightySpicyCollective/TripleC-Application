@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   belongs_to :role
   belongs_to :classroom
+  belongs_to :school
   has_many :projects, dependent: :destroy
 
   validates :first_name, :last_name, :username, :role, :role_id, presence: true
