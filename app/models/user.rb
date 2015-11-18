@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         authentication_keys: [:username]
 
   belongs_to :role
   belongs_to :classroom
