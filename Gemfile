@@ -11,6 +11,7 @@ gem 'high_voltage',       '~> 2.4.0'
 gem 'pg',                 '~> 0.18.3'
 gem 'devise',             '~> 3.4.1'
 gem 'activeadmin',        '~> 1.0.0.pre2'
+gem 'paperclip',          '~> 4.3'
 
 group :development, :test do
   gem 'byebug',           '~> 8.0.1'
