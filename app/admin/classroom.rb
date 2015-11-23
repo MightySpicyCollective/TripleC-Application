@@ -5,7 +5,7 @@ ActiveAdmin.register Classroom do
 
   index do
     id_column
-    column :school_id
     column :name
+    column :school
   end
 end

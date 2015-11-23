@@ -1,0 +1,19 @@
+<%= semantic_form_for @user, url: create_or_update_user_path(@user) do |f| %>
+  <%= f.inputs 'User Details' do |x| %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :email %>
+    <%= f.input :username %>
+    <%= f.input :role %>
+    <%= f.input :school, input_html: { class: 'school-select' } %>
+    <%= f.input :classroom, collection: (f.object.school.try(:classrooms) || []), input_html: { class: 'classroom-select' } %>
+  <% end %>
+  <%= f.actions %>
+<% end %>
+
+<%= javascript_include_tag 'registrations/form' %>
+
+<script type="text/javascript">
+  Registrations.Form.schoolClassroomCombination = <%== school_classroom_json_mapping %>
+</script>
+

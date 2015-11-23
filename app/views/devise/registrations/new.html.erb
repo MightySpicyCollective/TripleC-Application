@@ -38,17 +38,17 @@
 
   <div class="field">
     <%= f.label :role_id %><br />
-    <%= f.select :role_id, Role.all.pluck(:name, :id) %>
+    <%= f.select :role_id, Role.all.pluck(:name, :id), include_blank: 'Select Role' %>
   </div>
 
   <div class="field">
     <%= f.label :school_id %><br />
-    <%= f.select :school_id, School.all.pluck(:name, :id) %>
+    <%= f.select :school_id, School.all.pluck(:name, :id), { include_blank: 'Select School' }, { class: 'school-select' } %>
   </div>
 
   <div class="field">
     <%= f.label :classroom_id %><br />
-    <%= f.select :classroom_id, Classroom.all.pluck(:name, :id) %>
+    <%= f.select :classroom_id, '', { include_blank: 'Select Classroom' }, { class: 'classroom-select' }  %>
   </div>
 
   <div class="actions">
@@ -56,4 +56,11 @@
   </div>
 <% end %>
 
+
 <%= render "devise/shared/links" %>
+<%= javascript_include_tag 'registrations/form' %>
+
+<script type="text/javascript">
+  Registrations.Form.schoolClassroomCombination = <%== school_classroom_json_mapping %>
+</script>
+

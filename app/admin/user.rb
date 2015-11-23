@@ -1,5 +1,7 @@
 ActiveAdmin.register User do
-  permit_params :first_name, :last_name, :email, :username
+  permit_params :first_name, :last_name, :email, :username, :school_id, :classroom_id, :role_id
+
+  form partial: 'form'
 
   member_action :approve, method: :patch do
     resource.update_column(:approved, true)
@@ -27,22 +29,21 @@ ActiveAdmin.register User do
     end
   end
 
+  show do
+    attributes_table do
+      row :username
+      row :first_name
+      row :last_name
+      row :email
+      row :approved
+      row :school
+      row :classroom
+    end
+  end
+
   filter :first_name
   filter :last_name
   filter :email
   filter :username
   filter :approved
-
-  form do |f|
-    f.inputs "User Details" do
-      f.input :first_name
-      f.input :last_name
-      f.input :email
-      f.input :username
-      f.input :role
-      f.input :school
-      f.input :classroom
-    end
-    f.actions
-  end
 end

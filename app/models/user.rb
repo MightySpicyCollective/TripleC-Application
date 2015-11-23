@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   before_validation :set_role
+  before_create :skip_confirmation!
 
   def email_required?
     false
