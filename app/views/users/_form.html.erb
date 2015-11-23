@@ -1,5 +1,6 @@
 <%= form_for @user, url: user_path(@user), html: { multipart: true } do |f| %>
   <div class="field">
+    <label>Username</label><br />
     <span><%= f.object.username %></span>
   </div>
 
