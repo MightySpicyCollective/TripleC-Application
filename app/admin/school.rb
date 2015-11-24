@@ -1,15 +1,17 @@
 ActiveAdmin.register School do
-  permit_params :name, :location, :description, :photo
+  permit_params :name, :location, :description, :photo, :active
 
   filter :name
   filter :location
   filter :description
+  filter :active
 
   index do
     id_column
     column :name
     column :location
     column :description
+    column :active
     column :photo do |s|
       image_tag(s.photo.url(:medium), height: '100')
     end
@@ -24,6 +26,7 @@ ActiveAdmin.register School do
       row :photo do |s|
         image_tag(s.photo.url(:medium), height: '100')
       end
+      row :active
     end
   end
 
@@ -33,6 +36,7 @@ ActiveAdmin.register School do
       f.input :location
       f.input :description
       f.input :photo, as: :file
+      f.input :active
     end
     f.actions
   end

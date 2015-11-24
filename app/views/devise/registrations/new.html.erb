@@ -43,7 +43,7 @@
 
   <div class="field">
     <%= f.label :school_id %><br />
-    <%= f.select :school_id, School.all.pluck(:name, :id), { include_blank: 'Select School' }, { class: 'school-select' } %>
+    <%= f.select :school_id, School.active.pluck(:name, :id), { include_blank: 'Select School' }, { class: 'school-select' } %>
   </div>
 
   <div class="field">
