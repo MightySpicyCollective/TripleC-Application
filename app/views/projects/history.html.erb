@@ -1,0 +1,34 @@
+<h3>Project History </h3>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan=1></th>
+      <th>Field</th>
+      <th>Old</th>
+      <th>New</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @versions.each do |v| %>
+      <% changes = describe_changeset(v.changeset) %>
+      <% s = changes.size %>
+      <tr>
+        <td rowspan="<%= s %>">
+          <%= v.event.titleize %> (<%= v.created_at %>)
+        </td>
+        <% n = changes.shift %>
+        <td><b><%= n[0].titleize if n %></b></td>
+        <td><span><%= n[1] if n %></span></td>
+        <td><span><%= n[2] if n %></span></td>
+      </tr>
+      <% changes.each do |n| %>
+        <tr>
+          <td><b><%= n[0].titleize if n %></b></td>
+          <td><span class="red"><%= n[1] if n %></span></td>
+          <td><span class="green"><%= n[2] if n %></span></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

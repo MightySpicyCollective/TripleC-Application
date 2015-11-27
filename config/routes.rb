@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users
 
-  resources :users
+  resources :users do
+    resources :projects do
+      get :history, on: :member
+    end
+  end
 
   get '/dashboard', to: 'users#dashboard', as: 'dashboard'
   root to: 'welcome#index'

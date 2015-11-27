@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :load_user, only: [:edit, :update]
 
   def dashboard
+    @projects = current_user.projects
   end
 
   def edit
