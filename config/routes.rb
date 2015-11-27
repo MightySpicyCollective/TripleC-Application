@@ -9,6 +9,11 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/dashboard', to: 'users#dashboard', as: 'dashboard'
+  resources :projects, only: [] do
+    resources :comments, only: [:new, :create]
+  end
+
+  get '/projects/:id', to: 'projects#show', as: :view_project
+  get '/dashboard', to: 'users#dashboard', as: :dashboard
   root to: 'welcome#index'
 end

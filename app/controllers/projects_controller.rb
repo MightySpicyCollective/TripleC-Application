@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :load_project, only: [:edit, :update, :destroy, :history]
+  before_action :authenticate_user!, except: :show
+  before_action :load_project, only: [:show, :edit, :update, :destroy, :history]
 
   def new
     @project = current_user.projects.build
@@ -14,6 +14,10 @@ class ProjectsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @comments = @project.comments
   end
 
   def edit

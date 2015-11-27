@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127145207) do
+ActiveRecord::Schema.define(version: 20151127165205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,14 @@ ActiveRecord::Schema.define(version: 20151127145207) do
     t.string   "name"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at",                                  null: false
@@ -51,6 +59,7 @@ ActiveRecord::Schema.define(version: 20151127145207) do
     t.boolean  "forked",                      default: false
     t.integer  "forked_project_id"
     t.string   "completed_sound_snippet_url"
+    t.text     "source_code"
   end
 
   create_table "roles", force: :cascade do |t|
