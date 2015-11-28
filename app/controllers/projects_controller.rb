@@ -46,7 +46,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :status)
+    params.require(:project).permit(:name, :description, :status, :source_code)
   end
 
   def load_project

@@ -13,4 +13,31 @@ module VersionsHelper
     end
     str
   end
+
+  def diff(hash1,other)
+    hash1.dup.delete_if do |k, v|
+      other[k] == v
+    end.merge!(
+      other.dup.delete_if do |k, v|
+        hash1.has_key?(k)
+      end
+    )
+  end
+
+  def render_value(field, field_value)
+    case field[0]
+    when 'status'
+      content_tag :span do
+        Project::STATUSES.key(field_value).to_s.titleize
+      end
+    when 'source_code'
+      content_tag :pre do
+        field_value
+      end
+    else
+      content_tag :span do
+        field_value
+      end
+    end
+  end
 end

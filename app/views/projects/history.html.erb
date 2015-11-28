@@ -19,14 +19,14 @@
         </td>
         <% n = changes.shift %>
         <td><b><%= n[0].titleize if n %></b></td>
-        <td><span><%= n[1] if n %></span></td>
-        <td><span><%= n[2] if n %></span></td>
+        <td><%= render_value(n, n[1]) if n %></td>
+        <td><%= render_value(n, n[2]) if n %></td>
       </tr>
       <% changes.each do |n| %>
         <tr>
           <td><b><%= n[0].titleize if n %></b></td>
-          <td><span class="red"><%= n[1] if n %></span></td>
-          <td><span class="green"><%= n[2] if n %></span></td>
+          <td><%= render_value(n, n[1]) if n %></td>
+          <td><%= render_value(n, n[2]) if n %></td>
         </tr>
       <% end %>
     <% end %>
