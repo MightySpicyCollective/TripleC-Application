@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   belongs_to :school
   has_many :projects, dependent: :destroy
   has_many :comments, dependent: :destroy
-
+  has_many :sent_invites, dependent: :destroy, foreign_key: :sender_id, class_name: Invite
+  has_many :recieved_invites, dependent: :destroy, foreign_key: :reciever_id, class_name: Invite
 
   validates :first_name, :last_name, :username, :role, :role_id, presence: true
   validates :username, uniqueness: true
