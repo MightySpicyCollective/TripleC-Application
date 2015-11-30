@@ -41,6 +41,9 @@ class ProjectsController < ApplicationController
 
   def history
     @versions = @project.versions
+                        .reorder(created_at: :desc)
+                        .page(params[:page])
+                        .per(1)
   end
 
   private
