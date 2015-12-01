@@ -1,1 +1,30 @@
 This is the dashbaord page of the user.
+
+
+<h3>Projects</h3>
+
+<% unless @projects.blank? %>
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </thead>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= project.description %></td>
+        <td><%= project.status %></td>
+        <td>
+          <%= link_to 'View', view_project_path(project) %> |
+          <%= link_to 'Edit', edit_user_project_path(current_user, project) %> |
+          <%= link_to 'Delete', user_project_path(current_user, project), data: { method: :delete, confirm: 'Are you sure?' } %> |
+          <%= link_to 'See Changes', history_user_project_path(current_user, project) %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<%= link_to 'Add New Project', new_user_project_path(current_user) %>

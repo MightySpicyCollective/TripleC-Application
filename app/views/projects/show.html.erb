@@ -1,0 +1,33 @@
+Project Show Page.
+
+<table>
+  <tr>
+    <td>Name</td>
+    <td><%= @project.name %></td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td><%= @project.status %></td>
+  </tr>
+  <tr>
+    <td>Status</td>
+    <td><%= @project.status %></td>
+  </tr>
+  <tr>
+    <td>Source Code</td>
+    <td><pre><%= @project.source_code %></pre></td>
+  </tr>
+</table>
+
+<h3>Comments</h3>
+
+<table>
+  <% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment.content %></td>
+      <td><%= link_to comment.user.first_name, user_path(comment.user) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Add Comment', new_project_comment_path(@project) %>

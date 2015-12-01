@@ -1,0 +1,7 @@
+<%= form_for @comment, url: [@project, @comment] do |f| %>
+  <div class="fields">
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+  <%= f.submit %>
+<% end %>

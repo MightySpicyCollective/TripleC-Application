@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :load_user, only: [:edit, :update]
+  before_action :authenticate_user!, except: :show
+  before_action :load_user, only: [:show, :edit, :update]
 
   def dashboard
+    @projects = current_user.projects
   end
 
   def edit
@@ -14,6 +15,9 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def show
   end
 
   private

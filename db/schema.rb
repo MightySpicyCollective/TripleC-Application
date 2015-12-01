@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124140515) do
+ActiveRecord::Schema.define(version: 20151129124902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,11 +41,33 @@ ActiveRecord::Schema.define(version: 20151124140515) do
     t.string   "name"
   end
 
-  create_table "projects", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
     t.integer  "user_id"
+    t.integer  "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "invites", force: :cascade do |t|
+    t.string   "status"
+    t.integer  "sender_id"
+    t.integer  "reciever_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
     t.string   "name"
+    t.text     "description"
+    t.integer  "status"
+    t.boolean  "forked",                      default: false
+    t.integer  "forked_project_id"
+    t.string   "completed_sound_snippet_url"
+    t.text     "source_code"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -105,5 +127,17 @@ ActiveRecord::Schema.define(version: 20151124140515) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
+
+  create_table "versions", force: :cascade do |t|
+    t.string   "item_type",      null: false
+    t.integer  "item_id",        null: false
+    t.string   "event",          null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+    t.text     "object_changes"
+  end
+
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
 end
