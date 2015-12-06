@@ -5,11 +5,11 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :projects do
-      get :history, on: :member
     end
   end
 
   resources :projects, only: [] do
+    get :history, on: :member
     resources :comments, only: [:new, :create]
   end
 

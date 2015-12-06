@@ -2,6 +2,24 @@
 
 <table>
   <thead>
+    <th>Changed By</th>
+    <th>Classroom</th>
+    <th>School</th>
+    <th>Changed on</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= change_performer(@versions.first) %></td>
+      <td><%= performer_user(@versions.first).classroom.name %></td>
+      <td><%= performer_user(@versions.first).school.name %></td>
+      <td><%= @versions.first.created_at.to_date.to_s(:long) %></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table>
+  <thead>
     <tr>
       <th colspan=1></th>
       <th>Field</th>

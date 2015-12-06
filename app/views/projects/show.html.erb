@@ -23,7 +23,7 @@ Project Show Page.
 <table>
   <% @versions.each_with_index do |version, index| %>
     <tr>
-      <td><%= link_to "Changes By #{change_performer(version)}", history_user_project_path(current_user, @project, page: index + 1)%></td>
+      <td><%= link_to "Changes By #{ change_performer(version) }", history_project_path(@project, page: index + 1)%></td>
     </tr>
   <% end %>
 </table>

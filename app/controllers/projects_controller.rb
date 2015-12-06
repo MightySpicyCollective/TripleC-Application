@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!, except: :show
+  before_action :authenticate_user!, except: [:show, :history]
   before_action :load_project, only: [:show, :edit, :update, :destroy, :history]
 
   def index
