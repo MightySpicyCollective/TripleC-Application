@@ -40,4 +40,12 @@ module VersionsHelper
       end
     end
   end
+
+  def change_performer(version)
+    performer_user(version).try(:username)
+  end
+
+  def performer_user(version)
+    User.find_by(id: version.whodunnit)
+  end
 end

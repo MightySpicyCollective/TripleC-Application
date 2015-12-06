@@ -1,5 +1,7 @@
 ActiveAdmin.register User do
-  permit_params :first_name, :last_name, :email, :username, :school_id, :classroom_id, :role_id
+  permit_params :first_name, :last_name, :email, :username,
+                :description, :avatar,
+                :school_id, :classroom_id, :role_id
 
   form partial: 'form'
 
@@ -32,6 +34,9 @@ ActiveAdmin.register User do
     column :email
     column :username
     column :approved
+    column :avatar do |user|
+      image_tag(user.avatar.url(:thumb))
+    end
     actions defaults: true do |user|
       html = if user.approved?
         link_to 'Disapprove', disapprove_admin_user_path(user), method: :patch
@@ -52,6 +57,10 @@ ActiveAdmin.register User do
       row :approved
       row :school
       row :classroom
+      row :description
+      row :avatar do |user|
+        image_tag(user.avatar.url(:thumb))
+      end
     end
   end
 

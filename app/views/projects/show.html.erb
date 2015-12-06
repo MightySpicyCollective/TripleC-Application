@@ -7,16 +7,25 @@ Project Show Page.
   </tr>
   <tr>
     <td>Description</td>
-    <td><%= @project.status %></td>
+    <td><%= @project.description %></td>
   </tr>
   <tr>
     <td>Status</td>
-    <td><%= @project.status %></td>
+    <td><%= Project::STATUSES.key(@project.status).to_s.titleize %></td>
   </tr>
   <tr>
     <td>Source Code</td>
     <td><pre><%= @project.source_code %></pre></td>
   </tr>
+</table>
+
+<h3>History</h3>
+<table>
+  <% @versions.each_with_index do |version, index| %>
+    <tr>
+      <td><%= link_to "Changes By #{change_performer(version)}", history_user_project_path(current_user, @project, page: index + 1)%></td>
+    </tr>
+  <% end %>
 </table>
 
 <h3>Comments</h3>

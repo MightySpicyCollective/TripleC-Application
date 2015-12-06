@@ -7,4 +7,6 @@ class Project < ActiveRecord::Base
   validates :name, :description, presence: true
 
   STATUSES = { inactive: 0, active: 1 }
+
+  delegate :username, :school, :classroom, to: :user
 end

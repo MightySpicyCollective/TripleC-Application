@@ -11,10 +11,10 @@ class User < ActiveRecord::Base
   has_many :sent_invites, dependent: :destroy, foreign_key: :sender_id, class_name: Invite
   has_many :recieved_invites, dependent: :destroy, foreign_key: :reciever_id, class_name: Invite
 
-  validates :first_name, :last_name, :username, :role, :role_id, presence: true
+  validates :first_name, :last_name, :username, :role, :role_id, :classroom, :classroom_id, :school, :school_id, presence: true
   validates :username, uniqueness: true
 
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "50x50>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "50x50>" }, default_url: 'paperclip-defaults/:style/missing.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   before_validation :set_role

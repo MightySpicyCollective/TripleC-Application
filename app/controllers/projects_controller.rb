@@ -2,6 +2,10 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: :show
   before_action :load_project, only: [:show, :edit, :update, :destroy, :history]
 
+  def index
+    @projects = current_user.projects.page(params[:page]).per(10)
+  end
+
   def new
     @project = current_user.projects.build
   end
@@ -18,6 +22,9 @@ class ProjectsController < ApplicationController
 
   def show
     @comments = @project.comments
+    @versions = @project.versions
+                        .reorder(created_at: :desc)
+                        .limit(3)
   end
 
   def edit
