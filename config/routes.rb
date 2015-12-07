@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   end
 
   resources :projects, only: [] do
-    get :history, on: :member
+    member do
+      post :share
+      get :history
+    end
     resources :comments, only: [:new, :create]
   end
 

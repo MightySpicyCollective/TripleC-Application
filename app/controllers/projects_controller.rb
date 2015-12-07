@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :history]
-  before_action :load_project, only: [:show, :edit, :update, :destroy, :history]
+  before_action :load_project, only: [:show, :edit, :update, :destroy, :history, :share]
+  before_action :ensure_student, :ensure_non_owner, only: :share
 
   def index
     @projects = current_user.projects.page(params[:page]).per(10)
@@ -53,6 +54,11 @@ class ProjectsController < ApplicationController
                         .per(1)
   end
 
+  def share
+    @project.fork!(user_id: current_user.id)
+    redirect_to dashboard_path, notice: 'Successfully Shared project!'
+  end
+
   private
 
   def project_params
@@ -61,6 +67,14 @@ class ProjectsController < ApplicationController
 
   def load_project
     @project = Project.find_by(id: params[:id])
-    redirect_to dashboard_path, alert: 'Project not found.' unless @project
+    redirect_to root_path, alert: 'Project not found.' unless @project
+  end
+
+  def ensure_student
+    redirect_to(dashboard_path, alert: 'You are not allowed to fork project.') if current_user.teacher?
+  end
+
+  def ensure_non_owner
+    redirect_to(dashboard_path, alert: 'You cannot fork your own project') if @project.user_id.eql?(current_user.id)
   end
 end

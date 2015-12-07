@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @projects = @user.projects.page(params[:page]).per(10)
   end
 
   private
