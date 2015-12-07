@@ -1,0 +1,5 @@
+<% if @classroom.teacher_id != current_user.id %>
+  <%= link_to 'Follow', invitations_path(classroom_id: @classroom.id), class: 'button success', method: :post %>
+<% else %>
+  <%= render 'invites' %>
+<% end %>

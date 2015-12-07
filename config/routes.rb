@@ -13,6 +13,15 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create]
   end
 
+  resources :classrooms
+
+  resources :invitations, only: :create do
+    member do
+      patch :accept
+      patch :reject
+    end
+  end
+
   get '/projects/:id', to: 'projects#show', as: :view_project
   get '/dashboard', to: 'users#dashboard', as: :dashboard
   root to: 'welcome#index'

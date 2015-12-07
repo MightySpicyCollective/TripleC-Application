@@ -61,8 +61,6 @@ class ProjectsController < ApplicationController
 
   def load_project
     @project = Project.find_by(id: params[:id])
-    unless @project
-      redirect_to dashboard_path, alert: 'Project not found.'
-    end
+    redirect_to dashboard_path, alert: 'Project not found.' unless @project
   end
 end

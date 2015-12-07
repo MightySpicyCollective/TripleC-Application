@@ -7,7 +7,6 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:username) }
     it { should validate_presence_of(:role) }
     it { should validate_presence_of(:role_id) }
-    it { should validate_uniqueness_of(:username) }
   end
 
   describe 'Associations' do

@@ -1,0 +1,24 @@
+<% @classroom = ClassroomPresenter.new(@classroom) %>
+
+<%= image_tag @classroom.school_logo %>
+
+<%= @classroom.school_name %> / <%= @classroom.name %>
+
+<%= @classroom.description %>
+
+<h2>Teacher: <%= @classroom.teacher_name %></h2>
+
+<% if current_user && current_user.teacher? %>
+  <%= render 'follow_and_requests_links' %>
+<% end %>
+
+<h3>Teams</h3>
+<table>
+  <% @class_users.each do |user| %>
+    <tr>
+      <td><h2><%= user.username %></h2></td>
+      <td><%= user.description %></td>
+      <td><%= classroom_user_projects(user) %></td>
+    </tr>
+  <% end %>
+</table>
