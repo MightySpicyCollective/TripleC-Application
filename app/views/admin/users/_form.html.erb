@@ -1,14 +1,18 @@
 <%= semantic_form_for @user, url: create_or_update_user_path(@user) do |f| %>
+  <%= f.semantic_errors :state %>
+
   <%= f.inputs 'User Details' do |x| %>
     <%= f.input :first_name %>
     <%= f.input :last_name %>
     <%= f.input :email %>
     <%= f.input :username %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+    <%= f.input :role %>
     <%= f.input :school, input_html: { class: 'school-select' } %>
     <%= f.input :classroom, collection: (f.object.school.try(:classrooms) || []), input_html: { class: 'classroom-select' } %>
     <%= f.input :description %>
     <%= f.input :avatar, as: :file %>
-    <%= f.input :role %>
   <% end %>
   <%= f.actions %>
 <% end %>

@@ -1,1 +1,41 @@
-User Details comes here...
+<%= image_tag @user.avatar.url(:thumb) %>
+
+<strong><%= @user.username %></strong>
+
+<%= @user.description %>
+
+<br />
+<%= @user.school.name %> | <%= @user.classroom.name %>
+
+<% unless @projects.blank? %>
+  <h3>Projects</h3>
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>School/Classroom/Teacher</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Created By</th>
+      <th>Actions</th>
+    </thead>
+    <% @projects.each do |project| %>
+      <% project = ProjectPresenter.new(project) %>
+      <tr>
+        <td><%= project.name %></td>
+        <td><%= project.school.name %>/<%= project.classroom.name%>/<%=project.classroom.teacher.try(:name)%></td>
+        <td><%= project.description %></td>
+        <td><%= project.status %></td>
+        <td><%= project.username %></td>
+        <td>
+          <%= link_to 'View', view_project_path(project) %>
+          <% if project.sharable?(current_user) %>
+            <%= link_to 'Share', share_project_path(project), method: :post %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<%= paginate @projects %>
+

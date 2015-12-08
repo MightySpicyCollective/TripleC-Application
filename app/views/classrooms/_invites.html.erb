@@ -1,0 +1,19 @@
+<table>
+  <thead>
+    <th>Classroom</th>
+    <th>School</th>
+    <th>Date</th>
+    <th>Actions</th>
+  </thead>
+  <% collection.each do |invite| %>
+    <tr>
+      <td><%= invite.sender.name %></td>
+      <td><%= invite.sender.school.name %></td>
+      <td><%= invite.created_at.to_date.to_s(:db) %></td>
+      <td>
+        <%= link_to 'Accept', accept_invitation_path(invite), method: :patch %> |
+        <%= link_to 'Reject', reject_invitation_path(invite), method: :patch %>
+      </td>
+    </tr>
+  <% end %>
+</table>

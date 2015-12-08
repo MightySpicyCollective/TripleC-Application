@@ -9,8 +9,20 @@ Rails.application.routes.draw do
   end
 
   resources :projects, only: [] do
-    get :history, on: :member
+    member do
+      post :share
+      get :history
+    end
     resources :comments, only: [:new, :create]
+  end
+
+  resources :classrooms
+
+  resources :invitations, only: :create do
+    member do
+      patch :accept
+      patch :reject
+    end
   end
 
   get '/projects/:id', to: 'projects#show', as: :view_project

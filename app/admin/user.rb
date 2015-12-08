@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   permit_params :first_name, :last_name, :email, :username,
-                :description, :avatar,
+                :description, :avatar, :password, :password_confirmation,
                 :school_id, :classroom_id, :role_id
 
   form partial: 'form'
@@ -34,6 +34,8 @@ ActiveAdmin.register User do
     column :email
     column :username
     column :approved
+    column :classroom
+    column :school
     column :avatar do |user|
       image_tag(user.avatar.url(:thumb))
     end
