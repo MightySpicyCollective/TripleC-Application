@@ -12,5 +12,6 @@ ActiveAdmin.register Project do
     column :teacher do |p|
       link_to p.classroom.teacher.username, admin_user_path(p.classroom.teacher)
     end
+    actions
   end
 end

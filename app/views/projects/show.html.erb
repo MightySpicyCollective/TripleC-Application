@@ -1,5 +1,4 @@
-Project Show Page.
-
+<% @project = ProjectPresenter.new(@project) %>
 <table>
   <tr>
     <td>Name</td>
@@ -28,15 +27,19 @@ Project Show Page.
   <% end %>
 </table>
 
-<h3>Comments</h3>
+<% if @project.sharable?(current_user) %>
+  <%= link_to 'Share', share_project_path(@project), method: :post %>
 
-<table>
-  <% @comments.each do |comment| %>
-    <tr>
-      <td><%= comment.content %></td>
-      <td><%= link_to comment.user.first_name, user_path(comment.user) %></td>
-    </tr>
-  <% end %>
-</table>
+  <h3>Comments</h3>
 
-<%= link_to 'Add Comment', new_project_comment_path(@project) %>
+  <table>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.content %></td>
+        <td><%= link_to comment.user.username, user_path(comment.user) %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= link_to 'Add Comment', new_project_comment_path(@project) %>
+<% end %>

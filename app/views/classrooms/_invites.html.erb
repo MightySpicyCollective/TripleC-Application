@@ -1,5 +1,3 @@
-<h3>Requests</h3>
-
 <table>
   <thead>
     <th>Classroom</th>
@@ -7,7 +5,7 @@
     <th>Date</th>
     <th>Actions</th>
   </thead>
-  <% @classroom.recieved_invites.sent.each do |invite| %>
+  <% collection.each do |invite| %>
     <tr>
       <td><%= invite.sender.name %></td>
       <td><%= invite.sender.school.name %></td>

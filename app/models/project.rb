@@ -9,6 +9,7 @@ class Project < ActiveRecord::Base
   STATUSES = { inactive: 0, active: 1 }
 
   delegate :username, :school, :classroom, to: :user
+  delegate :teacher, to: :classroom
 
   def inactive?
     status.eql?(STATUSES[:inactive])

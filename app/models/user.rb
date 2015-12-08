@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 
   scope :for_school, ->(school_id) { where(school_id: school_id) }
 
+  delegate :teacher, to: :classroom
   delegate :name, :identifier, to: :role, prefix: true
 
   before_validation :set_role

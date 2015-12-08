@@ -34,6 +34,8 @@ ActiveAdmin.register User do
     column :email
     column :username
     column :approved
+    column :classroom
+    column :school
     column :avatar do |user|
       image_tag(user.avatar.url(:thumb))
     end

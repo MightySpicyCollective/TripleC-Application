@@ -5,12 +5,12 @@ class Invite < ActiveRecord::Base
   before_create :initialize_status
 
   STATUSES = {
-    sent:     1,
+    pending:  1,
     accepted: 2,
     rejected: 3
   }
 
-  scope :sent,     -> { where(status: STATUSES[:sent]) }
+  scope :pending,     -> { where(status: STATUSES[:pending]) }
   scope :accepted, -> { where(status: STATUSES[:accepted]) }
   scope :rejected, -> { where(status: STATUSES[:rejected]) }
 
@@ -25,6 +25,6 @@ class Invite < ActiveRecord::Base
   private
 
   def initialize_status
-    self.status = STATUSES[:sent]
+    self.status = STATUSES[:pending]
   end
 end
