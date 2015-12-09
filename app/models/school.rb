@@ -1,4 +1,8 @@
 class School < ActiveRecord::Base
+  extend FriendlyId
+
+  friendly_id :name, use: [:slugged, :finders]
+
   has_many :classrooms, dependent: :destroy
 
   validates :name, :location, presence: true

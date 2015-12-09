@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
   has_many :projects, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  extend FriendlyId
+
+  friendly_id :username, use: [:slugged, :finders]
+
   validates :first_name, :last_name, :username, :role, :role_id, :classroom, :classroom_id, :school, :school_id, presence: true
   validates :username, uniqueness: true
 

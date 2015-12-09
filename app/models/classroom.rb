@@ -1,4 +1,7 @@
 class Classroom < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+
   belongs_to :school
   belongs_to :teacher, class_name: User
 
