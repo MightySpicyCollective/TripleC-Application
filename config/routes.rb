@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   resources :classrooms
+  resources :schools
 
   resources :invitations, only: :create do
     member do

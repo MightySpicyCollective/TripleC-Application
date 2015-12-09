@@ -12,7 +12,6 @@ class ClassroomsController < ApplicationController
   private
 
   def load_classroom
-    @classroom = Classroom.find_by(id: params[:id])
-    redirect_to dashboard_path, alert: 'Classroom not found.' unless @classroom
+    @classroom = Classroom.find(params[:id])
   end
 end

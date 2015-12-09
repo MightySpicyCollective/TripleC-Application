@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   private
 
     def load_user
-      @user = User.where(id: params[:id]).first
+      @user = User.find(params[:id])
       redirect_to(root_path, error: 'User Not Found') unless @user
     end
 

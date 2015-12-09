@@ -66,8 +66,7 @@ class ProjectsController < ApplicationController
   end
 
   def load_project
-    @project = Project.find_by(id: params[:id])
-    redirect_to root_path, alert: 'Project not found.' unless @project
+    @project = Project.find(params[:id])
   end
 
   def ensure_student

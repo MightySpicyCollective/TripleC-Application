@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
-  extend FriendlyId
-
-  friendly_id :name, use: [:slugged, :finders]
+  def to_param
+    [id, name.parameterize].join("-")
+  end
 
   has_paper_trail ignore: [:created_at, :updated_at, :id, :user_id]
 

@@ -5,12 +5,18 @@ class ApplicationController < ActionController::Base
 
   before_action :update_sanitized_params, if: :devise_controller?
 
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
   def after_sign_in_path_for(resource)
     if resource.is_a?(AdminUser)
       admin_dashboard_path
     else
       dashboard_path
     end
+  end
+
+  def record_not_found
+    redirect_to root_path, alert: 'Requested Resource is unavailable at the moment.'
   end
 
   private

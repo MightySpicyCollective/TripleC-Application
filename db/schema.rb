@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209192313) do
+ActiveRecord::Schema.define(version: 20151209202336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,10 +86,7 @@ ActiveRecord::Schema.define(version: 20151209192313) do
     t.integer  "forked_project_id"
     t.string   "completed_sound_snippet_url"
     t.text     "source_code"
-    t.string   "slug"
   end
-
-  add_index "projects", ["slug"], name: "index_projects_on_slug", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
