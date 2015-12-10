@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="medium-6 columns">
+    <h3>Current Project(<%= @project.name %>)</h3>
+    <%= @differences.right.html_safe %>
+  </div>
+
+  <div class="medium-6 columns">
+    <h3>Forked Project (<%= @forked_project.name %>)</h3>
+    <%= @differences.left.html_safe %>
+  </div>
+</div>
+
+
+<% if current_user && @project.user_id.eql?(current_user.id) %>
+  <%= link_to 'Accept Changes into current project', accept_changes_project_path(forked_project_id: @forked_project.id), class: 'button primary large', method: :patch %>
+<% end %>

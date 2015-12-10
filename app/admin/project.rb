@@ -7,6 +7,7 @@ ActiveAdmin.register Project do
     id_column
     column :name
     column :username
+    column :forked
     column :school
     column :classroom
     column :teacher do |p|

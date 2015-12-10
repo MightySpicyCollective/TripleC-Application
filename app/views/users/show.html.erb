@@ -35,6 +35,9 @@
           <% if project.sharable?(current_user) %>
             <%= link_to 'Share', share_project_path(project), method: :post %>
           <% end %>
+          <% if project.forked? %>
+            <%= link_to 'Compare with original', compare_project_path(project) %>
+          <% end %>
         </td>
       </tr>
     <% end %>

@@ -1,7 +1,9 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :history]
-  before_action :load_project, only: [:show, :edit, :update, :destroy, :history, :share]
+  before_action :authenticate_user!, except: [:show, :history, :compare]
+  before_action :load_project, only: [:show, :edit, :update, :destroy, :history, :share, :compare, :accept_changes]
+  before_action :ensure_owner, only: :accept_changes
   before_action :ensure_approved, :ensure_non_owner, only: :share
+  before_action :load_forked_project, only: [:compare, :accept_changes]
 
   def index
     @projects = current_user.projects.page(params[:page]).per(10)
@@ -59,6 +61,15 @@ class ProjectsController < ApplicationController
     redirect_to dashboard_path, notice: 'Successfully Shared project!'
   end
 
+  def compare
+    @differences = Diffy::SplitDiff.new(@forked_project.source_code, @project.source_code, format: :html)
+  end
+
+  def accept_changes
+    @project.update_attributes(source_code: @forked_project.source_code)
+    redirect_to dashboard_path, notice: 'Successfully Accepted Changes.'
+  end
+
   private
 
   def project_params
@@ -75,5 +86,17 @@ class ProjectsController < ApplicationController
 
   def ensure_non_owner
     redirect_to(dashboard_path, alert: 'You cannot fork your own project') if @project.user_id.eql?(current_user.id)
+  end
+
+  def load_forked_project
+    if params[:forked_project_id].present?
+      @forked_project = Project.find(params[:forked_project_id])
+    else
+      @forked_project = @project.forked_project
+    end
+  end
+
+  def ensure_owner
+    redirect_to(dashboard_path, alert: 'You cannot accept changes for other\'s project') unless @project.user_id.eql?(current_user.id)
   end
 end

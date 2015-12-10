@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     member do
       post :share
       get :history
+      get :compare
+      patch :accept_changes
     end
     resources :comments, only: [:new, :create]
   end

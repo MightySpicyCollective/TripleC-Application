@@ -15,6 +15,7 @@ gem 'paperclip',          '~> 4.3'
 gem 'paper_trail',        '~> 4.0.0'
 gem 'kaminari',           '~> 0.16.3'
 gem 'friendly_id',        '~> 5.1.0'
+gem 'diffy',                                  github: 'samg/diffy', branch: :master
 
 group :development, :test do
   gem 'byebug',           '~> 8.0.1'
