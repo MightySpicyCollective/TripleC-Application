@@ -19,6 +19,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, alert: 'Requested Resource is unavailable at the moment.'
   end
 
+  def paper_trail_enabled_for_controller
+    current_admin_user.blank?
+  end
+
   private
 
     def update_sanitized_params

@@ -12,10 +12,9 @@
 
 <%= link_to 'Add New Project', new_user_project_path(current_user) %>
 
-
 <% if current_user.teacher? %>
   <h4>Sent Invites</h4>
-  <%= render 'classrooms/invites', collection: @current_user.classroom.sent_invites.pending %>
+  <%= render 'classrooms/invites', collection: @current_user.classroom.sent_invites.pending, show_links: false %>
   <h4>Recieved Invites</h4>
-  <%= render 'classrooms/invites', collection: @current_user.classroom.recieved_invites.pending %>
+  <%= render 'classrooms/invites', collection: @current_user.classroom.recieved_invites.pending, show_links: true %>
 <% end %>

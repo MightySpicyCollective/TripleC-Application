@@ -21,7 +21,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'spring',             '~> 1.4.0'
   gem 'better_errors',      '~> 2.1.1'
   gem 'binding_of_caller',  '~> 0.7.2', platforms: [:mri_21]
   gem 'quiet_assets',       '~> 1.1.0'

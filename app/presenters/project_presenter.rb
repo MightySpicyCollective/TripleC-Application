@@ -1,6 +1,18 @@
 class ProjectPresenter < SimpleDelegator
   def sharable?(user)
-    model.active? && !user.teacher? && teachers_connected?(user)
+    active_project? && approved_user?(user) && teachers_connected?(user)
+  end
+
+  def active_project?
+    model.active?
+  end
+
+  def non_teacher?(user)
+    !user.teacher?
+  end
+
+  def approved_user?(user)
+    user.approved?
   end
 
   private

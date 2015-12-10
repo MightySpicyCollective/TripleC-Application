@@ -14,4 +14,20 @@ ActiveAdmin.register Project do
     end
     actions
   end
+
+  show do
+    attributes_table do
+      row :id
+      row :name
+      row :description
+      row :user
+      row :school
+      row :classroom
+      row :teacher
+      row :forked
+      row :forked_project
+      row :completed_sound_snippet_url
+      row :source_code
+    end
+  end
 end

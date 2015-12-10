@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, :load_project
+  before_action :authenticate_user!, :load_project, :ensure_approved
 
   def new
     @comment = current_user.comments.build(project_id: @project.id)
@@ -21,6 +21,10 @@ class CommentsController < ApplicationController
     unless @project
       redirect_to dashboard_path, alert: 'Project not found.'
     end
+  end
+
+  def ensure_approved
+    redirect_to(dashboard_path, alert: 'You are not approved to comment on the project.') unless current_user.approved?
   end
 
   def comment_params

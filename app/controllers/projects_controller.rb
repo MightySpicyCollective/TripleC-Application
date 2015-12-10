@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :history]
   before_action :load_project, only: [:show, :edit, :update, :destroy, :history, :share]
-  before_action :ensure_student, :ensure_non_owner, only: :share
+  before_action :ensure_approved, :ensure_non_owner, only: :share
 
   def index
     @projects = current_user.projects.page(params[:page]).per(10)
@@ -48,7 +48,7 @@ class ProjectsController < ApplicationController
   end
 
   def history
-    @versions = @project.versions
+    @version = @project.versions
                         .reorder(created_at: :desc)
                         .page(params[:page])
                         .per(1)
@@ -69,8 +69,8 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
-  def ensure_student
-    redirect_to(dashboard_path, alert: 'You are not allowed to fork project.') if current_user.teacher?
+  def ensure_approved
+    redirect_to(dashboard_path, alert: 'You are not approved to share the project.') unless current_user.approved?
   end
 
   def ensure_non_owner
