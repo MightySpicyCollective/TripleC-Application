@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   friendly_id :username, use: [:slugged, :finders]
 
-  validates :first_name, :last_name, :username, :role, :role_id, :classroom, :classroom_id, :school, :school_id, presence: true
+  validates :first_name, :last_name, :username, :role, :role_id, presence: true
   validates :username, uniqueness: true
 
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "50x50>" }, default_url: 'paperclip-defaults/:style/missing.png'
