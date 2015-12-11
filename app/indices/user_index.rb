@@ -1,7 +1,6 @@
 ThinkingSphinx::Index.define :user, with: :active_record do
   # fields
-  indexes first_name
-  indexes last_name
+  indexes name
   indexes username
   indexes email
   indexes description
