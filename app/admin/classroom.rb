@@ -8,6 +8,7 @@ ActiveAdmin.register Classroom do
     column :name
     column :school
     column :teacher
+    actions
   end
 
   form do |f|

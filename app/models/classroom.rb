@@ -11,6 +11,7 @@ class Classroom < ActiveRecord::Base
   has_many :recieved_invites, dependent: :destroy, foreign_key: :reciever_id, class_name: Invite
 
   def connected_with?(other_class_id)
+    return true if(id == other_class_id)
     Invite.accepted.exists?(sender_id: id, reciever_id: other_class_id) ||
     Invite.accepted.exists?(reciever_id: id, sender_id: other_class_id)
   end

@@ -1,8 +1,8 @@
 class SearchController < ApplicationController
   def index
     @classrooms = Classroom.search(params[:term])
-    @schools    = School.search(params[:term])
-    @projects   = Project.search(params[:term])
-    @users      = User.search(params[:term])
+    @schools    = School.search(params[:term], with: { active: true })
+    @projects   = Project.search(params[:term], with: { status: Project::STATUSES[:active] })
+    @users      = User.search(params[:term], with: { approved: true })
   end
 end
