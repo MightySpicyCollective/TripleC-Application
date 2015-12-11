@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :search, only: :index
+
   get '/projects/:id', to: 'projects#show', as: :view_project
   get '/dashboard', to: 'users#dashboard', as: :dashboard
   root to: 'welcome#index'
