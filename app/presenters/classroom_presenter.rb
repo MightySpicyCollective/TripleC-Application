@@ -1,7 +1,7 @@
 class ClassroomPresenter < SimpleDelegator
 
   def teacher_name
-    teacher.try(:full_name)
+    teacher.try(:name)
   end
 
   def school_name

@@ -1,7 +1,7 @@
 ActiveAdmin.register User do
-  permit_params :first_name, :last_name, :email, :username,
-                :description, :avatar, :password, :password_confirmation,
-                :school_id, :classroom_id, :role_id
+  permit_params :name, :email, :username, :description, :avatar,
+                :password, :password_confirmation, :school_id,
+                :classroom_id, :role_id
 
   form partial: 'form'
 
@@ -29,8 +29,7 @@ ActiveAdmin.register User do
 
   index do
     id_column
-    column :first_name
-    column :last_name
+    column :name
     column :email
     column :username
     column :approved
@@ -53,8 +52,7 @@ ActiveAdmin.register User do
   show do
     attributes_table do
       row :username
-      row :first_name
-      row :last_name
+      row :name
       row :email
       row :approved
       row :school
@@ -66,8 +64,7 @@ ActiveAdmin.register User do
     end
   end
 
-  filter :first_name
-  filter :last_name
+  filter :name
   filter :email
   filter :username
   filter :approved
