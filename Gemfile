@@ -16,6 +16,9 @@ gem 'paper_trail',        '~> 4.0.0'
 gem 'kaminari',           '~> 0.16.3'
 gem 'friendly_id',        '~> 5.1.0'
 gem 'diffy',                                  github: 'samg/diffy', branch: :master
+gem 'mysql2',             '~> 0.3.13',        platform: :ruby
+gem 'thinking-sphinx',    '~> 3.1.3'
+gem 'whenever',           '~> 0.9.4'
 
 group :development, :test do
   gem 'byebug',           '~> 8.0.1'
@@ -36,5 +39,5 @@ end
 
 group :production do
   gem 'puma',               '~> 2.15.3'
-  gem 'rails_12factor'
+  gem 'rails_12factor',     '~> 0.0.3'
 end

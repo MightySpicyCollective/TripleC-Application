@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   friendly_id :username, use: [:slugged, :finders]
 
-  validates :first_name, :last_name, :username, :role, :role_id, presence: true
+  validates :name, :username, :role, :role_id, presence: true
   validates :username, uniqueness: true
 
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "50x50>" }, default_url: 'paperclip-defaults/:style/missing.png'
@@ -38,10 +38,6 @@ class User < ActiveRecord::Base
 
   def teacher?
     role_identifier.eql?(Role::TYPES[:teacher].to_s)
-  end
-
-  def full_name
-    first_name + ' ' + last_name
   end
 
   private

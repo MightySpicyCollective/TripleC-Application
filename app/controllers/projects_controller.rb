@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   before_action :ensure_owner, only: :accept_changes
   before_action :ensure_approved, :ensure_non_owner, only: :share
   before_action :load_forked_project, only: [:compare, :accept_changes]
+  before_action :ensure_connected_teachers, only: [:compare, :accept_changes]
 
   def index
     @projects = current_user.projects.page(params[:page]).per(10)
@@ -86,6 +87,10 @@ class ProjectsController < ApplicationController
 
   def ensure_non_owner
     redirect_to(dashboard_path, alert: 'You cannot fork your own project') if @project.user_id.eql?(current_user.id)
+  end
+
+  def ensure_connected_teachers
+    redirect_to(dashboard_path, alert: 'You cannot fork for non connected classroom') unless @project.classroom.connected_with?(@forked_project.classroom.id)
   end
 
   def load_forked_project

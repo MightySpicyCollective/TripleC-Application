@@ -34,8 +34,7 @@ class ApplicationController < ActionController::Base
                  :role_id,
                  :school_id,
                  :classroom_id,
-                 :first_name,
-                 :last_name)
+                 :name)
       end
       devise_parameter_sanitizer.for(:sign_in) do |u|
         u.permit(:password, :username)

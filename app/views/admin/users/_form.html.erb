@@ -2,8 +2,7 @@
   <%= f.semantic_errors :state %>
 
   <%= f.inputs 'User Details' do |x| %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
+    <%= f.input :name %>
     <%= f.input :email %>
     <%= f.input :username %>
     <% if @user.new_record? %>
