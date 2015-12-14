@@ -1,0 +1,8 @@
+development:
+  adapter:
+  host:
+  encoding:
+  database:
+  pool:
+  username:
+  password:

@@ -1,0 +1,28 @@
+<%= form_for @user, url: user_path(@user), html: { multipart: true } do |f| %>
+  <div class="field">
+    <label>Username</label><br />
+    <span><%= f.object.username %></span>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatar %><br />
+    <%= f.file_field :avatar %>
+  </div>
+
+  <%= f.submit 'Update' %>
+<% end %>

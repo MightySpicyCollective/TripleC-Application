@@ -1,0 +1,10 @@
+/.bundle
+
+/log/*
+!/log/.keep
+/tmp
+/config/*.yml
+!/config/secrets.yml
+public/system
+db/sphinx
+config/development.sphinx.conf

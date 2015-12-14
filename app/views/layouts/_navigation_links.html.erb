@@ -1,0 +1,42 @@
+<li><%= link_to 'Search', page_path('search') %></li>
+
+<ul class="left">
+  <li class="has-dropdown">
+    <a href="#">About/Info</a>
+    <ul class="dropdown">
+      <li><%= link_to 'Participating Cities', page_path('participating_cities') %></li>
+      <li><%= link_to 'School', page_path('school') %></li>
+      <li><%= link_to 'Teams', page_path('teams') %></li>
+    </ul>
+  </li>
+</ul>
+
+<li><%= link_to 'Contact', page_path('contact') %></li>
+
+<ul class="left">
+  <li class="has-dropdown">
+    <a href="#">Projects</a>
+    <ul class="dropdown">
+      <li><%= link_to 'Recent', page_path('recent') %></li>
+      <li><%= link_to 'City', page_path('city') %></li>
+      <li><%= link_to 'School', page_path('school') %></li>
+      <li><%= link_to 'Teams', page_path('teams') %></li>
+    </ul>
+  </li>
+</ul>
+
+<% unless user_signed_in? %>
+  <li><%= link_to 'Sign In', new_user_session_path %></li>
+<% else %>
+  <ul class="right">
+    <li class="has-dropdown">
+      <a href="#">
+        <%= image_tag current_user.avatar.url(:thumb) %>
+      </a>
+      <ul class="dropdown">
+        <li><%= link_to 'Edit Profile', edit_user_path(current_user) %></li>
+        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+      </ul>
+    </li>
+  </ul>
+<% end %>

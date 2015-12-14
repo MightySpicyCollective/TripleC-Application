@@ -1,0 +1,30 @@
+<h3>Search Results</h3>
+
+<h4>Schools</h4>
+<table>
+  <% @schools.each do |school| %>
+    <tr><td><%=link_to school.name, school_path(school) %></td></tr>
+  <% end %>
+</table>
+
+<h4>Classrooms</h4>
+<table>
+  <% @classrooms.each do |classroom| %>
+    <tr><td><%=link_to classroom.name, classroom_path(classroom) %></td></tr>
+  <% end %>
+</table>
+
+
+<h4>Projects</h4>
+<table>
+  <% @projects.each do |project| %>
+    <tr><td><%=link_to project.name, view_project_path(project) %></td></tr>
+  <% end %>
+</table>
+
+<h4>Users</h4>
+<table>
+  <% @users.each do |user| %>
+    <tr><td><%=link_to user.username, user_path(user) %></td></tr>
+  <% end %>
+</table>

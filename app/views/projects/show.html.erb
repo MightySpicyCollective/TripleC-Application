@@ -1,0 +1,45 @@
+<% @project = ProjectPresenter.new(@project) %>
+<table>
+  <tr>
+    <td>Name</td>
+    <td><%= @project.name %></td>
+  </tr>
+  <tr>
+    <td>Description</td>
+    <td><%= @project.description %></td>
+  </tr>
+  <tr>
+    <td>Status</td>
+    <td><%= Project::STATUSES.key(@project.status).to_s.titleize %></td>
+  </tr>
+  <tr>
+    <td>Source Code</td>
+    <td><pre><%= @project.source_code %></pre></td>
+  </tr>
+</table>
+
+<h3>History</h3>
+<table>
+  <% @versions.each_with_index do |version, index| %>
+    <tr>
+      <td><%= link_to "Changes By #{ change_performer(version) }", history_project_path(@project, page: index + 1)%></td>
+    </tr>
+  <% end %>
+</table>
+
+<% if @project.sharable?(current_user) %>
+  <%= link_to 'Share', share_project_path(@project), method: :post %>
+
+  <h3>Comments</h3>
+
+  <table>
+    <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.content %></td>
+        <td><%= link_to comment.user.username, user_path(comment.user) %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= link_to 'Add Comment', new_project_comment_path(@project) %>
+<% end %>
