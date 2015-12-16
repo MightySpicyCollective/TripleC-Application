@@ -6,7 +6,6 @@ development:
   pool:     5
   username: adityakapoor
   password:
-  template: template0
 test:
   adapter:  postgresql
   host:     127.0.0.1
@@ -15,4 +14,3 @@ test:
   pool:     5
   username: adityakapoor
   password:
-  template: template0
