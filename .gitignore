@@ -3,7 +3,7 @@
 /log/*
 !/log/.keep
 /tmp
-/config/*.yml
+/config/database.yml
 !/config/secrets.yml
 public/system
 db/sphinx
