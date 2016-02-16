@@ -1,20 +1,123 @@
-<%= image_tag current_user.avatar.url(:thumb) %>
+<%= stylesheet_link_tag 'classroom' %>
+<%= stylesheet_link_tag 'projects' %>
+<%= render 'layouts/breadcrumbs', breadcrumbs: ['home', 'dashboard'] %>
 
-<%= current_user.username %>
-<%= current_user.description %>
+<div class="container border-top-dotted class-name padding-bottom-30">
+  <div class="row">
+    <div class="col-lg-12 padding-top-50 padding-left-0 padding-right-0">
+      <div class="col-md-8 padding-left-0 padding-right-0">
+        <div class="col-md-4 padding-left-0 padding-right-0">
+          <%= image_tag current_user.avatar.url(:medium), class: 'img-responsive center-block' %>
+        </div>
+        <div class="col-md-8">
+          <div class="col-md-12">
+            <h1><%= current_user.name %></h1>
+            <p><%= current_user.description%></p>
+            <div>
+              <%= link_to 'Edit User profile', edit_user_path(current_user), class: "edit-class-profile" %>
+            </div>
+          </div>
+          <div class="col-md-12 text-center class-profile-status">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <div class="status-number"><%= @projects.count %></div>
+              <div class="status-group">Projects</div>
+            </div>
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+      </div>
+      <div class="col-lg-1">&nbsp;</div>
+      <div class="col-md-3 padding-left-0 padding-right-0 classroom-right-col">
+        <div class="col-md-12">
+          <% if current_user && current_user.teacher? && current_user.classroom.teacher_id != current_user.id %>
+            <div class="col-md-10 padding-bottom-30">
+              <a href="#" title="FOLLOW" class="btn btn-primary width-full">FOLLOW</a>
+            </div>
+          <% end %>
+          <% if current_user.school %>
+            <div class="col-md-12 padding-bottom-30">
+              <div class="heading">School</div>
+              <%= link_to current_user.school.name, school_path(current_user.school), class: 'scrap-links'%>
+            </div>
+            <div class="col-md-12 padding-bottom-30">
+              <div class="heading">City</div>
+              <%= link_to current_user.school.location, '#', class: 'scrap-links' %>
+            </div>
+            <div class="col-md-12 padding-bottom-30">
+              <div class="heading">Teacher</div>
+              <% if current_user.teacher %>
+                <%= link_to current_user.teacher.name, user_path(current_user.teacher), class: 'scrap-links' %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container border-top-dotted class-name padding-bottom-30">
+  <div class="row">
+    <div class="col-lg-12 padding-top-50 padding-bottom-30 padding-left-0 padding-right-0">
+      <div class="col-md-8 padding-left-0 padding-right-0">
+        <ul class="nav nav-tabs" id="myTab">
+          <li><a data-target="#projects" data-toggle="tab">Projects</a></li>
+          <% if current_user.teacher? %>
+            <li><a data-target="#pending-requests" data-toggle="tab">Pending Requests
+            <span class="reqest-count"><%= @current_user.classroom.recieved_invites.pending.count %></span></a></li>
+          <% end %>
+        </ul>
 
-<br />
-<%= current_user.school.name %> | <%= current_user.classroom.name %>
+        <div class="tab-content class-room-listing">
+          <div class="tab-pane" id="pending-requests">
+            <% if current_user.teacher? %>
+              <div class="heading">Requests by others</div>
+              <%= render 'classrooms/invites', collection: @current_user.classroom.recieved_invites.pending, show_links: true %>
+              <div class="heading">Requests by this class</div>
+              <%= render 'classrooms/invites', collection: @current_user.classroom.sent_invites.pending, show_links: false %>
+            <% end %>
+          </div>
+          <div class="tab-pane active project-list" id="projects">
+            <ul>
+              <% @projects.each do |project| %>
+                <li>
+                  <div class="col-md-2 col-sm-2 col-xs-2">
+                    <%= image_tag project.user.avatar.url(:medium), class: 'img-responsive center-block' %>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-6 padding-right-0 padding-left-0">
+                    <h3><%= link_to project.name, view_project_path(project) %></h3>
+                    <p><%= project.description %></p>
+                    <div class="col-md-10 padding-right-0 padding-left-0 padding-bottom-30">
+                      <%= link_to 'Edit', edit_user_project_path(current_user, project), class: 'btn btn-primary' %>
+                    </div>
+                  </div>
+                  <div class="col-md-4 padding-left-0 padding-right-0 classroom-right-col">
+                    <div class="col-md-12">
+                      <div class="col-md-12 padding-bottom-30">
+                        <div class="heading">School</div>
+                        <%= link_to project.school.name, school_path(project.school), class: 'scrap-links' %>
+                      </div>
+                      <div class="col-md-12 padding-bottom-30">
+                        <div class="heading">Location</div>
+                        <%= link_to project.school.location, '#', class: 'scrap-links' %>
+                      </div>
+                      <% if project.teacher %>
+                        <div class="col-md-12 padding-bottom-30">
+                          <div class="heading">Teacher</div>
+                          <%= link_to project.teacher.name, user_path(project.classroom.teacher), class: 'scrap-links' %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="clearfix"> </div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-1">&nbsp;</div>
+    </div>
+  </div>
+</div>
 
-<h3>Projects</h3>
-
-<%= render 'projects/listing' %>
-
-<%= link_to 'Add New Project', new_user_project_path(current_user) %>
-
-<% if current_user.teacher? %>
-  <h4>Sent Invites</h4>
-  <%= render 'classrooms/invites', collection: @current_user.classroom.sent_invites.pending, show_links: false %>
-  <h4>Recieved Invites</h4>
-  <%= render 'classrooms/invites', collection: @current_user.classroom.recieved_invites.pending, show_links: true %>
-<% end %>
+<%= link_to 'Add New Project', new_user_project_path(current_user), class: 'btn btn-primary' %>

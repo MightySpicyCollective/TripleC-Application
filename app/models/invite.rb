@@ -10,7 +10,7 @@ class Invite < ActiveRecord::Base
     rejected: 3
   }
 
-  scope :pending,     -> { where(status: STATUSES[:pending]) }
+  scope :pending,  -> { where(status: STATUSES[:pending]) }
   scope :accepted, -> { where(status: STATUSES[:accepted]) }
   scope :rejected, -> { where(status: STATUSES[:rejected]) }
 

@@ -2,10 +2,20 @@
 
 class window.Registrations.Form extends window.Registrations
   @schoolClassroomCombination: {}
-  @$schoolSelect: $('.school-select')
+  @$schoolSelect:    $('.school-select')
   @$classroomSelect: $('.classroom-select')
+  @$avatarUpload:    $('.upload-avatar')
 
   @bindEvents: ->
+    @_handleFileUpload()
+    @_handleChangeEvent()
+
+  @_handleFileUpload: ->
+    @$avatarUpload.on 'click', (event) ->
+      event.preventDefault()
+      $(@).next().click()
+
+  @_handleChangeEvent: ->
     _this = @
     @$schoolSelect.on 'change', ->
       $firstOption = _this.$classroomSelect.find('option').first()

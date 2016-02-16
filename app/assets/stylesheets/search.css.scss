@@ -1,0 +1,23 @@
+.label-search {
+  color: #888888;
+}
+
+.search-input {
+  background-color: transparent;
+  border: none;
+  border-bottom: solid 2px #ccc;
+  box-shadow: none;
+  font-family: 'roboto_slabregular';
+  font-size: 1.5em;
+  height: auto;
+  line-height: auto;
+  margin: 0px;
+  outline: none;
+  padding: 0px;
+}
+.search-input-btn {
+  padding-top: 12px;
+}
+.search-input:focus {
+  box-shadow: none;
+}

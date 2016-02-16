@@ -1,28 +1,38 @@
-<%= form_for @user, url: user_path(@user), html: { multipart: true } do |f| %>
-  <div class="field">
-    <label>Username</label><br />
-    <span><%= f.object.username %></span>
-  </div>
+<div class="col-md-6 col-md-offset-3">
+  <%= form_for @user, url: user_path(@user), html: { multipart: true } do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
+    <div class="row">
+      <div class="form-group">
+        <span><%= f.object.username %></span>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
+    <div class="row">
+      <div class="form-group">
+        <%= f.text_field :email, class: 'form-control input-sm', placeholder: 'Email' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </div>
+    <div class="row">
+      <div class="form-group">
+        <%= f.text_field :name, class: 'form-control input-sm', placeholder: 'Name' %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :avatar %><br />
-    <%= f.file_field :avatar %>
-  </div>
+    <div class="row">
+      <div class="form-group">
+        <%= f.text_area :description, class: 'form-control input-sm height-100', placeholder: 'Description' %>
+      </div>
+    </div>
 
-  <%= f.submit 'Update' %>
-<% end %>
+    <div class="row">
+      <div class="form-group">
+        <%= f.file_field :avatar %>
+      </div>
+    </div>
+
+    <div class="text-center row padding-bottom-20">
+      <%= f.submit 'Update', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

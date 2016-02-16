@@ -15,4 +15,12 @@ class Classroom < ActiveRecord::Base
     Invite.accepted.exists?(sender_id: id, reciever_id: other_class_id) ||
     Invite.accepted.exists?(reciever_id: id, sender_id: other_class_id)
   end
+
+  def followers
+    sent_invites.accepted.collect(&:reciever)
+  end
+
+  def followings
+    recieved_invites.accepted.collect(&:sender)
+  end
 end

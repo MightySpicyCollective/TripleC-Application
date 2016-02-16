@@ -5,4 +5,7 @@ class SearchController < ApplicationController
     @projects   = Project.search(params[:term], with: { status: Project::STATUSES[:active] })
     @users      = User.search(params[:term], with: { approved: true })
   end
+
+  def new
+  end
 end

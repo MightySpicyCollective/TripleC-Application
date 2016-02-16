@@ -63,7 +63,7 @@ class ProjectsController < ApplicationController
   end
 
   def compare
-    @differences = Diffy::SplitDiff.new(@forked_project.source_code, @project.source_code, format: :html)
+    @differences = Diffy::SplitDiff.new(@project.source_code, @forked_project.source_code, format: :html)
   end
 
   def accept_changes

@@ -4,4 +4,4 @@ rvm_ruby_version = "ruby-2.1.2@triplec_app"
 
 set :rvm_type, :system
 set :rvm_ruby_version, rvm_ruby_version
-set :branch, 'develop'
+set :branch, 'designs-take-1'

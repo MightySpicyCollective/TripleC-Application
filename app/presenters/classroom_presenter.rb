@@ -16,6 +16,14 @@ class ClassroomPresenter < SimpleDelegator
     @teacher ||= model.teacher
   end
 
+  def connected?(classroom_id)
+    model.connected_with?(classroom_id)
+  end
+
+  def has_same_teacher?(user)
+    model.teacher_id == user.id
+  end
+
   private
 
   def school

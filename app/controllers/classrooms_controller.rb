@@ -6,7 +6,12 @@ class ClassroomsController < ApplicationController
   end
 
   def show
-    @class_users = @classroom.users.students
+    @class_projects             = @classroom.users.collect(&:projects).flatten.to_a
+    @class_followers            = @classroom.followers
+    @class_followings           = @classroom.followings
+    @class_sent_invites         = @classroom.sent_invites.pending
+    @classroom_recieved_invites = @classroom.recieved_invites.pending
+    @class_users                = @classroom.users
   end
 
   private
