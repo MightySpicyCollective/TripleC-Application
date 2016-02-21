@@ -32,6 +32,7 @@ ActiveAdmin.register User do
     column :name
     column :email
     column :username
+    column :role
     column :approved
     column :classroom
     column :school

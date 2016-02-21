@@ -22,8 +22,8 @@
           <% if show_links %>
             <div class="col-md-3"><%= link_to invite.sender.name, classroom_path(invite.sender), class: 'scrap-links' %></div>
             <div class="col-md-3"><%= link_to invite.sender.school.name, school_path(invite.sender.school), class: 'scrap-links' %></div>
-            <div class="col-md-2"><%= link_to 'APPROVE', accept_invitation_path(invite), data: { method: :patch }, class: 'btn btn-xl btn-primary' %></div>
-            <div class="col-md-2 decline"><%= link_to 'DECLINE', reject_invitation_path(invite), data: { method: :patch }, class: 'btn btn-xl btn-primary' %></div>
+            <div class="col-md-2"><%= link_to 'APPROVE', accept_invitation_path(invite), data: { method: :patch }, class: 'btn btn-primary' %></div>
+            <div class="col-md-2 decline"><%= link_to 'DECLINE', reject_invitation_path(invite), data: { method: :patch }, class: 'btn btn-primary' %></div>
           <% else %>
             <div class="col-md-5"><%= link_to invite.sender.name, classroom_path(invite.sender), class: 'scrap-links' %></div>
             <div class="col-md-5"><%= link_to invite.sender.school.name, school_path(invite.sender.school), class: 'scrap-links' %></div>

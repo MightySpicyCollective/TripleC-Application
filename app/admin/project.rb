@@ -11,7 +11,9 @@ ActiveAdmin.register Project do
     column :school
     column :classroom
     column :teacher do |p|
-      link_to p.classroom.teacher.username, admin_user_path(p.classroom.teacher)
+      if p.classroom
+        link_to p.classroom.teacher.username, admin_user_path(p.classroom.teacher)
+      end
     end
     actions
   end

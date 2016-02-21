@@ -35,6 +35,10 @@
               <%= link_to @user.school.location, '#', class: 'scrap-links' %>
             </div>
             <div class="col-md-12 padding-bottom-30">
+              <div class="heading">Classroom</div>
+              <%= link_to @user.classroom.name, classroom_path(@user.classroom), class: 'scrap-links' %>
+            </div>
+            <div class="col-md-12 padding-bottom-30">
               <div class="heading">Teacher</div>
               <%= link_to @user.classroom.teacher.name, user_path(@user.teacher), class: 'scrap-links' %>
             </div>
@@ -56,34 +60,7 @@
           <div class="tab-pane active" id="projects">
             <ul>
               <% @projects.each do |project| %>
-                <li>
-                  <div class="col-md-2 col-sm-2 col-xs-2">
-                    <%= image_tag project.user.avatar.url(:medium), class: 'img-responsive center-block' %>
-                  </div>
-                  <div class="col-md-6 col-sm-6 col-xs-6 padding-right-0 padding-left-0">
-                    <h3><%= link_to project.name, view_project_path(project) %></h3>
-                    <p><%= project.description %></p>
-                  </div>
-                  <div class="col-md-4 padding-left-0 padding-right-0 classroom-right-col">
-                    <div class="col-md-12">
-                      <div class="col-md-12 padding-bottom-30">
-                        <div class="heading">School</div>
-                        <%= link_to project.school.name, school_path(project.school), class: 'scrap-links' %>
-                      </div>
-                      <div class="col-md-12 padding-bottom-30">
-                        <div class="heading">Location</div>
-                        <%= link_to project.school.location, '#', class: 'scrap-links' %>
-                      </div>
-                      <% if @user.classroom.teacher %>
-                        <div class="col-md-12 padding-bottom-30">
-                          <div class="heading">Teacher</div>
-                          <%= link_to project.classroom.teacher.name, user_path(project.classroom.teacher), class: 'scrap-links' %>
-                        </div>
-                      <% end %>
-                    </div>
-                  </div>
-                  <div class="clearfix"> </div>
-                </li>
+                <%= render 'projects/project', project: project %>
               <% end %>
             </ul>
           </div>

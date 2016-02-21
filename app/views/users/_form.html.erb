@@ -1,38 +1,62 @@
-<div class="col-md-6 col-md-offset-3">
-  <%= form_for @user, url: user_path(@user), html: { multipart: true } do |f| %>
+<div class="container padding-top-100 padding-bottom-100 sign-up">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-12">
+        <%= form_for @user, url: user_path(@user), html: { multipart: true } do |f| %>
+          <div class="col-md-12">
+            <div class="row">
+              <div class="form-group">
+                <%= f.object.username %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <%= f.text_field :email, class: 'form-control input-sm', placeholder: 'Email' %>
+              </div>
+            </div>
 
-    <div class="row">
-      <div class="form-group">
-        <span><%= f.object.username %></span>
+            <div class="row">
+              <div class="form-group">
+                <%= f.text_field :name, class: 'form-control input-sm', placeholder: 'Name' %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group">
+                <%= f.text_area :description, class: 'form-control input-sm height-100', placeholder: 'Description' %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group">
+                <%= f.file_field :avatar %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group">
+                <%= f.select :school_id, School.active.pluck(:name, :id), { include_blank: 'Select School' }, { class: 'school-select form-control input-sm' } %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group">
+                <%= f.select :classroom_id, [], { include_blank: 'Select Classroom' }, { class: 'classroom-select form-control input-sm' }  %>
+              </div>
+            </div>
+
+            <div class="text-center row padding-bottom-20">
+              <%= f.submit 'Update', class: 'btn btn-primary' %>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
-
-    <div class="row">
-      <div class="form-group">
-        <%= f.text_field :email, class: 'form-control input-sm', placeholder: 'Email' %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="form-group">
-        <%= f.text_field :name, class: 'form-control input-sm', placeholder: 'Name' %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="form-group">
-        <%= f.text_area :description, class: 'form-control input-sm height-100', placeholder: 'Description' %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="form-group">
-        <%= f.file_field :avatar %>
-      </div>
-    </div>
-
-    <div class="text-center row padding-bottom-20">
-      <%= f.submit 'Update', class: 'btn btn-primary' %>
-    </div>
-  <% end %>
+  </div>
 </div>
+
+<%= javascript_include_tag 'registrations/form' %>
+
+<script type="text/javascript">
+  Registrations.Form.schoolClassroomCombination = <%== school_classroom_json_mapping %>
+</script>

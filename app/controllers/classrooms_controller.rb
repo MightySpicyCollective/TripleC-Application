@@ -1,5 +1,7 @@
 class ClassroomsController < ApplicationController
-  before_action :load_classroom, only: :show
+  before_action :load_classroom, only: [:show, :edit, :update]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :ensure_teacher, except: [:index, :show]
 
   def index
     @classrooms = Classroom.all
@@ -14,9 +16,30 @@ class ClassroomsController < ApplicationController
     @class_users                = @classroom.users
   end
 
+  def edit
+  end
+
+  def update
+    if @classroom.update(classroom_params)
+      redirect_to dashboard_path, notice: 'Classroom Successfully updated.'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def load_classroom
     @classroom = Classroom.find(params[:id])
+  end
+
+  def ensure_teacher
+    unless current_user.teacher? && @classroom.teacher_id.eql?(current_user.id)
+      redirect_to(dashboard_path, alert: 'You dont have access to that.')
+    end
+  end
+
+  def classroom_params
+    params.require(:classroom).permit(:name, :description)
   end
 end

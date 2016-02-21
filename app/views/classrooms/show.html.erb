@@ -92,7 +92,7 @@
                     <%= image_tag class_user.avatar.url(:thumb), class: "img-responsive center-block" %>
                   </div>
                   <div class="col-md-9 col-sm-9 col-xs-9">
-                    <h3><%= link_to class_user.name, user_path(class_user) %></h3>
+                    <h3><%= link_to class_user.username, user_path(class_user) %></h3>
                     <p><%= class_user.description %></p>
                     <div>
                       <a href="#" title="Project One" class="scrap-links"></a>
@@ -107,45 +107,14 @@
             <div class="col-md-12 project-list padding-right-0 padding-left-0">
               <ul>
                 <% @class_projects.each do |class_project| %>
-                  <li>
-                    <div class="col-md-2 col-sm-2 col-xs-2">
-                      <%= image_tag class_project.user.avatar.url(:medium), class: 'img-responsive center-block' %>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-6 padding-right-0 padding-left-0">
-                      <h3>
-                        <%= link_to class_project.name, view_project_path(class_project) %>
-                      </h3>
-                      <div class="project-finish-by">by <%= link_to class_project.user.username, user_path(class_project.user), class: 'scrap-links' %></div>
-                      <p><%= class_project.description %></p>
-                      <div class="col-md-10 padding-right-0 padding-left-0 padding-bottom-30">
-                        <a href="#" title="Contribute" class="btn btn-primary">Contribute</a>
-                      </div>
-                    </div>
-                    <div class="col-md-4 padding-left-0 padding-right-0 classroom-right-col">
-                      <div class="col-md-12">
-                        <div class="col-md-12 padding-bottom-20">
-                          <div class="heading">School</div>
-                          <%= link_to class_project.school.name, school_path(class_project.school), class: 'scrap-links'%>
-                        </div>
-                        <div class="col-md-12 padding-bottom-20">
-                          <div class="heading">City</div>
-                          <%= link_to class_project.school.location, '#', class: 'scrap-links' %>
-                        </div>
-                        <div class="col-md-12 padding-bottom-20">
-                          <div class="heading">Teacher</div>
-                          <%= link_to class_project.classroom.teacher.name, user_path(class_project.teacher), class: 'scrap-links' %>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="clearfix"> </div>
-                  </li>
+                  <%= render 'projects/project', project: class_project %>
                 <% end %>
               </ul>
             </div>
           </div>
           <% if current_user && @classroom.teacher == current_user %>
             <div class="tab-pane class-room-listing request-by-table" id="pending-requests">
-                <div class="heading">Requests by others</div>
+              <div class="heading">Requests by others</div>
               <%= render 'classrooms/invites', collection: @classroom_recieved_invites, show_links: true %>
               <div class="heading">Requests by this class</div>
               <%= render 'classrooms/invites', collection: @class_sent_invites, show_links: false %>

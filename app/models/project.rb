@@ -16,6 +16,8 @@ class Project < ActiveRecord::Base
   delegate :username, :school, :classroom, to: :user
   delegate :teacher, to: :classroom
 
+  before_validation :set_defaults
+
   def inactive?
     status.eql?(STATUSES[:inactive])
   end
@@ -35,5 +37,11 @@ class Project < ActiveRecord::Base
       _project.completed_sound_snippet_url = completed_sound_snippet_url
       _project.save!
     end
+  end
+
+  private
+
+  def set_defaults
+    self.status ||= STATUSES[:active]
   end
 end
