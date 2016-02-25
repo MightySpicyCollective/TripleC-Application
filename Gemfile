@@ -24,6 +24,7 @@ gem 'capistrano-passenger', '~> 0.1.1'
 gem 'capistrano-bundler',   '~> 1.1.4'
 gem 'capistrano-rvm',       '~> 0.1.2'
 gem 'non-stupid-digest-assets', '~> 1.0.4'
+gem 'best_in_place',         '~> 3.1.0'
 
 group :development, :test do
   gem 'byebug',           '~> 8.0.1'

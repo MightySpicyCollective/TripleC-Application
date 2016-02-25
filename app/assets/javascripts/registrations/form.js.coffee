@@ -5,19 +5,32 @@ class window.Registrations.Form extends window.Registrations
   @$schoolSelect:    $('.school-select')
   @$classroomSelect: $('.classroom-select')
   @$avatarUpload:    $('.upload-avatar')
+  @$photoPreview:    $('.photoPreview')
+  @$uploadAvatar:    $('input[type="file"]#uploadAvatar')
+  @$avatarPlaceholder: $('img.avatarPlaceholder')
+  @$uploadClickLink: $('a#uploadClick')
+  @$deletePhoto:    $('.delete-photo')
 
   @bindEvents: ->
-    @_handleFileUpload()
+    @_handleClickEvent()
     @_handleChangeEvent()
 
-  @_handleFileUpload: ->
-    @$avatarUpload.on 'click', (event) ->
+  @_handleClickEvent: ->
+    _this = @
+    _this.$photoPreview.on 'click', (event) ->
       event.preventDefault()
-      $(@).next().click()
+      _this.$uploadAvatar.trigger('click')
+
+    _this.$deletePhoto.on 'click', ->
+      _this.$deletePhoto.addClass('hide');
+      _this.$uploadAvatar.val('');
+      _this.$avatarPlaceholder.addClass('hide').attr('src', '')
+      _this.$photoPreview.addClass('upload-pic-bg')
+      _this.$uploadClickLink.show();
 
   @_handleChangeEvent: ->
     _this = @
-    @$schoolSelect.on 'change', ->
+    _this.$schoolSelect.on 'change', ->
       $firstOption = _this.$classroomSelect.find('option').first()
       $firstOption.siblings().remove()
       classRooms = _this.schoolClassroomCombination[@value]
@@ -25,6 +38,23 @@ class window.Registrations.Form extends window.Registrations
         classRooms.forEach (element) ->
           $opt = $('<option />').val(element[1]).text(element[0])
           _this.$classroomSelect.append($opt)
+
+    @$uploadAvatar.on 'change', ->
+      _this.$photoPreview.removeAttr('disabled');
+      _this.readURL(@);
+
+  @readURL: (input) ->
+    _this = @
+    if (input.files && input.files[0])
+      reader = new FileReader();
+
+      reader.onload = (e) ->
+        _this.$photoPreview.removeClass('upload-pic-bg')
+        _this.$avatarPlaceholder.removeClass('hide').attr('src', e.target.result)
+        _this.$uploadClickLink.hide();
+      reader.readAsDataURL(input.files[0])
+      _this.$deletePhoto.removeClass('hide')
+
 
 $ ->
   Registrations.Form.bindEvents()

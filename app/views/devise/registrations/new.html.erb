@@ -19,10 +19,12 @@
 
           <div class="col-md-12 text-center padding-bottom-30">
             <div class="col-md-6 col-md-offset-3">
-              <div class="upload-pic-bg">
-                <%= link_to 'Upload profile photo', '#', class: 'upload-avatar', title: "Upload profile photo" %>
-                <%= f.file_field :avatar, class: 'hide' %>
+              <div class="upload-pic-bg photoPreview">
+                <%= image_tag 'upload-image-bg.png', class: 'hide avatarPlaceholder', height: "224px" %>
+                <%= link_to 'Upload profile photo', '#', class: 'upload-avatar', title: "Upload profile photo", id: 'uploadClick' %>
               </div>
+              <%= f.file_field :avatar, class: 'hide', id: 'uploadAvatar' %>
+              <p class="delete-photo hide">Delete</p>
             </div>
           </div>
           <div class="col-md-12">
@@ -93,4 +95,3 @@
 <script type="text/javascript">
   Registrations.Form.schoolClassroomCombination = <%== school_classroom_json_mapping %>
 </script>
-

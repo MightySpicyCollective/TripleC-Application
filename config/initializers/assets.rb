@@ -6,4 +6,6 @@ Rails.application.config.assets.precompile += %w( sign_up.css
                                                   projects.css
                                                   project.css
                                                   search.css
-                                                  compare.css)
+                                                  compare.css
+                                                  best_in_place.js
+                                                  projects/show.js)

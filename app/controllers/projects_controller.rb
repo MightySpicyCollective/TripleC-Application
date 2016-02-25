@@ -35,10 +35,14 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    if @project.update(project_params)
-      redirect_to dashboard_path, notice: 'Project Successfully updated.'
-    else
-      render :edit
+    respond_to do |format|
+      if @project.update(project_params)
+        format.html { redirect_to dashboard_path, notice: 'Project Successfully updated.' }
+        format.json { render json: @project }
+      else
+        format.html { render :edit }
+        format.json { render json: { errors: @project.errors } }
+      end
     end
   end
 
