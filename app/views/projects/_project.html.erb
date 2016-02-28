@@ -1,6 +1,6 @@
 <li>
   <div class="col-md-2 col-sm-2 col-xs-2">
-    <%= image_tag project.user.avatar.url(:medium), class: 'img-responsive center-block' %>
+    <%= image_tag project.user.avatar.url(:thumb), class: 'img-responsive center-block' %>
   </div>
   <div class="col-md-6 col-sm-6 col-xs-6 padding-right-0 padding-left-0">
     <h3><%= link_to project.name, view_project_path(project) %></h3>
