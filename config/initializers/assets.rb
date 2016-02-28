@@ -8,4 +8,5 @@ Rails.application.config.assets.precompile += %w( sign_up.css
                                                   search.css
                                                   compare.css
                                                   best_in_place.js
-                                                  projects/show.js)
+                                                  projects/show.js
+                                                  search.js)

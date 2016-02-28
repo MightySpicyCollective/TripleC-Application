@@ -8,12 +8,12 @@ class ClassroomsController < ApplicationController
   end
 
   def show
+    @class_users                = @classroom.users
     @class_projects             = @classroom.users.collect(&:projects).flatten.to_a
     @class_followers            = @classroom.followers
     @class_followings           = @classroom.followings
     @class_sent_invites         = @classroom.sent_invites.pending
     @classroom_recieved_invites = @classroom.recieved_invites.pending
-    @class_users                = @classroom.users
   end
 
   def edit
@@ -21,7 +21,7 @@ class ClassroomsController < ApplicationController
 
   def update
     if @classroom.update(classroom_params)
-      redirect_to dashboard_path, notice: 'Classroom Successfully updated.'
+      redirect_to classroom_path(@classroom), notice: 'Classroom Successfully updated.'
     else
       render :edit
     end

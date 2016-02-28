@@ -65,7 +65,7 @@
     <% if current_user %>
       <div class="row hide edit-project-code">
         <div class="col-md-12">
-          <%= best_in_place @project, :source_code, as: :textarea, url: user_project_path(current_user, @project), skip_blur: true, ok_button: 'save', class: 'project-source-code' %>
+          <%= best_in_place @project, :source_code, as: :textarea, url: user_project_path(current_user, @project), skip_blur: true, ok_button: 'Save', class: 'project-source-code', confirm: 'Are you sure?', ok_button_class: 'btn btn-primary update-code' %>
         </div>
       </div>
     <% end %>
@@ -103,19 +103,17 @@
   </div>
 </div>
 
-<%= javascript_include_tag 'projects/show' %>
 
-<script type="text/javascript">
-  (function() {
-    var pre = document.getElementsByTagName('pre'),
-      pl = pre.length;
-      for (var i = 0; i < pl; i++) {
-        pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>';
-        var num = pre[i].innerHTML.split(/\n/).length;
-        for (var j = 0; j < num; j++) {
-          var line_num = pre[i].getElementsByTagName('span')[0];
-          line_num.innerHTML += '<span>' + (j + 1) + '</span>';
-        }
-      }
-  })();
-</script>
+<table class="table table-striped">
+  <% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment.content %></td>
+      <td><%= link_to comment.user.name, user_path(comment.user) %></td>
+      <td><%= distance_of_time_in_words_to_now(comment.created_at) %> ago</td>
+    </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Add Comment', new_project_comment_path(@project), class: 'btn btn-primary' %>
+
+<%= javascript_include_tag 'projects/show' %>

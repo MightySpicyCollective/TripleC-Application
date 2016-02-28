@@ -4,11 +4,8 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="col-md-12">
-        <div class="col-md-12 padding-bottom-30">
-          <a class="center-block" href="#" class="v-middle">
-            <%= image_tag 'nav-logo.png', class: 'img-responsive logo-main-index center-block' %>
-          </a>
-        </div>
+        <%= render 'layouts/logo_header' %>
+
         <div class="col-md-12">
           <%= form_tag search_index_path, method: :get do |f| %>
             <div class="row">

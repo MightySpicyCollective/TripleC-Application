@@ -96,9 +96,6 @@
                   <div class="col-md-9 col-sm-9 col-xs-9">
                     <h3><%= link_to class_user.username, user_path(class_user) %></h3>
                     <p><%= class_user.description %></p>
-                    <div>
-                      <a href="#" title="Project One" class="scrap-links"></a>
-                    </div>
                   </div>
                   <div class="clearfix"></div>
                 </li>
@@ -114,7 +111,7 @@
               </ul>
             </div>
           </div>
-          <% if current_user && @classroom.teacher == current_user %>
+          <% if current_user && @classroom.teacher_id.eql?(current_user.id) %>
             <div class="tab-pane class-room-listing request-by-table" id="pending-requests">
               <div class="heading">Requests by others</div>
               <%= render 'classrooms/invites', collection: @classroom_recieved_invites, show_links: true %>

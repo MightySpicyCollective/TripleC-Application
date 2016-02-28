@@ -4,11 +4,8 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <div class="col-md-12">
-        <div class="col-md-12 padding-bottom-30">
-          <a class="center-block" href="#" class="v-middle">
-            <%= image_tag 'nav-logo.png', class: 'img-responsive logo-main-index center-block' %>
-          </a>
-        </div>
+        <%= render 'layouts/logo_header' %>
+
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <div class="col-md-12 text-center">
             <h1>Sign up</h1>

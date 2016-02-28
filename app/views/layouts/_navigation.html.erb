@@ -15,27 +15,23 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+        <li><a href="#">PROJECTS</a></li>
+        <li><span>|</span></li>
+        <li><a href="#">ABOUT</a></li>
+        <li><span>|</span></li>
+        <li><a href="#">CONTACT</a></li>
+        <li><span>|</span></li>
         <li>
-          <a href="#">PROJECTS</a>
-        </li>
-        <li>
-          <span>|</span>
-        </li>
-        <li>
-          <a href="#">ABOUT</a>
-        </li>
-        <li>
-          <span>|</span>
-        </li>
-        <li>
-          <a href="#">CONTACT</a>
-        </li>
-        <li>
-          <span>|</span>
-        </li>
-        <li>
-          <a href="#" class="nav-search">
-            <span><%= image_tag 'icon-search.png', class: 'nav-icon-search' %></span> SEARCH</a>
+          <%= form_tag search_index_path, id: 'search', method: 'GET' do %>
+            <div id="label">
+              <label for="search-terms" id="search-label">
+                <%= image_tag 'icon-search.png', class: 'nav-icon-search' %>
+              </label>
+            </div>
+            <div id="input">
+              <%= text_field_tag :term, params[:term], id: 'search-terms', placeholder: 'Search' %>
+            </div>
+          <% end %>
         </li>
       </ul>
       <div class="navbar-right">
@@ -56,3 +52,5 @@
   </div>
   <!-- /.container -->
 </nav>
+
+<%= javascript_include_tag 'search' %>
