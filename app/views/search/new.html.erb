@@ -1,4 +1,4 @@
-<%= stylesheet_link_tag 'search' %>
+<%= stylesheet_link_tag 'searches/index' %>
 
 <div class="container padding-top-100 padding-bottom-100 sign-up">
   <div class="row">
@@ -11,12 +11,10 @@
             <div class="row">
               <div class="form-group">
                 <%= label_tag :term, 'Search projects, users, schools, etc.', class: 'col-md-12 label-search'%>
-                  <div class="col-md-11 v-middle">
-                    <%= text_field_tag :term, nil, class: 'form-control input-sm search-input', placeholder: 'Search..'%>
-                  </div>
-                  <div class="col-md-1 button-saearch search-input-btn">
-                    <div class="pull-right">
-                      <%= button_tag(type: 'submit', class: 'btn') do %>
+                  <div class="col-md-12 v-middle">
+                    <%= text_field_tag :term, nil, class: 'form-control input-sm search-input', placeholder: 'Search..', autofocus: true%>
+                      <div class="pull-right">
+                      <%= button_tag(type: 'submit', class: 'btn search-btn') do %>
                         <%= image_tag 'icon-search.png', class: 'nav-icon-search' %>
                       <% end %>
                     </div>

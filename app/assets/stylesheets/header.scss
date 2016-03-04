@@ -1,0 +1,61 @@
+/* header */
+.collapse.navbar-collapse {
+  margin-top: 20px;
+}
+.navbar-brand img{
+  width: 60px;
+  height: auto;
+}
+.navbar-inverse {
+  background-color: transparent;
+  border-color: transparent;
+  font-family: 'roboto_slabbold';
+  font-size: 1em;
+}
+.navbar-inverse .navbar-nav > li > a,
+.btn-nav-ogin-signup a:hover {
+  color: #333333;
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus,
+.btn-nav-ogin-signup,
+.btn-nav-ogin-signup a {
+  color: #d248af;
+}
+.navbar-nav > li > span {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: inline-block;
+}
+
+.byline{
+  position:absolute;
+  top:150px;
+  left:30%;
+  text-align:center;
+  font-size:18px;
+}
+.byline a{
+  text-decoration:none;
+  color: #d74b4b;
+}
+
+.navbar-right .btn-primary a,
+.navbar-right .btn-primary span {
+  text-decoration: none;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  display: inline-block;
+  color: #d248af;
+}
+.navbar-right .btn-primary .sign-in {
+  margin-left: 10px;
+}
+
+@import 'search';
+.navbar-right .btn-primary .sign-up {
+  margin-right: 10px;
+}
+.navbar-right .btn-primary span {
+  padding: 0 5px;
+}
+/* header end */

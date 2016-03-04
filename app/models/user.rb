@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   validates :name, :username, :role, :role_id, presence: true
   validates :username, uniqueness: true
 
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "50x50>" }, default_url: 'paperclip-defaults/:style/missing.png'
+  has_attached_file :avatar, styles: { medium: "300x300!", thumb: "50x50#" }, default_url: 'paperclip-defaults/:style/missing.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   scope :teachers, -> { includes(:role).where(roles: { identifier: Role::TYPES[:teacher].to_s }) }

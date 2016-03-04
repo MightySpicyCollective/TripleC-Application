@@ -5,7 +5,7 @@ Rails.application.config.assets.precompile += %w( sign_up.css
                                                   classroom.css
                                                   projects.css
                                                   project.css
-                                                  search.css
+                                                  searches/index.css
                                                   compare.css
                                                   best_in_place.js
                                                   projects/show.js
