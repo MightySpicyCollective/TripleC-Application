@@ -8,8 +8,8 @@ class ClassroomsController < ApplicationController
   end
 
   def show
-    @class_users                = @classroom.users
-    @class_projects             = @classroom.users.collect(&:projects).flatten.to_a
+    @class_users                = @classroom.users.includes(:projects)
+    @class_projects             = @class_users.collect(&:projects).flatten.to_a
     @class_followers            = @classroom.followers
     @class_followings           = @classroom.followings
     @class_sent_invites         = @classroom.sent_invites.pending
