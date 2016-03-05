@@ -87,7 +87,7 @@
             <% @versions.each_with_index do |version, index| %>
               <li>
                 <div class="col-md-3 col-sm-3 col-xs-3 padding-left-0 padding-right-0">
-                  <%= image_tag performer_user(version).avatar.url(:thumb), class: "img-responsive"  %>
+                  <%= image_tag performer_user(version).avatar.url(:thumb), class: "img-responsive #{swatch_class(performer_user(version))}"  %>
                 </div>
                 <div class="col-md-9 col-sm-9 col-xs-9">
                   <div><%= link_to change_performer(version), history_project_path(@project, page: index + 1), class: 'scrap-links' %></div>

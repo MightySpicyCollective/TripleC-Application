@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  SWATCH_OPTIONS = %w(pink green blue dark-blue violet orange yellow dark-green black)
+
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          authentication_keys: [:username]
@@ -28,7 +30,7 @@ class User < ActiveRecord::Base
   delegate :name, :identifier, to: :role, prefix: true
 
   before_validation :set_role
-  before_create :skip_confirmation!
+  before_create :skip_confirmation!, :populate_dummy_swatch
 
   after_create :set_teacher_for_classroom, if: :teacher?
 
@@ -48,5 +50,9 @@ class User < ActiveRecord::Base
 
   def set_teacher_for_classroom
     classroom.update_column(:teacher_id, id)
+  end
+
+  def populate_dummy_swatch
+    self.dummy_swatch_color = SWATCH_OPTIONS.sample
   end
 end

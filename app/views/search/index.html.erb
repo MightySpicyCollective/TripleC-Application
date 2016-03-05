@@ -46,7 +46,7 @@
     <% @projects.each do |project| %>
       <li>
         <div class="col-md-2 col-sm-2 col-xs-2">
-          <%= image_tag project.user.avatar.url(:medium), class: 'img-responsive center-block' %>
+          <%= image_tag project.user.avatar.url(:medium), class: "img-responsive center-block #{swatch_class(project.user)}" %>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-6 padding-right-0 padding-left-0">
           <h3><%= link_to project.name, view_project_path(project) %></h3>
@@ -82,7 +82,7 @@
     <% @users.each do |user| %>
       <li>
         <div class="col-md-2 col-sm-2 col-xs-2">
-          <%= image_tag user.avatar.url(:medium), class: "img-responsive center-block" %>
+          <%= image_tag user.avatar.url(:medium), class: "img-responsive center-block #{swatch_class(user)}" %>
         </div>
         <div class="col-md-10 col-sm-10 col-xs-10">
           <h3><%= link_to user.name, user_path(user) %></h3>

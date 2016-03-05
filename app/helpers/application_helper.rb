@@ -10,13 +10,7 @@ module ApplicationHelper
     end
   end
 
-  def swatch_class
-    @swatch_class ||= "swatch-#{swatch_options.sample}"
-  end
-
-  private
-
-  def swatch_options
-    %w(pink green blue dark-blue violet orange yellow dark-green black)
+  def swatch_class(user)
+    "swatch-#{user.dummy_swatch_color}"
   end
 end
