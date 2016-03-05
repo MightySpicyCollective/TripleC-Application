@@ -23,7 +23,8 @@ class Projects.Show extends Projects
         _this.$editInPlace.addClass('click-activated')
         _this._toggleShowView()
 
-    $(document).on 'click', '.update-code', _this._toggleEditView
+    $(document).on 'click', '.update-code', ->
+      _this._toggleEditView()
 
   @_handleAJAXSuccess: ->
     $('.project-source-code').bind 'ajax:success', ->
@@ -46,6 +47,7 @@ class Projects.Show extends Projects
   @_toggleEditView: ->
     $('.row.edit-project-code').addClass('hide')
     $('.row.project-code').removeClass('hide')
+    @$editInPlace.removeClass('click-activated')
 
   @_toggleShowView: ->
     $('.row.edit-project-code').removeClass('hide')

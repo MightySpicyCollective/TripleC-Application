@@ -1,13 +1,14 @@
 <!-- Bread crumb  -->
 
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <ol class="breadcrumb">
-        <% breadcrumbs.each do |breadcrumb| %>
-          <%= content_tag(:li, class: (breadcrumbs.last.eql?(breadcrumb) ? 'active' : '')) do %>
-            <%= link_to '#' do %>
-              <%= breadcrumb.titleize %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-lg-12'>
+      <ol class='breadcrumb'>
+        <% last_breadcrumb = breadcrumbs.keys.last %>
+        <% breadcrumbs.each do |breadcrumb, link| %>
+          <%= content_tag(:li, class: (last_breadcrumb.eql?(breadcrumb) ? 'active' : '')) do %>
+            <%= link_to link do %>
+              <%= breadcrumb.to_s.titleize %>
             <% end %>
           <% end %>
         <% end %>

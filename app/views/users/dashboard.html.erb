@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag 'classroom' %>
 <%= stylesheet_link_tag 'projects' %>
 
-<%= render 'layouts/breadcrumbs', breadcrumbs: ['home', 'dashboard'] %>
+<%= render 'layouts/breadcrumbs', breadcrumbs: { home: root_path, dashboard: dashboard_path } %>
 
 <div class="container border-top-dotted class-name padding-bottom-30">
   <div class="row">

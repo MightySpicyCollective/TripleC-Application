@@ -1,9 +1,10 @@
 <%= stylesheet_link_tag 'classroom' %>
 <%= stylesheet_link_tag 'projects' %>
 
-<% if current_user %>
-  <%= render 'layouts/breadcrumbs', breadcrumbs: ['home', 'dashboard', 'classroom'] %>
-<% end %>
+<%= render 'layouts/breadcrumbs', breadcrumbs: {
+  home: root_path,
+  dashboard: dashboard_path,
+  classroom: classroom_path(@classroom) } %>
 
 <% @classroom = ClassroomPresenter.new(@classroom) %>
 
