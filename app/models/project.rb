@@ -9,6 +9,7 @@ class Project < ActiveRecord::Base
   belongs_to :forked_project, class_name: Project
   has_many :comments, dependent: :destroy
 
+  has_attached_file :photo, styles: { medium: '300x300>' }, default_url: 'paperclip-defaults/:style/missing.png'
   validates :name, :description, :user, :user_id, presence: true
 
   STATUSES = { inactive: 0, active: 1 }

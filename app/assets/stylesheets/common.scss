@@ -3,6 +3,7 @@
 @import 'header';
 @import 'btn';
 @import 'swatch';
+@import 'border';
 
 /* body background */
   body {
@@ -71,7 +72,3 @@ h2 {
   color: #d248af;
 }
 /* classroom-right-col end */
-
-.border-radius-50 {
-  border-radius: 50%
-}

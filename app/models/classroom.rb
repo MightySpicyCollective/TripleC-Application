@@ -10,6 +10,8 @@ class Classroom < ActiveRecord::Base
   has_many :sent_invites, dependent: :destroy, foreign_key: :sender_id, class_name: Invite
   has_many :recieved_invites, dependent: :destroy, foreign_key: :reciever_id, class_name: Invite
 
+  has_attached_file :photo, styles: { medium: '300x300>' }, default_url: 'paperclip-defaults/:style/missing.png'
+
   def connected_with?(other_class_id)
     return true if(id == other_class_id)
     Invite.accepted.exists?(sender_id: id, reciever_id: other_class_id) ||

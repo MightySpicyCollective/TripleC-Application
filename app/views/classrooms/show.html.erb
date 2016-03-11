@@ -13,7 +13,7 @@
     <div class="col-lg-12 padding-top-50 padding-left-0 padding-right-0">
       <div class="col-md-8 padding-left-0 padding-right-0">
         <div class="col-md-4 padding-left-0 padding-right-0">
-          <%= image_tag @classroom.school_logo, class: 'img-responsive center-block border-radius-50' %>
+          <%= image_tag @classroom.photo.url(:medium), class: "img-responsive center-block border-radius-50 swatch-#{@classroom.dummy_swatch_color}" %>
         </div>
         <div class="col-md-8">
           <div class="col-md-12">
