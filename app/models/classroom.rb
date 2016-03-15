@@ -1,5 +1,7 @@
 class Classroom < ActiveRecord::Base
   extend FriendlyId
+  include SwatchPopulator
+
   friendly_id :name, use: [:slugged, :finders]
 
   belongs_to :school

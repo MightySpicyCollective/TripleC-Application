@@ -12,7 +12,7 @@ ActiveAdmin.register Project do
     column :classroom
     column :photo do |p|
       if p.photo.blank?
-        image_tag(p.photo.url(:medium), height: '100', class: "border-radius-50 swatch-#{p.user.dummy_swatch_color}")
+        image_tag(p.photo.url(:medium), height: '100', class: "border-radius-50 swatch-#{p.dummy_swatch_color}")
       else
         image_tag(p.photo.url(:medium), height: '100')
       end

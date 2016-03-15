@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  SWATCH_OPTIONS = %w(pink green blue dark-blue violet orange yellow dark-green black)
+  include SwatchPopulator
 
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   validates :name, :username, :role, :role_id, presence: true
   validates :username, uniqueness: true
 
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "50x50#" }, default_url: 'paperclip-defaults/:style/missing.png'
+  has_attached_file :avatar, styles: { medium: "300x300!", thumb: "50x50#" }, default_url: 'paperclip-defaults/:style/missing.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   scope :teachers, -> { includes(:role).where(roles: { identifier: Role::TYPES[:teacher].to_s }) }
@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   delegate :name, :identifier, to: :role, prefix: true
 
   before_validation :set_role
-  before_create :skip_confirmation!, :populate_dummy_swatch
+  before_create :skip_confirmation!
 
   after_create :set_teacher_for_classroom, if: :teacher?
 
@@ -50,9 +50,5 @@ class User < ActiveRecord::Base
 
   def set_teacher_for_classroom
     classroom.update_column(:teacher_id, id)
-  end
-
-  def populate_dummy_swatch
-    self.dummy_swatch_color = SWATCH_OPTIONS.sample
   end
 end
