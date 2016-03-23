@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @comments = @project.comments
+    @comments = @project.comments.includes(:user)
     @versions = @project.versions
                         .reorder(created_at: :desc)
                         .limit(3)
@@ -78,7 +78,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :status, :source_code)
+    params.require(:project).permit(:name, :description, :status, :photo)
   end
 
   def load_project

@@ -57,7 +57,7 @@
             </div>
             <div class="row">
               <div class="form-group">
-                <%= f.select :classroom_id, [], { include_blank: 'Select Classroom' }, { class: 'classroom-select form-control input-sm' }  %>
+                <%= f.select :classroom_id, Classroom.pluck(:name, :id), { include_blank: 'Select Classroom' }, { class: 'classroom-select form-control input-sm' }  %>
               </div>
             </div>
             <div class="row">
@@ -67,7 +67,7 @@
             </div>
             <div class="row">
               <div class="form-group">
-                <%= f.text_area :description, class: 'form-control input-sm height-100' %>
+                <%= f.text_area :description, class: 'form-control input-sm height-100', placeholder: 'Description' %>
               </div>
             </div>
             <div class="row">

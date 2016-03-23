@@ -1,16 +1,12 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!, :load_project, :ensure_approved
 
-  def new
-    @comment = current_user.comments.build(project_id: @project.id)
-  end
-
   def create
     @comment = current_user.comments.build(comment_params.merge(project_id: @project.id))
     if @comment.save
-      redirect_to view_project_path(@project), notice: 'Successfully created comment.'
+      render json: @comment, status: :created
     else
-      render :new
+      render json: { errors: @comment.errors }, status: :unprocessable_entity
     end
   end
 

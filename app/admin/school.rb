@@ -13,11 +13,7 @@ ActiveAdmin.register School do
     column :description
     column :active
     column :photo do |s|
-      if s.photo.blank?
-        image_tag(s.photo.url(:medium), height: '100', class: "border-radius-50 swatch-#{s.dummy_swatch_color}")
-      else
-        image_tag(s.photo.url(:medium), height: '100', class: 'border-radius-50')
-      end
+      image_tag(s.photo.url(:medium), height: '100', class: "border-radius-50 swatch-#{s.dummy_swatch_color}")
     end
     actions
   end

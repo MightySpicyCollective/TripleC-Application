@@ -2,14 +2,14 @@
 
 class window.Registrations.Form extends window.Registrations
   @schoolClassroomCombination: {}
-  @$schoolSelect:    $('.school-select')
-  @$classroomSelect: $('.classroom-select')
-  @$avatarUpload:    $('.upload-avatar')
-  @$photoPreview:    $('.photoPreview')
-  @$uploadAvatar:    $('input[type="file"]#uploadAvatar')
-  @$avatarPlaceholder: $('img.avatarPlaceholder')
-  @$uploadClickLink: $('a#uploadClick')
-  @$deletePhoto:    $('.delete-photo')
+  @$schoolSelect:       $('.school-select')
+  @$classroomSelect:    $('.classroom-select')
+  @$avatarUpload:       $('.upload-avatar')
+  @$photoPreview:       $('.photoPreview')
+  @$uploadAvatar:       $('input[type="file"]#uploadAvatar')
+  @$avatarPlaceholder:  $('img.avatarPlaceholder')
+  @$uploadClickLink:    $('a#uploadClick')
+  @$deletePhoto:        $('.delete-photo')
 
   @bindEvents: ->
     @_handleClickEvent()
@@ -32,16 +32,21 @@ class window.Registrations.Form extends window.Registrations
     _this = @
     _this.$schoolSelect.on 'change', ->
       $firstOption = _this.$classroomSelect.find('option').first()
+      classroomValue = _this.$classroomSelect.val()
       $firstOption.siblings().remove()
       classRooms = _this.schoolClassroomCombination[@value]
       if classRooms
         classRooms.forEach (element) ->
           $opt = $('<option />').val(element[1]).text(element[0])
           _this.$classroomSelect.append($opt)
+      _this.$classroomSelect.val(classroomValue)
 
-    @$uploadAvatar.on 'change', ->
+    _this.$uploadAvatar.on 'change', ->
       _this.$photoPreview.removeAttr('disabled');
       _this.readURL(@);
+
+    _this.$schoolSelect.trigger('change')
+    _this.$classroomSelect.trigger('change')
 
   @readURL: (input) ->
     _this = @

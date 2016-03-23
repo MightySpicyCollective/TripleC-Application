@@ -11,17 +11,15 @@
       </div>
     </div>
     <div class="row">
+      <%= f.file_field :photo, class: 'form-group' %>
+    </div>
+    <div class="row">
       <div class="form-group">
         <% if @project.persisted? %>
           <%= f.select :status, Project::STATUSES.collect{|k,v| [k.to_s.titleize,v]}, { include_blank: 'Select Status' }, { class: 'form-control input-sm' } %>
         <% else %>
         <%= f.select :status, Project::STATUSES.collect{|k,v| [k.to_s.titleize,v]}, { include_blank: 'Select Status', selected: Project::STATUSES[:active] }, { class: 'form-control input-sm' } %>
         <% end %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="form-group">
-        <%= f.text_area :source_code, class: 'form-control input-sm min-height-180', placeholder: 'Source Code', rows: 20 %>
       </div>
     </div>
 

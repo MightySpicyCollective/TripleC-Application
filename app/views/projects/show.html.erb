@@ -119,6 +119,26 @@
   <% end %>
 </table>
 
-<%= link_to 'Add Comment', new_project_comment_path(@project), class: 'btn btn-primary' %>
-
 <%= javascript_include_tag 'projects/show' %>
+
+<% if current_user %>
+  <% @comment = @project.comments.build(user_id: current_user.id) %>
+  <%= link_to 'Add Comment', '#', class: 'btn btn-primary', data: { toggle: 'modal', target: '#commentModal' } %>
+
+  <!-- Modal -->
+  <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">Add Comment on Project</h4>
+        </div>
+        <div class="modal-body">
+          <%= render 'comments/form' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
