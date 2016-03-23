@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :ensure_owner, only: :accept_changes
   before_action :ensure_approved, :ensure_non_owner, only: :share
   before_action :load_forked_project, only: [:compare, :accept_changes]
-  before_action :ensure_connected_teachers, only: [:compare, :accept_changes]
+  before_action :ensure_connected_teachers, only: [:edit, :update, :share, :compare, :accept_changes]
 
   def index
     @projects = current_user.projects.page(params[:page]).per(10)
@@ -94,7 +94,15 @@ class ProjectsController < ApplicationController
   end
 
   def ensure_connected_teachers
-    redirect_to(dashboard_path, alert: 'You cannot fork for non connected classroom') unless @project.classroom.connected_with?(@forked_project.classroom.id)
+    if @forked_project
+      unless @project.classroom.connected_with?(@forked_project.classroom.id)
+        redirect_to(dashboard_path, alert: 'You cannot fork for non connected classroom.')
+      end
+    else
+      unless @project.classroom.connected_with?(current_user.classroom_id)
+        redirect_to(dashboard_path, alert: 'You dont have access to that.')
+      end
+    end
   end
 
   def load_forked_project
