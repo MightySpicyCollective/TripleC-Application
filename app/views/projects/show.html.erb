@@ -22,7 +22,7 @@
               <%= link_to @project.classroom.name, classroom_path(@project.classroom) %>
             </div>
             <p><%= @project.description %></p>
-            <% if current_user %>
+            <% if current_user && @project.user_id.eql?(current_user.id) %>
               <div>
                 <%= link_to 'Edit Project Details', edit_user_project_path(current_user, @project), class: 'edit-class-profile' %>
               </div>
@@ -70,7 +70,7 @@
     <% if current_user %>
       <div class="row hide edit-project-code">
         <div class="col-md-12">
-          <%= best_in_place @project, :source_code, as: :textarea, url: user_project_path(current_user, @project), skip_blur: true, ok_button: 'Save', class: 'project-source-code', confirm: 'Are you sure?', ok_button_class: 'btn btn-primary update-code' %>
+          <%= best_in_place @project, :source_code, as: :textarea, url: user_project_path(current_user, @project), inner_class: 'form-control', skip_blur: true, ok_button: 'Save', class: 'project-source-code', confirm: 'Are you sure?', ok_button_class: 'btn btn-primary btn-lg update-code' %>
         </div>
       </div>
     <% end %>
@@ -113,7 +113,7 @@
   <% @comments.each do |comment| %>
     <tr>
       <td><%= comment.content %></td>
-      <td><%= link_to comment.user.name, user_path(comment.user) %></td>
+      <td><%= link_to comment.user.name, user_path(comment.user), class: 'scrap-links' %></td>
       <td><%= distance_of_time_in_words_to_now(comment.created_at) %> ago</td>
     </tr>
   <% end %>

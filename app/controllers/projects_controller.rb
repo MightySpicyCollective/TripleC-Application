@@ -78,7 +78,10 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :status, :photo)
+    case params[:action]
+    when 'update' then params.require(:project).permit(:name, :description, :status, :photo, :source_code)
+    when 'create' then params.require(:project).permit(:name, :description, :status, :photo)
+    end
   end
 
   def load_project

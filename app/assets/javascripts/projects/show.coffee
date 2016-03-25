@@ -15,7 +15,8 @@ class Projects.Show extends Projects
 
   @_handleClickEvent: ->
     _this = @
-    _this.$editInPlace.on 'click', ->
+    _this.$editInPlace.on 'click', (event) ->
+      event.preventDefault()
       if _this.$editInPlace.hasClass('click-activated')
         _this.$editInPlace.removeClass('click-activated')
         _this._toggleEditView()
