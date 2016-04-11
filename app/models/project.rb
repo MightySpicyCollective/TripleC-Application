@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+  include SwatchPopulator
+
   def to_param
     [id, name.parameterize].join("-")
   end
@@ -9,12 +11,21 @@ class Project < ActiveRecord::Base
   belongs_to :forked_project, class_name: Project
   has_many :comments, dependent: :destroy
 
+  has_attached_file :photo, styles: { medium: '300x300', thumb: '50x50!' },
+                            convert_options: {
+                              medium: '-resize 300x300 -background black -gravity center -extent 300x300',
+                            },
+                            default_url: 'paperclip-defaults/:style/missing.png'
+  validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
+
   validates :name, :description, :user, :user_id, presence: true
 
   STATUSES = { inactive: 0, active: 1 }
 
   delegate :username, :school, :classroom, to: :user
   delegate :teacher, to: :classroom
+
+  before_validation :set_defaults
 
   def inactive?
     status.eql?(STATUSES[:inactive])
@@ -35,5 +46,11 @@ class Project < ActiveRecord::Base
       _project.completed_sound_snippet_url = completed_sound_snippet_url
       _project.save!
     end
+  end
+
+  private
+
+  def set_defaults
+    self.status ||= STATUSES[:active]
   end
 end

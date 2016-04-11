@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :ensure_owner, only: :accept_changes
   before_action :ensure_approved, :ensure_non_owner, only: :share
   before_action :load_forked_project, only: [:compare, :accept_changes]
-  before_action :ensure_connected_teachers, only: [:compare, :accept_changes]
+  before_action :ensure_connected_teachers, only: [:edit, :update, :share, :compare, :accept_changes]
 
   def index
     @projects = current_user.projects.page(params[:page]).per(10)
@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @comments = @project.comments
+    @comments = @project.comments.includes(:user)
     @versions = @project.versions
                         .reorder(created_at: :desc)
                         .limit(3)
@@ -35,10 +35,14 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    if @project.update(project_params)
-      redirect_to dashboard_path, notice: 'Project Successfully updated.'
-    else
-      render :edit
+    respond_to do |format|
+      if @project.update(project_params)
+        format.html { redirect_to dashboard_path, notice: 'Project Successfully updated.' }
+        format.json { render json: @project }
+      else
+        format.html { render :edit }
+        format.json { render json: { errors: @project.errors } }
+      end
     end
   end
 
@@ -63,7 +67,7 @@ class ProjectsController < ApplicationController
   end
 
   def compare
-    @differences = Diffy::SplitDiff.new(@forked_project.source_code, @project.source_code, format: :html)
+    @differences = Diffy::SplitDiff.new(@project.source_code, @forked_project.source_code, format: :html)
   end
 
   def accept_changes
@@ -74,7 +78,10 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :status, :source_code)
+    case params[:action]
+    when 'update' then params.require(:project).permit(:name, :description, :status, :photo, :source_code)
+    when 'create' then params.require(:project).permit(:name, :description, :status, :photo)
+    end
   end
 
   def load_project
@@ -90,7 +97,15 @@ class ProjectsController < ApplicationController
   end
 
   def ensure_connected_teachers
-    redirect_to(dashboard_path, alert: 'You cannot fork for non connected classroom') unless @project.classroom.connected_with?(@forked_project.classroom.id)
+    if @forked_project
+      unless @project.classroom.connected_with?(@forked_project.classroom.id)
+        redirect_to(dashboard_path, alert: 'You cannot fork for non connected classroom.')
+      end
+    else
+      unless @project.classroom.connected_with?(current_user.classroom_id)
+        redirect_to(dashboard_path, alert: 'You dont have access to that.')
+      end
+    end
   end
 
   def load_forked_project

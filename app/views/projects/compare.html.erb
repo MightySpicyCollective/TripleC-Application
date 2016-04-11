@@ -1,16 +1,46 @@
-<div class="row">
-  <div class="medium-6 columns">
-    <h3>Current Project(<%= @project.name %>)</h3>
-    <%= @differences.right.html_safe %>
+<%= stylesheet_link_tag 'project' %>
+<%= stylesheet_link_tag 'classroom' %>
+<%= stylesheet_link_tag 'compare' %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 border-top-dotted padding-top-30 padding-bottom-30 padding-left-0 padding-right-0">
+      <div class="row">
+        <div class="col-md-6 latest-enteries">
+          <div class="col-md-12 heading">
+            <div class="col-md-12 padding-left-0">Latest</div>
+          </div>
+          <div class="col-md-12 padding-left-0 padding-right-0 entry-content">
+            <div class="content_highlight col-md-12 padding-left-0 padding-right-0">
+              <div class="content_highlight-code">
+                <pre><code><%= @differences.left.html_safe %></code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 previous-enteries">
+          <div class="col-md-12 heading">
+            <div class="col-md-4 col-sm-4 col-xs-4 padding-left-0">Previous Entries</div>
+            <div class="col-md-8 col-sm-8 col-xs-8 pull-right">
+            </div>
+          </div>
+          <div class="col-md-12 padding-left-0 padding-right-0 entry-content">
+            <div class="content_highlight col-md-12  padding-left-0 padding-right-0">
+              <div class="content_highlight-code">
+                <pre><code><%= @differences.right.html_safe %></code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="medium-6 columns">
-    <h3>Forked Project (<%= @forked_project.name %>)</h3>
-    <%= @differences.left.html_safe %>
+  <div class="row">
+    <div class="col-md-12">
+      <% if current_user && @project.user_id.eql?(current_user.id) %>
+        <%= link_to 'Accept Changes into current project', accept_changes_project_path(forked_project_id: @forked_project.id), class: 'btn btn-primary', method: :patch %>
+      <% end %>
+    </div>
   </div>
 </div>
-
-
-<% if current_user && @project.user_id.eql?(current_user.id) %>
-  <%= link_to 'Accept Changes into current project', accept_changes_project_path(forked_project_id: @forked_project.id), class: 'button primary large', method: :patch %>
-<% end %>

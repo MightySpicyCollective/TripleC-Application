@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users
+  devise_for :users, controllers: { passwords: :passwords }
 
   resources :users do
-    resources :projects do
-    end
+    resources :projects
   end
 
   resources :projects, only: [] do
@@ -28,7 +27,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :search, only: :index
+  resources :search, only: [:index,:new]
 
   get '/projects/:id', to: 'projects#show', as: :view_project
   get '/dashboard', to: 'users#dashboard', as: :dashboard

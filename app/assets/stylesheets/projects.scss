@@ -1,0 +1,137 @@
+/* Project Filters */
+  .project-filter .filter-by-heading {
+    color: #333333;
+    font-family: 'source_sans_proregular';
+    font-size: 1em;
+    padding-bottom: 5px;
+  }
+  .filter-listing {
+    border-top: dotted 1px #333333;
+    font-family: 'source_sans_proregular';
+    padding-bottom: 20px;
+  }
+  .filter-listing h2 {
+    font-family: 'source_sans_probold';
+    font-size: 1em;
+  }
+  .filter-listing ul,
+  .filter-listing li {
+    line-height: 22px;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+  }
+  .filter-listing li > a {
+    color: #333333;
+    font-size: 1em;
+  }
+  .filter-listing li > a:hover {
+    color: #d248af;
+  }
+  .filter-listing li > span {
+    display: inline-block;
+    margin-left: 5px;
+  }
+/* Project Filters */
+
+/* project-listing */
+  .project-listing .heading{
+    border-bottom: dotted 1px #333333;
+    padding-bottom: 10px;
+  }
+  .project-count {
+    font-family: 'roboto_slabthin';
+    font-size: 2em;
+  }
+  .project-listing .btn-group .dropdown-toggle{
+    border: none;
+    color: #333333;
+    font-family: 'source_sans_probold';
+    padding-bottom: 0px;
+    padding-top: 0px;
+    width: 100%;
+  }
+  .btn-default:hover,
+  .btn-default:active:hover, .btn-default.active:hover, .open > .dropdown-toggle.btn-default:hover, .btn-default:active:focus, .btn-default.active:focus, .open > .dropdown-toggle.btn-default:focus, .btn-default:active.focus, .btn-default.active.focus, .open > .dropdown-toggle.btn-default.focus {
+    background-color: transparent;
+    border: none;
+  }
+  .btn-group.open .dropdown-toggle {
+    box-shadow: none;
+  }
+  .sort-by-text {
+    display: inline-block;
+    margin-top: -2px;
+    padding: 0px;
+  }
+  .btn .caret {
+    background-repeat: no-repeat;
+    background: image-url('down-arrow.png');
+    border: none;
+    float: right;
+    height: 9px;
+    margin: 5px 0 0 15px;
+    width: 15px;
+  }
+  .sort-project {
+    font-family: 'source_sans_proregular';
+    font-size: 1em;
+    padding: 15px 0 0 0;
+  }
+/* project-listing end */
+
+/* project list */
+  .project-list {
+
+  }
+  .project-list ul,
+  .project-list li {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+  }
+  .project-list li {
+    padding: 30px 0 0 0;
+    border-bottom: dotted 1px #333333;
+    font-family: 'source_sans_proregular';
+    list-style: none;
+  }
+  .project-list h3 {
+    font-family: 'source_sans_probold';
+    font-size: 2em;
+    margin: 0px;
+  }
+  .project-list h3 a {
+    text-decoration: none;
+    color: #000000;
+  }
+  .project-list h3 a:hover {
+    color: #d248af;
+  }
+  .project-list li .img-responsive {
+    border-radius: 50%;
+  }
+  .project-list p {
+    padding-bottom: 15px;
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: #000000;
+  }
+  .team-activity {
+    color: #888888;
+    font-size: 0.9em;
+  }
+  .project-finish-by {
+    font-family: 'source_sans_probold';
+    padding-bottom: 20px;
+  }
+  .project-finish-by a{
+    text-decoration: none;
+    color: #d248af;
+    border-bottom: solid 1px #d248af;
+  }
+/* project list end */
+
+.project-listing .classroom-right-col .heading {
+  border: none !important;
+}

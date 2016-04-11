@@ -1,48 +1,72 @@
-<%= image_tag @user.avatar.url(:thumb) %>
+<%= stylesheet_link_tag 'classroom' %>
+<%= stylesheet_link_tag 'projects' %>
 
-<strong><%= @user.username %></strong>
-
-<%= @user.description %>
-
-<br />
-<%= @user.school.name %> | <%= @user.classroom.name %>
-
-<% unless @projects.blank? %>
-  <h3>Projects</h3>
-  <table>
-    <thead>
-      <th>Name</th>
-      <th>School/Classroom/Teacher</th>
-      <th>Description</th>
-      <th>Status</th>
-      <th>Created By</th>
-      <th>Actions</th>
-    </thead>
-    <% @projects.each do |project| %>
-      <% project = ProjectPresenter.new(project) %>
-      <tr>
-        <td><%= link_to project.name, view_project_path(project) %></td>
-        <td>
-          <%= link_to project.school.name, school_path(project.school) %>/
-          <%= link_to project.classroom.name, classroom_path(project.classroom) %>/
-          <%= link_to project.classroom.teacher.try(:username), user_path(project.classroom.teacher) %>
-        </td>
-        <td><%= project.description %></td>
-        <td><%= project.status %></td>
-        <td><%= project.username %></td>
-        <td>
-          <%= link_to 'View', view_project_path(project) %>
-          <% if project.sharable?(current_user) %>
-            <%= link_to 'Share', share_project_path(project), method: :post %>
+<div class="container border-top-dotted class-name padding-bottom-30">
+  <div class="row">
+    <div class="col-lg-12 padding-top-50 padding-left-0 padding-right-0">
+      <div class="col-md-8 padding-left-0 padding-right-0">
+        <div class="col-md-4 padding-left-0 padding-right-0">
+          <%= image_tag @user.avatar.url(:medium), class: "img-responsive center-block border-radius-50 #{swatch_class(@user)}" %>
+        </div>
+        <div class="col-md-8">
+          <div class="col-md-12">
+            <h1><%= @user.name %></h1>
+            <p><%= @user.description%></p>
+          </div>
+          <div class="col-md-12 text-center class-profile-status">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <div class="status-number"><%= @projects.count %></div>
+              <div class="status-group">Projects</div>
+            </div>
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+      </div>
+      <div class="col-lg-1">&nbsp;</div>
+      <div class="col-md-3 padding-left-0 padding-right-0 classroom-right-col">
+        <div class="col-md-12">
+          <% if @user.school %>
+            <div class="col-md-12 padding-bottom-30">
+              <div class="heading">School</div>
+              <%= link_to @user.school.name, school_path(@user.school), class: 'scrap-links'%>
+            </div>
+            <div class="col-md-12 padding-bottom-30">
+              <div class="heading">City</div>
+              <%= link_to @user.school.location, '#', class: 'scrap-links' %>
+            </div>
+            <div class="col-md-12 padding-bottom-30">
+              <div class="heading">Classroom</div>
+              <%= link_to @user.classroom.name, classroom_path(@user.classroom), class: 'scrap-links' %>
+            </div>
+            <div class="col-md-12 padding-bottom-30">
+              <div class="heading">Teacher</div>
+              <%= link_to @user.classroom.teacher.name, user_path(@user.teacher), class: 'scrap-links' %>
+            </div>
           <% end %>
-          <% if project.forked? %>
-            <%= link_to 'Compare with original', compare_project_path(project) %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-<% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container border-top-dotted class-name padding-bottom-30">
+  <div class="row">
+    <div class="col-lg-12 padding-top-50 padding-bottom-30 padding-left-0 padding-right-0">
+      <div class="col-md-8 padding-left-0 padding-right-0">
+        <ul class="nav nav-tabs" id="myTab">
+          <li><a data-target="#projects" data-toggle="tab">Projects</a></li>
+        </ul>
 
-<%= paginate @projects %>
-
+        <div class="tab-content class-room-listing">
+          <div class="tab-pane active" id="projects">
+            <ul>
+              <% @projects.each do |project| %>
+                <%= render 'projects/project', project: project %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-1">&nbsp;</div>
+    </div>
+  </div>
+</div>

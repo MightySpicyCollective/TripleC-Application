@@ -1,0 +1,97 @@
+.padding-top-100 {
+  padding-top: 100px;
+}
+.padding-bottom-100 {
+  padding-bottom: 100px;
+}
+.padding-bottom-30 {
+  padding-bottom: 30px;
+}
+.padding-bottom-20 {
+  padding-bottom: 20px;
+}
+.padding-top-10 {
+  padding-top: 10px;
+}
+.link-sign-in {
+  border-bottom: solid 1px #d248af;
+  color: #d248af;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+.link-sign-in:hover {
+  border-bottom: solid 1px #23527c;
+  text-decoration: none;
+}
+.upload-pic-bg {
+  background-repeat: repeat;
+  background: image-url('upload-image-bg');
+  border-radius: 50%;
+  height: 224px;
+  position: relative;
+}
+.upload-pic-bg img{
+  border-radius: 50%;
+  height: auto;
+  width: 100%;
+}
+
+.avatarPlaceholder {
+  border-radius: 50%;
+  width: 100%;
+}
+
+.upload-pic-bg a {
+  border-radius: 50%;
+  color: #000000;
+  display: inline-block;
+  font-size: 1em;
+  left: 0px;
+  line-height: 1.5;
+  padding: 55px 20px;
+  position: absolute;
+  right: 0px;
+  text-decoration: underline;
+  top: 23%;
+  bottom: 23%;
+  width: 100%;
+}
+.upload-pic-bg a.change-photo {
+  color: #ffffff;
+}
+
+.centered-form{
+  margin-top: 60px;
+}
+
+.centered-form .panel{
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
+.form-control:focus {
+  border-color: #d248af;
+  color: #000000;
+}
+
+.sign-up .btn-primary {
+  min-width: 150px;
+}
+
+.form-control {
+  border-radius: 0px;
+  min-height: 35px;
+}
+
+.active-checkbox {
+  font-size: 0.9em;
+}
+
+textarea.input-sm.height-100, select[multiple].input-sm.height-100 {
+  height: 100px;
+}
+
+/*.sign-in-page {
+  font-size: 0.9em;
+  color: #000000;
+}*/

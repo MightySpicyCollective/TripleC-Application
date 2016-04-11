@@ -31,7 +31,7 @@
   <ul class="right">
     <li class="has-dropdown">
       <a href="#">
-        <%= image_tag current_user.avatar.url(:thumb) %>
+        <%= image_tag current_user.avatar.url(:thumb), class: "#{swatch_class(current_user)}" %>
       </a>
       <ul class="dropdown">
         <li><%= link_to 'Edit Profile', edit_user_path(current_user) %></li>

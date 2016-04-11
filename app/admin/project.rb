@@ -1,5 +1,7 @@
 ActiveAdmin.register Project do
-  permit_params :name, :user_id, :description, :school_id, :status, :forked, :completed_sound_snippet_url, :source_code
+  permit_params :name, :user_id, :description, :school_id,
+                :status, :forked, :completed_sound_snippet_url,
+                :source_code, :photo
 
   filter :name
 
@@ -10,10 +12,28 @@ ActiveAdmin.register Project do
     column :forked
     column :school
     column :classroom
+    column :photo do |p|
+      image_tag(p.photo.url(:medium), height: '100', class: "border-radius-50 swatch-#{p.dummy_swatch_color}")
+    end
     column :teacher do |p|
-      link_to p.classroom.teacher.username, admin_user_path(p.classroom.teacher)
+      if p.classroom
+        link_to p.classroom.teacher.username, admin_user_path(p.classroom.teacher)
+      end
     end
     actions
+  end
+
+  form do |f|
+    f.inputs 'Project Details' do
+      f.input :name
+      f.input :username
+      f.input :photo, as: :file
+      f.input :source_code, as: :text
+      f.input :description
+      f.input :completed_sound_snippet_url
+      f.input :dummy_swatch_color, as: :select, collection: SwatchPopulator::SWATCH_OPTIONS
+    end
+    f.actions
   end
 
   show do
@@ -28,7 +48,11 @@ ActiveAdmin.register Project do
       row :forked
       row :forked_project
       row :completed_sound_snippet_url
-      row :source_code
+      row :source_code do |p|
+        content_tag :pre do
+          p.source_code
+        end
+      end
     end
   end
 end
