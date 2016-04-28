@@ -4,6 +4,10 @@ class WelcomeController < ApplicationController
   def index
   end
 
+  def contact
+    @enquiry = Enquiry.new
+  end
+
   private
 
   def redirect_on_current_user
