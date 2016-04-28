@@ -29,7 +29,10 @@ Rails.application.routes.draw do
 
   resources :search, only: [:index,:new]
 
+  resources :enquiries, only: :create
+
   get '/projects/:id', to: 'projects#show', as: :view_project
   get '/dashboard', to: 'users#dashboard', as: :dashboard
+  get '/contact', to: 'welcome#contact', as: :contact_us
   root to: 'welcome#index'
 end

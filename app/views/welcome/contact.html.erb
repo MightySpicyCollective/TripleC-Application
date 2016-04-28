@@ -1,0 +1,38 @@
+<%= stylesheet_link_tag 'sign_up' %>
+
+<div class="container padding-top-100 padding-bottom-100 sign-up">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-12">
+        <%= render 'layouts/logo_header' %>
+
+        <div class="col-md-12">
+
+          <%= form_for @enquiry do |f| %>
+            <div class="row">
+              <div class="form-group">
+                <%= f.text_field :name, class: 'form-control input-sm', placeholder: 'Name' %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group">
+                <%= f.email_field :email, class: 'form-control input-sm', placeholder: 'Email' %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group">
+                <%= f.text_area :message, class: 'form-control input-sm', placeholder: 'Message' %>
+              </div>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Submit", class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
