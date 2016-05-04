@@ -67,20 +67,23 @@
         <ul class="nav nav-tabs">
           <li class="active"><%= link_to 'Projects', '#projects', data: { toggle: 'tab' } %></li>
           <% if current_user.teacher? %>
-            <li><a data-target="#pending-requests" data-toggle="tab">Pending Requests
-            <span class="reqest-count"><%= @current_user.classroom.recieved_invites.pending.count %></span></a></li>
+            <li>
+              <a data-target="#pending-requests" data-toggle="tab">Pending Requests
+                <span class="reqest-count"><%= @current_user.classroom.recieved_invites.pending.count %></span>
+              </a>
+            </li>
           <% end %>
         </ul>
 
         <div class="tab-content class-room-listing request-by-table">
-          <div class="tab-pane" id="pending-requests">
-            <% if current_user.teacher? %>
+          <% if current_user.teacher? %>
+            <div class="tab-pane" id="pending-requests">
               <div class="heading">Requests by others</div>
               <%= render 'classrooms/invites', collection: @current_user.classroom.recieved_invites.pending, show_links: true %>
               <div class="heading">Requests by this class</div>
               <%= render 'classrooms/invites', collection: @current_user.classroom.sent_invites.pending, show_links: false %>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
           <div class="tab-pane active project-list" id="projects">
             <ul>
               <% @projects.each do |project| %>

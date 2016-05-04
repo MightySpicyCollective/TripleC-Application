@@ -132,6 +132,7 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     high_voltage (2.4.0)
+    humanizer (2.6.2)
     i18n (0.7.0)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
@@ -302,6 +303,7 @@ DEPENDENCIES
   faker (~> 1.5.0)
   friendly_id (~> 5.1.0)
   high_voltage (~> 2.4.0)
+  humanizer
   jquery-rails (~> 4.0.5)
   kaminari (~> 0.16.3)
   marginalia

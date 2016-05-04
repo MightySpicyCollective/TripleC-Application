@@ -23,7 +23,21 @@
 
             <div class="row">
               <div class="form-group">
+                <%= f.email_field :subject, class: 'form-control input-sm', placeholder: 'Subject' %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group">
                 <%= f.text_area :message, class: 'form-control input-sm', placeholder: 'Message' %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group">
+                <%= f.label :humanizer_answer, @enquiry.humanizer_question %>
+                <%= f.text_field :humanizer_answer %>
+                <%= f.hidden_field :humanizer_question_id %>
               </div>
             </div>
 
@@ -32,6 +46,7 @@
             </div>
           <% end %>
         </div>
+        <b>You can also email us at <%= mail_to "info@triplec.global", 'info[at]triplec.global' %>.</b>
       </div>
     </div>
   </div>
