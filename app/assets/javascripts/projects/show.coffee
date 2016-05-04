@@ -1,5 +1,9 @@
 //= require 'best_in_place'
 //= require 'projects/base'
+//= require 'ace/ace'
+//= require 'ace/mode-ruby'
+//= require 'ace/theme-xcode'
+//= require 'jquery-ace.min'
 
 class Projects.Show extends Projects
   @$editInPlace: $('a.edit-in-place')
@@ -20,9 +24,11 @@ class Projects.Show extends Projects
       if _this.$editInPlace.hasClass('click-activated')
         _this.$editInPlace.removeClass('click-activated')
         _this._toggleEditView()
+        _this._destroyCodeEditor()
       else
         _this.$editInPlace.addClass('click-activated')
         _this._toggleShowView()
+        _this._initializeCodeEditor()
 
     $(document).on 'click', '.update-code', ->
       _this._toggleEditView()
@@ -55,6 +61,8 @@ class Projects.Show extends Projects
     $('.row.project-code').addClass('hide')
     $('.row.edit-project-code span.best_in_place').click()
 
+  @_initializeCodeEditor: ->
+    $('textarea[name="source_code"].form-control').ace({theme: 'xcode', lang: 'ruby'})
 
 $ ->
   Projects.Show.bindEvents()
