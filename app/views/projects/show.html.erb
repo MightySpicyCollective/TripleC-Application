@@ -96,7 +96,7 @@
                 </div>
                 <div class="col-md-9 col-sm-9 col-xs-9">
                   <div><%= link_to change_performer(version), history_project_path(@project, page: index + 1), class: 'scrap-links' %></div>
-                  <div class="date-entry">12th Dec, 2015</div>
+                  <div class="date-entry"><%= version.created_at.strftime("%d-%b-%Y") %></div>
                 </div>
                 <div class="clearfix"> </div>
               </li>
