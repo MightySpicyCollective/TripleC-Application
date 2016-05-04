@@ -20,7 +20,7 @@
             <h1><%= @classroom.name %></h1>
             <p><%= @classroom.description%></p>
             <div>
-              <% if current_user && current_user.teacher? %>
+              <% if current_user && current_user.teacher? && @classroom.teacher_id.eql?(current_user.id) %>
                 <%= link_to 'Edit Class profile', edit_classroom_path(@classroom), class: "edit-class-profile" %>
               <% end %>
             </div>

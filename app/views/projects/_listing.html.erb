@@ -1,36 +1,5 @@
-<% unless @projects.blank? %>
-  <table>
-    <thead>
-      <th>Name</th>
-      <th>School/Classroom/Teacher</th>
-      <th>Description</th>
-      <th>Status</th>
-      <th>Created By</th>
-      <th>Actions</th>
-    </thead>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.name %></td>
-        <td>
-          <%= link_to project.school.name, school_path(project.school) %>/
-          <%= link_to project.classroom.name, classroom_path(project.classroom) %>/
-          <%= link_to project.classroom.teacher.try(:username), user_path(project.classroom.teacher) %>
-        </td>
-        <td><%= project.description %></td>
-        <td><%= project.status %></td>
-        <td><%= project.username %></td>
-        <td>
-          <%= link_to 'View', view_project_path(project) %> |
-          <%= link_to 'Edit', edit_user_project_path(current_user, project) %> |
-          <%= link_to 'Delete', user_project_path(current_user, project), data: { method: :delete, confirm: 'Are you sure?' } %> |
-          <%= link_to 'See Changes', history_project_path(project) %>
-          <% if project.forked? %>
-            | <%= link_to 'Compare with original', compare_project_path(project) %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-<% end %>
-
-<%= paginate @projects %>
+<ul>
+  <% @projects.each do |project| %>
+    <%= render 'projects/project', project: project %>
+  <% end %>
+</ul>

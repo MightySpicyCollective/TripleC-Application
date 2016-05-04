@@ -1,0 +1,15 @@
+<%= stylesheet_link_tag 'projects' %>
+
+<div class="col-lg-12 padding-top-50 padding-bottom-30 padding-left-0 padding-right-0">
+  <div class="col-md-8 padding-left-0 padding-right-0">
+    <div class="tab-content class-room-listing request-by-table">
+      <div class="tab-pane active project-list" id="projects">
+        <ul>
+          <% @projects.each do |project| %>
+            <%= render 'projects/project', project: project %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

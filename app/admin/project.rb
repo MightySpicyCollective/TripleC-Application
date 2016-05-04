@@ -1,7 +1,7 @@
 ActiveAdmin.register Project do
   permit_params :name, :user_id, :description, :school_id,
                 :status, :forked, :completed_sound_snippet_url,
-                :source_code, :photo
+                :source_code, :photo, :classroom_id
 
   filter :name
 
@@ -30,6 +30,7 @@ ActiveAdmin.register Project do
       f.input :photo, as: :file
       f.input :source_code, as: :text
       f.input :description
+      f.input :classroom_id, as: :select, collection: f.object.school.classrooms.pluck(:name, :id)
       f.input :completed_sound_snippet_url
       f.input :dummy_swatch_color, as: :select, collection: SwatchPopulator::SWATCH_OPTIONS
     end
