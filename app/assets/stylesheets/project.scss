@@ -178,6 +178,7 @@
     line-height: 38px;
   }
 }
+
 .open > .dropdown-toggle.btn-default {
   &:hover {
     @extend %extend_btn_default;
@@ -187,5 +188,15 @@
   }
   &.focus {
     @extend %extend_btn_default;
+  }
+}
+
+form.form_in_place {
+  textarea[name="source_code"] {
+    height: 400px;
+  }
+
+  input.update-code {
+    margin-top: 12px;
   }
 }

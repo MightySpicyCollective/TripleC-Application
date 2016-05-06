@@ -34,5 +34,6 @@ Rails.application.routes.draw do
   get '/projects/:id', to: 'projects#show', as: :view_project
   get '/dashboard', to: 'users#dashboard', as: :dashboard
   get '/contact', to: 'welcome#contact', as: :contact_us
+  get '/active_projects', to: 'welcome#active_projects', as: :active_projects
   root to: 'welcome#index'
 end

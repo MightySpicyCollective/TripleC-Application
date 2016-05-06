@@ -2,16 +2,16 @@
   <ul>
     <li class="heading bg-white">
       <div class="col-md-12">
-          <div class="col-md-2">Date</div>
-          <% if show_links %>
-            <div class="col-md-3">Class</div>
-            <div class="col-md-3">School</div>
-            <div class="col-md-1">Action</div>
-            <div class="col-md-1 decline"></div>
-          <% else %>
-            <div class="col-md-5">Class</div>
-            <div class="col-md-5">School</div>
-          <% end %>
+        <div class="col-md-2">Date</div>
+        <% if show_links %>
+          <div class="col-md-3">Class</div>
+          <div class="col-md-3">School</div>
+          <div class="col-md-1">Action</div>
+          <div class="col-md-1 decline"></div>
+        <% else %>
+          <div class="col-md-5">Class</div>
+          <div class="col-md-5">School</div>
+        <% end %>
       </div>
       <div class="clearfix"> </div>
     </li>
@@ -33,4 +33,6 @@
     </li>
     <% end %>
   </ul>
+<% else %>
+  <div class="well">you have no requests.</div>
 <% end %>

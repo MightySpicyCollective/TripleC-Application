@@ -8,6 +8,8 @@ class Project < ActiveRecord::Base
   has_paper_trail ignore: [:created_at, :updated_at, :id, :user_id]
 
   belongs_to :user
+  belongs_to :school
+  belongs_to :classroom
   belongs_to :forked_project, class_name: Project
   has_many :comments, dependent: :destroy
 
@@ -22,8 +24,11 @@ class Project < ActiveRecord::Base
 
   STATUSES = { inactive: 0, active: 1 }
 
-  delegate :username, :school, :classroom, to: :user
+  delegate :username, to: :user
   delegate :teacher, to: :classroom
+
+  scope :active, -> { where(status: STATUSES[:active]) }
+  scope :inactive, -> { where(status: STATUSES[:inactive]) }
 
   before_validation :set_defaults
 

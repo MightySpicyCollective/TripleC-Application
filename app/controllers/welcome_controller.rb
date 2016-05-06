@@ -8,6 +8,10 @@ class WelcomeController < ApplicationController
     @enquiry = Enquiry.new
   end
 
+  def active_projects
+    @projects = Project.active.page(params[:page]).per(10)
+  end
+
   private
 
   def redirect_on_current_user

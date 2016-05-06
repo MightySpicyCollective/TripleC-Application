@@ -11,6 +11,6 @@ class EnquiriesController < ApplicationController
   private
 
   def enquiry_params
-    params.require(:enquiry).permit(:name, :email, :message)
+    params.require(:enquiry).permit(:name, :email, :subject, :message, :humanizer_answer, :humanizer_question_id)
   end
 end
