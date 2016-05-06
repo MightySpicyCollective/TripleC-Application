@@ -1,137 +1,173 @@
-/* Project Filters */
-  .project-filter .filter-by-heading {
-    color: #333333;
-    font-family: 'source_sans_proregular';
-    font-size: 1em;
-    padding-bottom: 5px;
-  }
-  .filter-listing {
-    border-top: dotted 1px #333333;
-    font-family: 'source_sans_proregular';
-    padding-bottom: 20px;
-  }
-  .filter-listing h2 {
-    font-family: 'source_sans_probold';
-    font-size: 1em;
-  }
-  .filter-listing ul,
-  .filter-listing li {
-    line-height: 22px;
-    list-style: none;
-    margin: 0px;
-    padding: 0px;
-  }
-  .filter-listing li > a {
-    color: #333333;
-    font-size: 1em;
-  }
-  .filter-listing li > a:hover {
-    color: #d248af;
-  }
-  .filter-listing li > span {
-    display: inline-block;
-    margin-left: 5px;
-  }
-/* Project Filters */
+@import 'variables';
 
-/* project-listing */
-  .project-listing .heading{
-    border-bottom: dotted 1px #333333;
+.filter-listing {
+  border-top: dotted 1px $color_mine_shaft_approx;
+  font-family: $sansRegular;
+  padding-bottom: 20px;
+  h2 {
+    font-family: $sansBold;
+    font-size: 1em;
+  }
+  ul {
+    @extend %extend_filter_ul;
+  }
+  li {
+    @extend %extend_filter_ul;
+    > a {
+      color: $color_mine_shaft_approx;
+      font-size: 1em;
+      &:hover {
+        color: $color_fuchsia_pink_approx;
+      }
+    }
+    > span {
+      display: inline-block;
+      margin-left: 5px;
+    }
+  }
+}
+.project-listing {
+  .heading {
+    border-bottom: dotted 1px $color_mine_shaft_approx;
     padding-bottom: 10px;
   }
-  .project-count {
-    font-family: 'roboto_slabthin';
-    font-size: 2em;
-  }
-  .project-listing .btn-group .dropdown-toggle{
+  .btn-group .dropdown-toggle {
     border: none;
-    color: #333333;
-    font-family: 'source_sans_probold';
-    padding-bottom: 0px;
-    padding-top: 0px;
+    color: $color_mine_shaft_approx;
+    font-family: $sansBold;
+    padding-bottom: 0;
+    padding-top: 0;
     width: 100%;
   }
-  .btn-default:hover,
-  .btn-default:active:hover, .btn-default.active:hover, .open > .dropdown-toggle.btn-default:hover, .btn-default:active:focus, .btn-default.active:focus, .open > .dropdown-toggle.btn-default:focus, .btn-default:active.focus, .btn-default.active.focus, .open > .dropdown-toggle.btn-default.focus {
+  .classroom-right-col .heading {
+    border: none !important;
+  }
+}
+.project-count {
+  font-family: $slabThin;
+  font-size: 2em;
+}
+.btn-default {
+  &:hover {
     background-color: transparent;
     border: none;
   }
-  .btn-group.open .dropdown-toggle {
-    box-shadow: none;
+  &:active {
+    &:hover {
+      background-color: transparent;
+      border: none;
+    }
+    &:focus {
+      background-color: transparent;
+      border: none;
+    }
+    &.focus {
+      background-color: transparent;
+      border: none;
+    }
   }
-  .sort-by-text {
-    display: inline-block;
-    margin-top: -2px;
-    padding: 0px;
+  &.active {
+    &:hover {
+      background-color: transparent;
+      border: none;
+    }
+    &:focus {
+      background-color: transparent;
+      border: none;
+    }
+    &.focus {
+      background-color: transparent;
+      border: none;
+    }
   }
-  .btn .caret {
-    background-repeat: no-repeat;
-    background: image-url('down-arrow.png');
-    border: none;
-    float: right;
-    height: 9px;
-    margin: 5px 0 0 15px;
-    width: 15px;
+}
+.sort-by-text {
+  display: inline-block;
+  margin-top: -2px;
+  padding: 0;
+}
+.sort-project {
+  font-family: $sansRegular;
+  font-size: 1em;
+  padding: 15px 0 0;
+}
+.project-list {
+  ul {
+    @extend %extend_project-list_ul;
   }
-  .sort-project {
-    font-family: 'source_sans_proregular';
-    font-size: 1em;
-    padding: 15px 0 0 0;
-  }
-/* project-listing end */
-
-/* project list */
-  .project-list {
-
-  }
-  .project-list ul,
-  .project-list li {
+  li {
+    @extend %extend_project-list_ul;
+    padding: 30px 0 0;
+    border-bottom: dotted 1px $color_mine_shaft_approx;
+    font-family: $sansRegular;
     list-style: none;
-    padding: 0px;
-    margin: 0px;
+    .img-responsive {
+      //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+      border-radius: 50%;
+    }
   }
-  .project-list li {
-    padding: 30px 0 0 0;
-    border-bottom: dotted 1px #333333;
-    font-family: 'source_sans_proregular';
-    list-style: none;
-  }
-  .project-list h3 {
-    font-family: 'source_sans_probold';
+  h3 {
+    font-family: $sansBold;
     font-size: 2em;
-    margin: 0px;
+    margin: 0;
+    a {
+      text-decoration: none;
+      color: $black;
+      &:hover {
+        color: $color_fuchsia_pink_approx;
+      }
+    }
   }
-  .project-list h3 a {
-    text-decoration: none;
-    color: #000000;
-  }
-  .project-list h3 a:hover {
-    color: #d248af;
-  }
-  .project-list li .img-responsive {
-    border-radius: 50%;
-  }
-  .project-list p {
+  p {
     padding-bottom: 15px;
     font-size: 1.1em;
     line-height: 1.5;
-    color: #000000;
+    color: $black;
   }
-  .team-activity {
-    color: #888888;
-    font-size: 0.9em;
-  }
-  .project-finish-by {
-    font-family: 'source_sans_probold';
-    padding-bottom: 20px;
-  }
-  .project-finish-by a{
+}
+.team-activity {
+  color: $color_suva_gray_approx;
+  font-size: 0.9em;
+}
+.project-finish-by {
+  font-family: $sansBold;
+  padding-bottom: 20px;
+  a {
     text-decoration: none;
-    color: #d248af;
-    border-bottom: solid 1px #d248af;
+    color: $color_fuchsia_pink_approx;
+    border-bottom: solid 1px $color_fuchsia_pink_approx;
   }
-/* project list end */
-
-.project-listing .classroom-right-col .heading {
-  border: none !important;
+}
+.project-filter .filter-by-heading {
+  color: $color_mine_shaft_approx;
+  font-family: $sansRegular;
+  font-size: 1em;
+  padding-bottom: 5px;
+}
+.open > .dropdown-toggle.btn-default {
+  &:hover {
+    background-color: transparent;
+    border: none;
+  }
+  &:focus {
+    background-color: transparent;
+    border: none;
+  }
+  &.focus {
+    background-color: transparent;
+    border: none;
+  }
+}
+.btn-group.open .dropdown-toggle {
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: none;
+}
+.btn .caret {
+  background-repeat: no-repeat;
+  background: image-url('down-arrow.png');
+  border: none;
+  float: right;
+  height: 9px;
+  margin: 5px 0 0 15px;
+  width: 15px;
 }

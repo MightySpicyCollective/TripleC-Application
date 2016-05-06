@@ -1,61 +1,65 @@
-/* header */
-.collapse.navbar-collapse {
-  margin-top: 20px;
-}
-.navbar-brand img{
-  width: 60px;
-  height: auto;
-}
+@import 'variables';
+
 .navbar-inverse {
   background-color: transparent;
   border-color: transparent;
-  font-family: 'roboto_slabbold';
+  font-family: $slabBold;
   font-size: 1em;
+  .navbar-nav > li > a {
+    color: $color_mine_shaft_approx;
+    &:hover {
+      color: $color_fuchsia_pink_approx;
+    }
+    &:focus {
+      color: $color_fuchsia_pink_approx;
+    }
+  }
 }
-.navbar-inverse .navbar-nav > li > a,
-.btn-nav-ogin-signup a:hover {
-  color: #333333;
+.btn-nav-ogin-signup {
+  color: $color_fuchsia_pink_approx;
+  a {
+    color: $color_fuchsia_pink_approx;
+    &:hover {
+      color: $color_mine_shaft_approx;
+    }
+  }
 }
-.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus,
-.btn-nav-ogin-signup,
-.btn-nav-ogin-signup a {
-  color: #d248af;
+.byline {
+  position: absolute;
+  top: 150px;
+  left: 30%;
+  text-align: center;
+  font-size: 18px;
+  a {
+    text-decoration: none;
+    color: $color_valencia_approx;
+  }
+}
+@import 'search';
+.collapse.navbar-collapse {
+  margin-top: 20px;
+}
+.navbar-brand img {
+  width: 60px;
+  height: auto;
 }
 .navbar-nav > li > span {
   padding-top: 15px;
   padding-bottom: 15px;
   display: inline-block;
 }
-
-.byline{
-  position:absolute;
-  top:150px;
-  left:30%;
-  text-align:center;
-  font-size:18px;
+.navbar-right .btn-primary {
+  a {
+    @extend %extend_navbar;
+  }
+  span {
+    @extend %extend_navbar;
+    padding: 0 5px;
+  }
+  .sign-in {
+    margin-left: 10px;
+  }
+  .sign-up {
+    margin-right: 10px;
+  }
 }
-.byline a{
-  text-decoration:none;
-  color: #d74b4b;
-}
-
-.navbar-right .btn-primary a,
-.navbar-right .btn-primary span {
-  text-decoration: none;
-  margin-top: 3px;
-  margin-bottom: 3px;
-  display: inline-block;
-  color: #d248af;
-}
-.navbar-right .btn-primary .sign-in {
-  margin-left: 10px;
-}
-
-@import 'search';
-.navbar-right .btn-primary .sign-up {
-  margin-right: 10px;
-}
-.navbar-right .btn-primary span {
-  padding: 0 5px;
-}
-/* header end */

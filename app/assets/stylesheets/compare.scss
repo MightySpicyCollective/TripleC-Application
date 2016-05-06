@@ -1,86 +1,85 @@
-.content_highlight code {
-  width: 100%;
-  margin-left: 0;
-  text-align: left;
-  padding: 0;
-}
+@import 'variables';
 
 .content_highlight-code {
   background-color: transparent;
   border: none;
-  color: #000000;
+  color: $black;
   font-size: 1em;
   line-height: 36px;
   min-height: 300px;
   position: relative;
   vertical-align: top;
+  pre {
+    background-color: $white;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+    code {
+      font: normal normal 16px/0px $courierNew, $courier, $monoSpace;
+      color: $black;
+      display: block;
+    }
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: 36px;
+    float: left;
+    width: 100%;
+    counter-increment: line;
+    &:before {
+      content: counter(line);
+      float: left;
+      height: 100%;
+      line-height: 36px;
+      padding: 0 10px;
+      text-align: center;
+      text-align: right;
+      vertical-align: top;
+      width: 50px;
+    }
+    span {
+      @extend %extend_highlight_span;
+    }
+    ins {
+      @extend %extend_highlight_span;
+    }
+    del {
+      @extend %extend_highlight_span;
+    }
+  }
+  .del {
+    @extend %extend_highlightDel;
+    background: $color_fair_pink_approx;
+    color: $color_guardsman_red_approx;
+  }
+  del {
+    @extend %extend_highlightDel;
+    background: $color_fair_pink_approx;
+    color: $color_guardsman_red_approx;
+  }
+  .ins {
+    @extend %extend_highlightDel;
+    background: $color_snowy_mint_approx;
+    color: $color_japanese_laurel_approx;
+  }
+  ins {
+    @extend %extend_highlightDel;
+    background: $color_snowy_mint_approx;
+    color: $color_japanese_laurel_approx;
+  }
 }
-
-.content_highlight-code pre {
-  background-color: #ffffff;
-  border-radius: 0px;
-  border: none;
-  padding: 0px;
-  margin: 0px;
-  overflow:auto;
-}
-
-.content_highlight-code pre code {
-  font:normal normal 16px/0px "Courier New",Courier,Monospace;
-  color: black;
-  display:block;
-}
-
-.content_highlight-code ul {
-  padding: 0px;
-  margin: 0px;
-}
-.content_highlight-code li {
-  list-style: none;
-  padding: 0px;
-  margin: 0px;
-  line-height: 36px;
-  float: left;
+.content_highlight code {
   width: 100%;
-  counter-increment: line;
-}
-
-.content_highlight-code li:before {
-  content: counter(line);
-  float: left;
-  height: 100%;
-  line-height: 36px;
-  padding: 0 10px;
-  text-align: center;
-  text-align: right;
-  vertical-align: top;
-  width: 50px;
-}
-
-.content_highlight-code li span, .content_highlight-code li ins, .content_highlight-code li del {
-  display: inline-block;
-  padding-left: 20px;
-  width: 85%;
-  float: left;
-  vertical-align: top;
-  border-left: 1px solid #cccccc;
-  min-height: 36px;
-}
-
-
-.content_highlight-code .del,
-.content_highlight-code del,
-.content_highlight-code .ins,
-.content_highlight-code ins {
-  display: inline-block;
-  text-decoration: none;
-  width: 100%;
-}
-.content_highlight-code .del,
-.content_highlight-code del {
-  background:#fee; color:#b00
-}
-.content_highlight-code .ins,
-.content_highlight-code ins {
-  background:#dfd; color:#080
+  margin-left: 0;
+  text-align: left;
+  padding: 0;
 }

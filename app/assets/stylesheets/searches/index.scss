@@ -1,33 +1,33 @@
-.label-search {
-  color: #888888;
-}
+@import 'variables';
 
+.label-search {
+  color: $color_suva_gray_approx;
+}
 .search-input {
-  border: none;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
   background-color: transparent;
-  border-bottom: solid 2px #ccc;
+  border-bottom: solid 2px $color_celeste_approx;
   border-radius: 0;
+  border: none;
   box-shadow: none;
-  font-family: 'roboto_slabregular';
+  font-family: $slabRegular;
   font-size: 1.5em;
   height: auto;
-  margin: 0px;
+  margin: 0;
   outline: none;
-  padding: 0px;
+  padding: 0;
+  &:focus {
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: none;
+  }
 }
 .search-input-btn {
   padding-top: 12px;
 }
-.search-input:focus {
-  box-shadow: none;
-}
 .search-btn {
   background-color: transparent;
+  /*img: ;*/
   margin: -60px -10px 0 0;
   outline: none;
-
-  img {
-    margin: 0;
-  }
-
 }

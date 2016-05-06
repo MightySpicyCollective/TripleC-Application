@@ -1,9 +1,29 @@
-.swatch-pink{ background-color: #d348af; }
-.swatch-green{ background-color: #00f59d; }
-.swatch-blue{ background-color: #267bd7; }
-.swatch-dark-blue{ background-color: #1e2391; }
-.swatch-violet{ background-color: #8e55bc; }
-.swatch-orange{ background-color: #ef6b50; }
-.swatch-yellow{ background-color: #ffd549; }
-.swatch-dark-green{ background-color: #26683e; }
-.swatch-black{ background-color: #243542; }
+@import 'variables';
+
+.swatch-pink {
+  background-color: $color_fuchsia_pink_approx;
+}
+.swatch-green {
+  background-color: $color_spring_green_approx;
+}
+.swatch-blue {
+  background-color: $color_mariner_approx;
+}
+.swatch-dark-blue {
+  background-color: $color_jacksons_purple_approx;
+}
+.swatch-violet {
+  background-color: $color_fuchsia_blue_approx;
+}
+.swatch-orange {
+  background-color: $color_burnt_sienna_approx;
+}
+.swatch-yellow {
+  background-color: $color_bright_sun_approx;
+}
+.swatch-dark-green {
+  background-color: $color_green_pea_approx;
+}
+.swatch-black {
+  background-color: $color_outer_space_approx;
+}

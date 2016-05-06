@@ -1,45 +1,42 @@
-@import 'breadcrumbs';
-@import 'padding';
-@import 'header';
-@import 'btn';
-@import 'swatch';
+@import 'variables';
 @import 'border';
+@import 'breadcrumbs';
+@import 'btn';
+@import 'header';
+@import 'padding';
+@import 'swatch';
 
 /* body background */
   body {
-    background: image-url('background/main-bg');
     background-repeat: repeat;
+    background: image-url('background/main-bg');
   }
   .pos-relative {
     position: relative;
   }
 /* body background end */
 
-h1, h2 {
-  color: #333333;
-  font-family: 'roboto_slabbold';
-  font-size: 3em;
-  line-height: .9;
-  position: relative;
-  z-index: 222;
+h1 {
+  @extend %extend_headings;
+}
+h2 {
+  @extend %extend_headings;
+  font-size: 2em;
 }
 .sub-heading {
-  font-family: 'source_sans_proregular';
+  font-family: $sansRegular;
   font-size: 1.1em;
-  line-height:.6;
+  line-height: .6;
   padding-bottom: 40px;
   position: relative;
   z-index: 222;
 }
-h2 {
-  font-size: 2em;
-}
 
 .border-top-dashed {
-  border-top: dashed 2px #000000;
+  border-top: dashed 2px $black;
 }
 .border-top-dotted {
-  border-top: dotted 1px #000000;
+  border-top: dotted 1px $black;
 }
 
 /* common width and height */
@@ -50,25 +47,25 @@ h2 {
 
 /* classroom-right-col */
 .classroom-right-col {
-  color: #888888;
-  font-family: 'source_sans_probold';
+  color: $color_suva_gray_approx;
+  font-family: $sansBold;
   font-size: 1em;
-}
-.classroom-right-col .heading {
-  font-family: 'roboto_slabregular';
-  line-height: 1.5;
+  .heading {
+    font-family: $slabRegular;
+    line-height: 1.5;
+  }
 }
 .scrap-links {
-  border-bottom: solid 1px #d248af;
-  color: #d248af;
-  font-family: 'source_sans_probold';
+  border-bottom: solid 1px $color_fuchsia_pink_approx;
+  color: $color_fuchsia_pink_approx;
+  font-family: $sansBold;
   font-size: 1em;
   line-height: 1.5;
   padding-bottom: 1px;
   text-decoration: none;
-}
-.scrap-links:hover {
-  text-decoration: none;
-  color: #d248af;
+  &:hover {
+    color: $color_fuchsia_pink_approx;
+    text-decoration: none;
+  }
 }
 /* classroom-right-col end */

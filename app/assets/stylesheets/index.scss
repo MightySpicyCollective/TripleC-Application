@@ -1,81 +1,67 @@
-/* common headings  */
-  p {
-    font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
-  .padding-bottom-40 {
-    padding-bottom: 40px;
-  }
-/* common headings end */
+@import 'variables';
 
-
-/* Common padding */
-  .padding-bottom-120 {
-    padding-bottom: 120px;
-  }
-/* Common padding end */
-
-/* logo-main-index */
-  .logo-main-index {
-    padding-bottom: 80px;
-    padding-top: 17vh;
-  }
-/* logo-main-index end */
-
-/* page-heading */
-  .page-heading {
-    color: #333333;
-    font-family: 'source_sans_proregular';
-    font-size: 1.1em;
-    line-height: 1.5;
-    text-align: justify;
-  }
-/* page-heading end */
-
-/* highlights-section */
-  .highlights-section p{
-    margin-top: 10px;
-  }
+p {
+  font-family: $gotham, $helveticaNeue, $helvetic, $arial, $sansSerif;
+}
+.padding-bottom-40 {
+  padding-bottom: 40px;
+}
+.padding-bottom-120 {
+  padding-bottom: 120px;
+}
+.logo-main-index {
+  padding-bottom: 80px;
+  padding-top: 17vh;
+}
+.page-heading {
+  color: $color_mine_shaft_approx;
+  font-family: $sansRegular;
+  font-size: 1.1em;
+  line-height: 1.5;
+  text-align: justify;
+}
+.bg-highlights {
+  background: image-url(index/highlights-bg);
+  height: 80px;
+  left: 44%;
+  position: absolute;
+  right: 44%;
+  top: 5px;
+  width: 12%;
+  z-index: 111;
+}
+.workshop-section {
   .bg-highlights {
-    background: image-url('index/highlights-bg');
-    height: 80px;
-    left: 44%;
-    position: absolute;
-    right: 44%;
-    top: 5px;
-    width: 12%;
-    z-index: 111;
+    background: image-url(index/workshop-bg);
   }
-/* highlights-section end */
-
-/* workshop-section */
-  .workshop-section .bg-highlights {
-    background: image-url('index/workshop-bg');
-  }
-  .workshop-section h2 {
+  h2 {
     font-size: 1.3em;
     text-align: center;
     line-height: 1.3;
     padding-bottom: 20px;
   }
-  .workshop-date-time-location {
-    font-family: 'source_sans_proregular';
-    font-size: 1em;
-    line-height: 1.5;
-    color: #333333;
-    padding-bottom: 20px;
-  }
-  .desc-heading {
-    font-size: 1.1em;
-    padding-bottom: 10px;
-    font-family: 'source_sans_probold';
-  }
-  .workshop-section p {
+  p {
     padding-bottom: 30px;
   }
-  .workshop-section .btn-primary {
+  .btn-primary {
     padding: 8px 20px;
   }
-  .workshop-section .col-md-4 {
+  .col-md-4 {
     padding-bottom: 30px;
   }
-/* workshop-section end */
+}
+.workshop-date-time-location {
+  font-family: $sansRegular;
+  font-size: 1em;
+  line-height: 1.5;
+  color: $color_mine_shaft_approx;
+  padding-bottom: 20px;
+}
+.desc-heading {
+  font-size: 1.1em;
+  padding-bottom: 10px;
+  font-family: $sansProbold;
+}
+.highlights-section p {
+  margin-top: 10px;
+}

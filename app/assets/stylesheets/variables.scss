@@ -1,0 +1,151 @@
+//colors
+$black: #000000;
+$black_30: rgba(0, 0, 0, 0.3);
+$color_alabaster_approx: #f9f9f9;
+$color_blumine_approx: #23527c;
+$color_bright_sun_approx: #ffd549;
+$color_burnt_sienna_approx: #ef6b50;
+$color_celeste_approx: #ccc;
+$color_fair_pink_approx: #fee;
+$color_fuchsia_blue_approx: #8e55bc;
+$color_fuchsia_pink_approx: #d248af;
+$color_gray_nurse_approx: #e8e8e8;
+$color_green_pea_approx: #26683e;
+$color_guardsman_red_approx: #b00;
+$color_jacksons_purple_approx: #1e2391;
+$color_japanese_laurel_approx: #080;
+$color_mariner_approx: #267bd7;
+$color_mine_shaft_approx: #333333;
+$color_outer_space_approx: #243542;
+$color_snowy_mint_approx: #dfd;
+$color_spring_green_approx: #00f59d;
+$color_suva_gray_approx: #888888;
+$color_turquoise_approx: #16edb5;
+$color_valencia_approx: #d74b4b;
+$white: #fff;
+$white_80: rgba(255, 255, 255, 0.8);
+
+//fonts
+$sansBold: source_sans_probold;
+$sansRegular: source_sans_proregular;
+$slabBold: roboto_slabbold;
+$slabRegular: roboto_slabregular;
+$sansProbold: source_sans_probold;
+$slabThin: roboto_slabthin;
+$courierNew: Courier New;
+$courier: Courier;
+$monoSpace: Monospace;
+$gotham: Gotham;
+$helveticaNeue: Helvetica Neue;
+$helvetic: Helvetica;
+$arial: Arial;
+$sansSerif: sans-serif;
+
+
+//urls
+$url_0: url();
+$url_1: image-url('background/main-bg');
+
+//@extend-elements
+//original selectors
+
+%extend_btn {
+	background-color: transparent;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 25px;
+	border: solid 2px $color_fuchsia_pink_approx;
+	color: $color_fuchsia_pink_approx;
+	font-family: $sansBold;
+	font-size: 1.1em;
+	text-transform: uppercase;
+}
+
+%extend_btn_hover {
+	background-color: $color_fuchsia_pink_approx;
+	border-color: $color_fuchsia_pink_approx;
+	color: $white;
+}
+
+%extend_headings {
+	color: $color_mine_shaft_approx;
+	font-family: $slabRegular;
+	font-size: 3em;
+	line-height: .9;
+	position: relative;
+	z-index: 222;
+}
+
+//.content_highlight-code li span, .content_highlight-code li ins, .content_highlight-code li del
+%extend_highlight_span {
+	display: inline-block;
+	padding-left: 20px;
+	width: 85%;
+	float: left;
+	vertical-align: top;
+	border-left: 1px solid $color_celeste_approx;
+	min-height: 36px;
+}
+
+//.content_highlight-code .del, .content_highlight-code del, .content_highlight-code .ins, .content_highlight-code ins
+%extend_highlightDel {
+	display: inline-block;
+	text-decoration: none;
+	width: 100%;
+}
+
+//.navbar-right .btn-primary a, .navbar-right .btn-primary span
+%extend_navbar {
+	text-decoration: none;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	display: inline-block;
+	color: $color_fuchsia_pink_approx;
+}
+
+//.nav-tabs >li.active >a, .nav-tabs >li.active >a:hover, .nav-tabs >li.active >a:focus
+%extend_navtabs_anchor {
+	background-color: transparent;
+	border-color: transparent;
+	border-bottom: solid 2px $color_fuchsia_pink_approx;
+	font-family: $slabBold;
+	color: $color_mine_shaft_approx;
+}
+
+//.content_highlight-show pre, .content_highlight-show code
+%extend_highlight_pre {
+	background-color: $white;
+	padding: 0;
+	margin-left: 0;
+	width: 100%;
+	border: 0;
+}
+
+//.previous-enteries .btn-default, .btn-default:active:hover, .btn-default.active:hover, .open >.dropdown-toggle.btn-default:hover, .btn-default:active:focus, .btn-default.active:focus, .open >.dropdown-toggle.btn-default:focus, .btn-default:active.focus, .btn-default.active.focus, .open >.dropdown-toggle.btn-default.focus
+%extend_btn_default {
+	background-color: transparent;
+	border-color: transparent;
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: none;
+	color: $white;
+	font-size: 0.7em;
+	height: 40px;
+	line-height: 30px;
+	text-align: left;
+	text-align: right;
+	width: 100%;
+}
+
+//.filter-listing ul, .filter-listing li
+%extend_filter_ul {
+	line-height: 22px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+//.project-list ul, .project-list li
+%extend_project-list_ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
