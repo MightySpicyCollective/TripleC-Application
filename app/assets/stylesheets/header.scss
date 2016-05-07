@@ -50,7 +50,7 @@
 }
 .navbar-right .btn-primary {
   a {
-    @extend %extend_navbar;
+
   }
   span {
     @extend %extend_navbar;
@@ -61,5 +61,43 @@
   }
   .sign-up {
     margin-right: 10px;
+  }
+}
+
+.nav-btn {
+  border-radius: 40%;
+
+  display: inline-block;
+  .sign-in,
+  .sign-up {
+    border: solid 2px $color_fuchsia_pink_approx;
+    color: $color_fuchsia_pink_approx;
+    display: inline-block;
+    padding: 6px 12px;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    &:hover {
+      background-color: $color_fuchsia_pink_approx;
+      color: $white;
+    }
+  }
+  .sign-in {
+    border-radius: 25px 0 0 25px;
+    border-right: none;
+    margin-right: -2px;
+    &:after {
+      border-color: $color_fuchsia_pink_approx;
+      position: absolute;
+    }
+  }
+  .sign-up {
+    border-left: none;
+    border-radius: 0 25px 25px 0;
+    margin-left: -2px;
+    &:after {
+      border-color: $color_fuchsia_pink_approx;
+      position: absolute;
+    }
   }
 }

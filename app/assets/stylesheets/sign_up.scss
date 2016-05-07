@@ -19,7 +19,7 @@
   border-bottom: solid 1px $color_fuchsia_pink_approx;
   color: $color_fuchsia_pink_approx;
   display: inline-block;
-  padding-bottom: 6px;
+  padding-bottom: 3px;
   &:hover {
     border-bottom: solid 1px $color_blumine_approx;
     text-decoration: none;
@@ -74,7 +74,7 @@
 .form-control {
   //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
   border-radius: 0;
-  min-height: 35px;
+  min-height: 40px;
   &:focus {
     border-color: $color_fuchsia_pink_approx;
     color: $black;

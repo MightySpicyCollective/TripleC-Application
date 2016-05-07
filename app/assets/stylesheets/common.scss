@@ -10,6 +10,7 @@
   body {
     background-repeat: repeat;
     background: image-url('background/main-bg');
+    font-family: $sansRegular;
   }
   .pos-relative {
     position: relative;
@@ -26,7 +27,7 @@ h2 {
 .sub-heading {
   font-family: $sansRegular;
   font-size: 1.1em;
-  line-height: .6;
+  line-height: 1;
   padding-bottom: 40px;
   position: relative;
   z-index: 222;

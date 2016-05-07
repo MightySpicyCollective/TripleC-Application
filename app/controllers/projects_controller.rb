@@ -102,6 +102,7 @@ class ProjectsController < ApplicationController
         redirect_to(dashboard_path, alert: 'You cannot fork for non connected classroom.')
       end
     else
+      debugger
       unless @project.classroom.connected_with?(current_user.classroom_id)
         redirect_to(dashboard_path, alert: 'You dont have access to that.')
       end
