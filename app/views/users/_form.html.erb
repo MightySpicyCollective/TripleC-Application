@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag 'sign_up' %>
+
 <div class="container padding-top-100 padding-bottom-100 sign-up">
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
@@ -9,12 +11,21 @@
                 <%= f.object.username %>
               </div>
             </div>
+            <div class="col-md-12 text-center padding-bottom-30">
+              <div class="col-md-12">
+                <div class="upload-pic-bg photoPreview">
+                  <%= image_tag @user.avatar.url(:medium), class: 'avatarPlaceholder', height: "224px" %>
+                  <%= link_to 'Upload profile photo', '#', class: 'hide upload-avatar', title: "Upload profile photo", id: 'uploadClick' %>
+                </div>
+                <%= f.file_field :avatar, class: 'hide', id: 'uploadAvatar' %>
+                <a href="#" class="delete-photo link-sign-in padding-top-20">Delete</a>
+              </div>
+            </div>
             <div class="row">
               <div class="form-group">
                 <%= f.text_field :email, class: 'form-control input-sm', placeholder: 'Email' %>
               </div>
             </div>
-
             <div class="row">
               <div class="form-group">
                 <%= f.text_field :name, class: 'form-control input-sm', placeholder: 'Name' %>

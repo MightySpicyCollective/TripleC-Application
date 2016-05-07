@@ -21,10 +21,12 @@ class window.Registrations.Form extends window.Registrations
       event.preventDefault()
       _this.$uploadAvatar.trigger('click')
 
-    _this.$deletePhoto.on 'click', ->
+    _this.$deletePhoto.on 'click', (event) ->
+      event.preventDefault()
       _this.$deletePhoto.addClass('hide');
       _this.$uploadAvatar.val('');
       _this.$avatarPlaceholder.addClass('hide').attr('src', '')
+      _this.$avatarUpload.removeClass('hide')
       _this.$photoPreview.addClass('upload-pic-bg')
       _this.$uploadClickLink.show();
 
@@ -59,7 +61,6 @@ class window.Registrations.Form extends window.Registrations
         _this.$uploadClickLink.hide();
       reader.readAsDataURL(input.files[0])
       _this.$deletePhoto.removeClass('hide')
-
 
 $ ->
   Registrations.Form.bindEvents()

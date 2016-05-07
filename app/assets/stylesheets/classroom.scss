@@ -22,13 +22,15 @@
   padding: 25px 0;
   .status-number {
     color: $color_mine_shaft_approx;
+    font-family: $slabLight;
     font-size: 2.5em;
     line-height: 0.7em;
   }
   .status-group {
     color: $color_suva_gray_approx;
-    padding-top: 10px;
+    font-family: $slabRegular;
     font-size: 1.1em;
+    padding-top: 10px;
   }
   > .col-md-3 {
     border-right: solid 3px $color_turquoise_approx;
@@ -60,6 +62,12 @@
     text-decoration: none;
     color: $color_fuchsia_pink_approx;
   }
+}
+.rightCol-classroom-follow {
+  border-top: dotted 1px $color_mine_shaft_approx;
+  color: $color_mine_shaft_approx;
+  margin-top: 40px;
+  padding-top: 30px;
 }
 .right-col-follow-section {
   color: $color_mine_shaft_approx;
@@ -108,7 +116,7 @@
 }
 .reqest-count {
   min-height: 21px;
-  min-width: 29px;
+  min-width: 21px;
   background-color: $color_fuchsia_pink_approx;
   //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
   border-radius: 50%;
@@ -148,6 +156,7 @@
     .img-responsive {
       //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
       border-radius: 50%;
+      width: 100%;
     }
   }
   p {

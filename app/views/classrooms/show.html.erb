@@ -8,11 +8,11 @@
 
 <% @classroom = ClassroomPresenter.new(@classroom) %>
 
-<div class="container border-top-dotted class-name padding-bottom-30">
+<div class="container border-top-dotted class-name">
   <div class="row">
     <div class="col-lg-12 padding-top-50 padding-left-0 padding-right-0">
       <div class="col-md-8 padding-left-0 padding-right-0">
-        <div class="col-md-4 padding-left-0 padding-right-0">
+        <div class="col-md-2 padding-left-0 padding-right-0">
           <%= image_tag @classroom.photo.url(:medium), class: "img-responsive center-block border-radius-50 swatch-#{@classroom.dummy_swatch_color}" %>
         </div>
         <div class="col-md-8">
@@ -70,9 +70,9 @@
     </div>
   </div>
 </div>
-<div class="container border-top-dotted class-name padding-bottom-30">
+<div class="container class-name">
   <div class="row">
-    <div class="col-lg-12 padding-top-50 padding-bottom-30 padding-left-0 padding-right-0">
+    <div class="col-lg-12 padding-top-30 padding-bottom-30 padding-left-0 padding-right-0">
       <div class="col-md-8 padding-left-0 padding-right-0">
         <ul class="nav nav-tabs">
           <li class="active">
@@ -92,7 +92,7 @@
             <ul>
               <% @class_users.each do |class_user| %>
                 <li>
-                  <div class="col-md-3 col-sm-3 col-xs-3">
+                  <div class="col-md-2 col-sm-2 col-xs-2">
                     <%= image_tag class_user.avatar.url(:thumb), class: "img-responsive center-block #{swatch_class(class_user)}" %>
                   </div>
                   <div class="col-md-6 col-sm-6 col-xs-6">
@@ -131,7 +131,7 @@
         </div>
       </div>
       <div class="col-lg-1">&nbsp;</div>
-      <div class="col-md-3 padding-left-0 padding-right-0 right-col-follow-section">
+      <div class="col-md-3 padding-left-0 padding-right-0 right-col-follow-section rightCol-classroom-follow ">
         <div class="col-md-12 padding-bottom-30">
           <h3>Followers (<%= @class_followers.count %>)</h3>
           <ul>
@@ -139,7 +139,7 @@
               <% class_follower = ClassroomPresenter.new(class_follower) %>
               <li>
                 <div class="col-md-3 col-sm-3 col-xs-3 padding-left-0 padding-right-0">
-                  <%= image_tag class_follower.school_logo, class: "img-responsive center-block border-radius-50" %>
+                  <%= image_tag class_follower.school_logo, class: "img-responsive center-block border-radius-50 swatch-#{class_follower.dummy_swatch_color}" %>
                 </div>
                 <div class="col-md-9 col-sm-9 col-xs-9">
                   <div><%= link_to class_follower.name, classroom_path(class_follower), class: 'scrap-links' %></div>
@@ -157,7 +157,7 @@
               <% class_following = ClassroomPresenter.new(class_following) %>
               <li>
                 <div class="col-md-3 col-sm-3 col-xs-3 padding-left-0 padding-right-0">
-                  <%= image_tag class_following.school_logo, class: "img-responsive center-block border-radius-50" %>
+                  <%= image_tag class_following.school_logo, class: "img-responsive center-block border-radius-50 swatch-#{class_follower.dummy_swatch_color}" %>
                 </div>
                 <div class="col-md-9 col-sm-9 col-xs-9">
                   <div><%= link_to class_following.name, classroom_path(class_following), class: 'scrap-links' %></div>
