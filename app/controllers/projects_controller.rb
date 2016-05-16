@@ -81,7 +81,8 @@ class ProjectsController < ApplicationController
     case params[:action]
     when 'update' then params.require(:project).permit(:name, :description, :status, :photo, :source_code)
     when 'create' then params.require(:project).permit(:name, :description, :status, :photo)
-    end
+    end.merge(school_id: current_user.school_id,
+              classroom_id: current_user.classroom_id)
   end
 
   def load_project
@@ -102,7 +103,6 @@ class ProjectsController < ApplicationController
         redirect_to(dashboard_path, alert: 'You cannot fork for non connected classroom.')
       end
     else
-      debugger
       unless @project.classroom.connected_with?(current_user.classroom_id)
         redirect_to(dashboard_path, alert: 'You dont have access to that.')
       end
