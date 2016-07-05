@@ -1,0 +1,220 @@
+@import 'variables';
+
+.class-name {
+  h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+  }
+  p {
+    font-family: $sansBold;
+    font-size: 1.1em;
+    margin: 0;
+  }
+  .edit-class-profile {
+    color: $color_fuchsia_pink_approx;
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: solid 1px $color_fuchsia_pink_approx;
+  }
+}
+.class-profile-status {
+  padding: 25px 0;
+  .status-number {
+    color: $color_mine_shaft_approx;
+    font-family: $slabLight;
+    font-size: 2.5em;
+    line-height: 0.7em;
+  }
+  .status-group {
+    color: $color_suva_gray_approx;
+    font-family: $slabRegular;
+    font-size: 1.1em;
+    padding-top: 10px;
+  }
+  > .col-md-3 {
+    border-right: solid 3px $color_turquoise_approx;
+    font-family: $slabThin;
+    min-height: 55px;
+    &:last-child {
+      border: none;
+    }
+  }
+}
+.classroom-right-col {
+  color: $color_suva_gray_approx;
+  font-family: $slabBold;
+  font-size: 1em;
+  .heading {
+    font-family: $slabRegular;
+    line-height: 1.5;
+  }
+}
+.scrap-links {
+  border-bottom: solid 1px $color_fuchsia_pink_approx;
+  color: $color_fuchsia_pink_approx;
+  font-family: $slabBold;
+  font-size: 1em;
+  line-height: 1.5;
+  padding-bottom: 1px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color: $color_fuchsia_pink_approx;
+  }
+}
+.rightCol-classroom-follow {
+  border-top: dotted 1px $color_mine_shaft_approx;
+  color: $color_mine_shaft_approx;
+  margin-top: 40px;
+  padding-top: 30px;
+}
+.right-col-follow-section {
+  color: $color_mine_shaft_approx;
+  h3 {
+    font-family: $slabRegular;
+    font-size: 1.3em;
+    padding-bottom: 15px;
+    font-size: 1.2em;
+    margin-top: 0;
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    padding: 25px 0;
+    list-style: none;
+    display: block;
+    border-bottom: dotted 1px $black;
+  }
+}
+.nav-tabs {
+  font-family: $slabRegular;
+  border-bottom: dotted 1px $black;
+  > li {
+    margin: -1px;
+    > a {
+      color: $color_mine_shaft_approx;
+      display: inline-block;
+      &:hover {
+        background-color: transparent;
+        border-color: transparent;
+        color: $color_mine_shaft_approx;
+      }
+    }
+    &.active > a {
+      @extend %extend_navtabs_anchor;
+      &:hover {
+        @extend %extend_navtabs_anchor;
+      }
+      &:focus {
+        @extend %extend_navtabs_anchor;
+      }
+    }
+  }
+}
+.reqest-count {
+  min-height: 21px;
+  min-width: 21px;
+  background-color: $color_fuchsia_pink_approx;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 50%;
+  color: $white;
+  display: inline-block;
+  font-family: $slabRegular;
+  font-size: 0.8em;
+  margin-left: 15px;
+  padding: 3px;
+  text-align: center;
+  vertical-align: middle;
+}
+.class-room-listing {
+  h3 {
+    font-family: $slabBold;
+    font-size: 2em;
+    padding-bottom: 20px;
+    margin: 0;
+    a {
+      text-decoration: none;
+      color: $black;
+      text-decoration: underline;
+      &:hover {
+        color: $color_fuchsia_pink_approx;
+      }
+    }
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    padding: 30px 0;
+    border-bottom: dotted 1px $color_mine_shaft_approx;
+    font-family: $sansBold;
+    list-style: none;
+    .img-responsive {
+      //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+      border-radius: 50%;
+      width: 100%;
+    }
+  }
+  p {
+    padding-bottom: 15px;
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: $black;
+  }
+}
+.team-activity {
+  color: $color_suva_gray_approx;
+  font-size: 0.9em;
+}
+.request-by-table {
+  .heading {
+    font-family: $slabRegular;
+    font-size: 1.5em;
+    line-height: 1.5;
+    padding: 20px 0;
+  }
+  ul {
+    list-style: none;
+    border: solid 1px $color_gray_nurse_approx;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    list-style: none;
+    border-top: dotted 1px $black;
+    color: $color_suva_gray_approx;
+    font-family: $sansBold;
+    font-size: 1.1em;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    &.heading {
+      color: $color_suva_gray_approx;
+      font-family: $sansBold;
+      font-size: 1.1em;
+      padding-bottom: 15px;
+      padding-top: 15px;
+    }
+    &:first-child {
+      border: none;
+    }
+    .decline {
+      font-family: $slabBold;
+    }
+    > div > div {
+      display: inline-block;
+      float: none;
+      vertical-align: middle;
+      margin: 0 -2px;
+    }
+  }
+}
+.bg-white {
+  background-color: $white;
+}
+.bg-grey {
+  background-color: $color_alabaster_approx;
+}

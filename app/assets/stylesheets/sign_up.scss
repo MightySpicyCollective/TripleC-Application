@@ -1,0 +1,94 @@
+@import 'variables';
+
+.padding-top-100 {
+  padding-top: 100px;
+}
+.padding-bottom-100 {
+  padding-bottom: 100px;
+}
+.padding-bottom-30 {
+  padding-bottom: 30px;
+}
+.padding-bottom-20 {
+  padding-bottom: 20px;
+}
+.padding-top-10 {
+  padding-top: 10px;
+}
+.link-sign-in {
+  border-bottom: solid 1px $color_fuchsia_pink_approx;
+  color: $color_fuchsia_pink_approx;
+  display: inline-block;
+  padding-bottom: 3px;
+  &:hover {
+    border-bottom: solid 1px $color_blumine_approx;
+    text-decoration: none;
+  }
+}
+.upload-pic-bg {
+  background-repeat: repeat;
+  background: image-url('upload-image-bg.png');
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 50%;
+  height: 224px;
+  position: relative;
+  img {
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 50%;
+    height: auto;
+    width: 100%;
+  }
+  a {
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 50%;
+    color: $black;
+    display: inline-block;
+    font-size: 1em;
+    left: 0;
+    line-height: 1.5;
+    padding: 55px 20px;
+    position: absolute;
+    right: 0;
+    text-decoration: underline;
+    top: 23%;
+    bottom: 23%;
+    width: 100%;
+    &.change-photo {
+      color: $white;
+    }
+  }
+}
+.avatarPlaceholder {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 50%;
+  width: 100%;
+}
+.centered-form {
+  margin-top: 60px;
+  .panel {
+    background: $white_80;
+    //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    box-shadow: $black_30 20px 20px 20px;
+  }
+}
+.form-control {
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 0;
+  min-height: 40px;
+  &:focus {
+    border-color: $color_fuchsia_pink_approx;
+    color: $black;
+  }
+}
+.active-checkbox {
+  font-size: 0.9em;
+}
+.sign-up .btn-primary {
+  min-width: 150px;
+}
+textarea.input-sm.height-100 {
+  height: 100px;
+}
+select[multiple].input-sm.height-100 {
+  height: 100px;
+}

@@ -1,0 +1,174 @@
+@import 'variables';
+
+.filter-listing {
+  border-top: dotted 1px $color_mine_shaft_approx;
+  font-family: $sansRegular;
+  padding-bottom: 20px;
+  h2 {
+    font-family: $sansBold;
+    font-size: 1em;
+  }
+  ul {
+    @extend %extend_filter_ul;
+  }
+  li {
+    @extend %extend_filter_ul;
+    > a {
+      color: $color_mine_shaft_approx;
+      font-size: 1em;
+      &:hover {
+        color: $color_fuchsia_pink_approx;
+      }
+    }
+    > span {
+      display: inline-block;
+      margin-left: 5px;
+    }
+  }
+}
+.project-listing {
+  .heading {
+    border-bottom: dotted 1px $color_mine_shaft_approx;
+    padding-bottom: 10px;
+  }
+  .btn-group .dropdown-toggle {
+    border: none;
+    color: $color_mine_shaft_approx;
+    font-family: $sansBold;
+    padding-bottom: 0;
+    padding-top: 0;
+    width: 100%;
+  }
+  .classroom-right-col .heading {
+    border: none !important;
+  }
+}
+.project-count {
+  font-family: $slabThin;
+  font-size: 2em;
+}
+.btn-default {
+  &:hover {
+    background-color: transparent;
+    border: none;
+  }
+  &:active {
+    &:hover {
+      background-color: transparent;
+      border: none;
+    }
+    &:focus {
+      background-color: transparent;
+      border: none;
+    }
+    &.focus {
+      background-color: transparent;
+      border: none;
+    }
+  }
+  &.active {
+    &:hover {
+      background-color: transparent;
+      border: none;
+    }
+    &:focus {
+      background-color: transparent;
+      border: none;
+    }
+    &.focus {
+      background-color: transparent;
+      border: none;
+    }
+  }
+}
+.sort-by-text {
+  display: inline-block;
+  margin-top: -2px;
+  padding: 0;
+}
+.sort-project {
+  font-family: $sansRegular;
+  font-size: 1em;
+  padding: 15px 0 0;
+}
+.project-list {
+  ul {
+    @extend %extend_project-list_ul;
+  }
+  li {
+    @extend %extend_project-list_ul;
+    padding: 30px 0 0;
+    border-bottom: dotted 1px $color_mine_shaft_approx;
+    font-family: $sansRegular;
+    list-style: none;
+    .img-responsive {
+      //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+      border-radius: 50%;
+      width: 100%;
+    }
+  }
+  h3 {
+    font-family: $sansBold;
+    font-size: 2em;
+    margin: 0;
+    a {
+      text-decoration: none;
+      color: $black;
+      &:hover {
+        color: $color_fuchsia_pink_approx;
+      }
+    }
+  }
+  p {
+    padding-bottom: 15px;
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: $black;
+  }
+}
+.team-activity {
+  color: $color_suva_gray_approx;
+  font-size: 0.9em;
+}
+.project-finish-by {
+  font-family: $sansBold;
+  padding-bottom: 20px;
+  a {
+    text-decoration: none;
+    color: $color_fuchsia_pink_approx;
+    border-bottom: solid 1px $color_fuchsia_pink_approx;
+  }
+}
+.project-filter .filter-by-heading {
+  color: $color_mine_shaft_approx;
+  font-family: $sansRegular;
+  font-size: 1em;
+  padding-bottom: 5px;
+}
+.open > .dropdown-toggle.btn-default {
+  &:hover {
+    background-color: transparent;
+    border: none;
+  }
+  &:focus {
+    background-color: transparent;
+    border: none;
+  }
+  &.focus {
+    background-color: transparent;
+    border: none;
+  }
+}
+.btn-group.open .dropdown-toggle {
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: none;
+}
+.btn .caret {
+  background-repeat: no-repeat;
+  background: image-url('down-arrow.png');
+  border: none;
+  float: right;
+  height: 9px;
+  margin: 5px 0 0 15px;
+  width: 15px;
+}

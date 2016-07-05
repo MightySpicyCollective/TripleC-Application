@@ -1,0 +1,14 @@
+<% content_for :title do %>
+  Search
+<% end %>
+
+<%= form_tag search_index_path, method: :get do |f| %>
+  <div class="field">
+    <%= label_tag :term %><br />
+    <%= text_field_tag :term %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Search" %>
+  </div>
+<% end %>

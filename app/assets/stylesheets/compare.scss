@@ -1,0 +1,85 @@
+@import 'variables';
+
+.content_highlight-code {
+  background-color: transparent;
+  border: none;
+  color: $black;
+  font-size: 1em;
+  line-height: 36px;
+  min-height: 300px;
+  position: relative;
+  vertical-align: top;
+  pre {
+    background-color: $white;
+    //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    overflow: auto;
+    code {
+      font: normal normal 16px/0px $courierNew, $courier, $monoSpace;
+      color: $black;
+      display: block;
+    }
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    line-height: 36px;
+    float: left;
+    width: 100%;
+    counter-increment: line;
+    &:before {
+      content: counter(line);
+      float: left;
+      height: 100%;
+      line-height: 36px;
+      padding: 0 10px;
+      text-align: center;
+      text-align: right;
+      vertical-align: top;
+      width: 50px;
+    }
+    span {
+      @extend %extend_highlight_span;
+    }
+    ins {
+      @extend %extend_highlight_span;
+    }
+    del {
+      @extend %extend_highlight_span;
+    }
+  }
+  .del {
+    @extend %extend_highlightDel;
+    background: $color_fair_pink_approx;
+    color: $color_guardsman_red_approx;
+  }
+  del {
+    @extend %extend_highlightDel;
+    background: $color_fair_pink_approx;
+    color: $color_guardsman_red_approx;
+  }
+  .ins {
+    @extend %extend_highlightDel;
+    background: $color_snowy_mint_approx;
+    color: $color_japanese_laurel_approx;
+  }
+  ins {
+    @extend %extend_highlightDel;
+    background: $color_snowy_mint_approx;
+    color: $color_japanese_laurel_approx;
+  }
+}
+.content_highlight code {
+  width: 100%;
+  margin-left: 0;
+  text-align: left;
+  padding: 0;
+}

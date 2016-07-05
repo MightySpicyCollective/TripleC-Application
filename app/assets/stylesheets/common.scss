@@ -1,0 +1,77 @@
+@import 'variables';
+@import 'border';
+@import 'breadcrumbs';
+@import 'btn';
+@import 'header';
+@import 'padding';
+@import 'swatch';
+
+/* body background */
+  body {
+    background-repeat: repeat;
+    background: image-url('background/main-bg');
+    font-family: $sansRegular;
+  }
+  .pos-relative {
+    position: relative;
+  }
+/* body background end */
+
+h1 {
+  @extend %extend_headings;
+}
+h2 {
+  @extend %extend_headings;
+  font-size: 2em;
+}
+.sub-heading {
+  font-family: $sansRegular;
+  font-size: 1.1em;
+  line-height: 1;
+  padding-bottom: 40px;
+  position: relative;
+  z-index: 222;
+}
+
+.border-top-dashed {
+  border-top: dashed 2px $black;
+}
+.border-top-dotted {
+  border-top: dotted 1px $black;
+}
+
+/* common width and height */
+.width-full {
+  width: 100%;
+}
+/* common width and height end */
+
+/* classroom-right-col */
+.classroom-right-col {
+  color: $color_suva_gray_approx;
+  font-family: $sansBold;
+  font-size: 1em;
+  .heading {
+    font-family: $slabRegular;
+    line-height: 1.5;
+  }
+}
+.scrap-links {
+  border-bottom: solid 1px $color_fuchsia_pink_approx;
+  color: $color_fuchsia_pink_approx;
+  font-family: $sansBold;
+  font-size: 1em;
+  line-height: 1.5;
+  padding-bottom: 1px;
+  text-decoration: none;
+  &:hover {
+    color: $color_fuchsia_pink_approx;
+    text-decoration: none;
+  }
+}
+.alert {
+  button.close {
+    right: 0;
+  }
+}
+/* classroom-right-col end */

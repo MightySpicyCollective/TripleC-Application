@@ -1,0 +1,202 @@
+@import 'variables';
+
+.class-name {
+  h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 2.5em;
+  }
+  p {
+    font-family: $sansRegular;
+    font-size: 1.1em;
+    margin: 0;
+    padding-bottom: 20px;
+  }
+  .edit-class-profile {
+    color: $color_fuchsia_pink_approx;
+    text-decoration: none;
+    padding-bottom: 2px;
+    border-bottom: solid 1px $color_fuchsia_pink_approx;
+  }
+}
+.project-finish-by {
+  font-family: $sansBold;
+  padding-bottom: 20px;
+  a {
+    text-decoration: none;
+    color: $color_fuchsia_pink_approx;
+    border-bottom: solid 1px $color_fuchsia_pink_approx;
+  }
+}
+.team-activity {
+  color: $color_suva_gray_approx;
+  font-size: 0.9em;
+}
+.latest-enteries {
+  .heading {
+    background-color: $color_mine_shaft_approx;
+    color: $white;
+    font-family: $slabRegular;
+    font-size: 1.2em;
+    height: 40px;
+    line-height: 40px;
+  }
+  .entry-content {
+    border: solid 1px $color_suva_gray_approx;
+  }
+}
+.previous-enteries {
+  .heading {
+    background-color: $color_fuchsia_pink_approx;
+    color: $white;
+    font-family: $slabRegular;
+    font-size: 1.2em;
+    height: 40px;
+    line-height: 40px;
+  }
+  .entry-content {
+    border: solid 1px $color_fuchsia_pink_approx;
+  }
+  .btn-default {
+    @extend %extend_btn_default;
+  }
+  .dropdown-menu {
+    .heading {
+      background-color: transparent;
+      color: $color_mine_shaft_approx;
+      font-family: $sansBold;
+      font-size: 1em;
+      height: auto;
+      line-height: 1.5;
+    }
+    .date {
+      color: $color_mine_shaft_approx;
+      font-family: $sansRegular;
+      font-size: 1em;
+    }
+  }
+  .btn .caret {
+    margin-left: 10px;
+  }
+}
+.btn-default {
+  &:active {
+    &:hover {
+      @extend %extend_btn_default;
+    }
+    &:focus {
+      @extend %extend_btn_default;
+    }
+    &.focus {
+      @extend %extend_btn_default;
+    }
+  }
+  &.active {
+    &:hover {
+      @extend %extend_btn_default;
+    }
+    &:focus {
+      @extend %extend_btn_default;
+    }
+    &.focus {
+      @extend %extend_btn_default;
+    }
+  }
+}
+.right-col-follow-section {
+  color: $color_mine_shaft_approx;
+  h3 {
+    font-family: $slabRegular;
+    font-size: 1.2em;
+    margin-top: 0;
+    margin: 0;
+  }
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    padding: 25px 0;
+    list-style: none;
+    display: block;
+    border-bottom: dotted 1px $black;
+  }
+  .date-entry {
+    color: $color_suva_gray_approx;
+    font-family: $sansRegular;
+    font-size: 1em;
+  }
+}
+.content_highlight {
+  background-color: $white;
+  max-height: 300px;
+  min-height: 300px;
+  overflow-y: auto;
+  .line-number {
+    border-right: solid 1px $color_celeste_approx;
+    color: $color_celeste_approx;
+    display: inline-block;
+    font-size: 1em;
+    left: 0;
+    line-height: 36px;
+    min-height: 300px;
+    padding: 0 15px;
+    position: absolute;
+    text-align: left;
+    top: 0;
+    width: 10%;
+    > span {
+      display: block;
+      text-align: right;
+    }
+  }
+  code {
+    display: inline-block;
+    width: 89%;
+    margin-left: 10%;
+    text-align: left;
+    padding: 0 2%;
+    line-height: 36px;
+  }
+}
+.content_highlight-show {
+  pre {
+    font: normal normal 16px/18px $courierNew, $courier, $monoSpace;
+    color: $black;
+    display: block;
+    @extend %extend_highlight_pre;
+  }
+  code {
+    @extend %extend_highlight_pre;
+    margin-left: 12%;
+    //Instead of the line below you could use @include box-sizing($bs)
+    box-sizing: border-box;
+    width: 88%;
+  }
+  span {
+    display: block;
+    line-height: 38px;
+  }
+}
+
+.open > .dropdown-toggle.btn-default {
+  &:hover {
+    @extend %extend_btn_default;
+  }
+  &:focus {
+    @extend %extend_btn_default;
+  }
+  &.focus {
+    @extend %extend_btn_default;
+  }
+}
+
+form.form_in_place {
+  textarea[name="source_code"] {
+    height: 400px;
+  }
+
+  input.update-code {
+    margin-top: 12px;
+  }
+}

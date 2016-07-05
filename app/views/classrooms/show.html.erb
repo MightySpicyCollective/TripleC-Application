@@ -1,0 +1,174 @@
+<%= stylesheet_link_tag 'classroom' %>
+<%= stylesheet_link_tag 'projects' %>
+
+<%= render 'layouts/breadcrumbs', breadcrumbs: {
+  home: root_path,
+  dashboard: dashboard_path,
+  classroom: classroom_path(@classroom) } %>
+
+<% @classroom = ClassroomPresenter.new(@classroom) %>
+
+<div class="container border-top-dotted class-name">
+  <div class="row">
+    <div class="col-lg-12 padding-top-50 padding-left-0 padding-right-0">
+      <div class="col-md-8 padding-left-0 padding-right-0">
+        <div class="col-md-2 padding-left-0 padding-right-0">
+          <%= image_tag @classroom.photo.url(:medium), class: "img-responsive center-block border-radius-50 swatch-#{@classroom.dummy_swatch_color}" %>
+        </div>
+        <div class="col-md-8">
+          <div class="col-md-12">
+            <h1><%= @classroom.name %></h1>
+            <p><%= @classroom.description%></p>
+            <div>
+              <% if current_user && current_user.teacher? && @classroom.teacher_id.eql?(current_user.id) %>
+                <%= link_to 'Edit Class profile', edit_classroom_path(@classroom), class: "edit-class-profile" %>
+              <% end %>
+            </div>
+          </div>
+          <div class="col-md-12 text-center class-profile-status">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <div class="status-number"><%= @class_users.count %></div>
+              <div class="status-group">Teams</div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <div class="status-number"><%= @class_projects.count %></div>
+              <div class="status-group">Projects</div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <div class="status-number"><%= @class_followers.count %></div>
+              <div class="status-group">Followers</div>
+            </div>
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+      </div>
+      <div class="col-lg-1">&nbsp;</div>
+      <div class="col-md-3 padding-left-0 padding-right-0 classroom-right-col">
+        <div class="col-md-12">
+          <% if current_user && current_user.teacher? && !@classroom.has_same_teacher?(current_user) && !@classroom.connected?(current_user.classroom_id) %>
+            <div class="col-md-12 padding-bottom-30">
+              <%= link_to 'Follow', invitations_path(classroom_id: @classroom.id), data: { method: :post}, class: 'btn btn-primary width-full' %>
+            </div>
+          <% end %>
+
+          <div class="col-md-12 padding-bottom-30">
+            <div class="heading">School</div>
+            <%= link_to @classroom.school_name, school_path(@classroom.school), class: 'scrap-links'%>
+          </div>
+          <div class="col-md-12 padding-bottom-30">
+            <div class="heading">City</div>
+            <%= link_to @classroom.school.location, '#', class: 'scrap-links' %>
+          </div>
+          <% if @classroom.teacher %>
+            <div class="col-md-12 padding-bottom-30">
+              <div class="heading">Teacher</div>
+              <%= link_to @classroom.teacher_name, user_path(@classroom.teacher), class: 'scrap-links' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container class-name">
+  <div class="row">
+    <div class="col-lg-12 padding-top-30 padding-bottom-30 padding-left-0 padding-right-0">
+      <div class="col-md-8 padding-left-0 padding-right-0">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a data-target="#team" data-toggle="tab">Teams (<%= @class_users.count %>)</a></li>
+          <li><a data-target="#projects" data-toggle="tab">Projects</a></li>
+          <% if current_user && @classroom.teacher == current_user %>
+            <li>
+              <a data-target="#pending-requests" data-toggle="tab">Pending Requests
+                <span class="reqest-count"><%= @classroom_recieved_invites.count %></span>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+
+        <div class="tab-content">
+          <div class="tab-pane active class-room-listing" id="team">
+            <ul>
+              <% @class_users.each do |class_user| %>
+                <li>
+                  <div class="col-md-2 col-sm-2 col-xs-2">
+                    <%= image_tag class_user.avatar.url(:thumb), class: "img-responsive center-block #{swatch_class(class_user)}" %>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-6">
+                    <h3><%= link_to class_user.username, user_path(class_user) %></h3>
+                    <p><%= class_user.description %></p>
+                  </div>
+                  <div class="col-md-3 col-sm-3 col-xs-3">
+                    <div>
+                      <% class_user.projects.each do |project| %>
+                        <div><%= link_to project.name, view_project_path(project), class: 'scrap-links' %></div>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="tab-pane project-listing" id="projects">
+            <div class="col-md-12 project-list padding-right-0 padding-left-0">
+              <ul>
+                <% @class_projects.each do |class_project| %>
+                  <%= render 'projects/project', project: class_project %>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+          <% if current_user && @classroom.teacher_id.eql?(current_user.id) %>
+            <div class="tab-pane class-room-listing request-by-table" id="pending-requests">
+              <div class="heading">Requests by others</div>
+              <%= render 'classrooms/invites', collection: @classroom_recieved_invites, show_links: true %>
+              <div class="heading">Requests by this class</div>
+              <%= render 'classrooms/invites', collection: @class_sent_invites, show_links: false %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="col-lg-1">&nbsp;</div>
+      <div class="col-md-3 padding-left-0 padding-right-0 right-col-follow-section rightCol-classroom-follow ">
+        <div class="col-md-12 padding-bottom-30">
+          <h3>Followers (<%= @class_followers.count %>)</h3>
+          <ul>
+            <% @class_followers.each do |class_follower| %>
+              <% class_follower = ClassroomPresenter.new(class_follower) %>
+              <li>
+                <div class="col-md-3 col-sm-3 col-xs-3 padding-left-0 padding-right-0">
+                  <%= image_tag class_follower.school_logo, class: "img-responsive center-block border-radius-50 swatch-#{class_follower.dummy_swatch_color}" %>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-9">
+                  <div><%= link_to class_follower.name, classroom_path(class_follower), class: 'scrap-links' %></div>
+                  <div><%= link_to class_follower.school_name, school_path(class_follower.school), class: 'scrap-links' %></div>
+                </div>
+                <div class="clearfix"> </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="col-md-12">
+          <h3>Followings (<%= @class_followings.count %>)</h3>
+          <ul>
+            <% @class_followings.each do |class_following| %>
+              <% class_following = ClassroomPresenter.new(class_following) %>
+              <li>
+                <div class="col-md-3 col-sm-3 col-xs-3 padding-left-0 padding-right-0">
+                  <%= image_tag class_following.school_logo, class: "img-responsive center-block border-radius-50 swatch-#{class_follower.dummy_swatch_color}" %>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-9">
+                  <div><%= link_to class_following.name, classroom_path(class_following), class: 'scrap-links' %></div>
+                  <div><%= link_to class_following.school_name, school_path(class_following.school), class: 'scrap-links' %></div>
+                </div>
+                <div class="clearfix"> </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,103 @@
+@import 'variables';
+
+.navbar-inverse {
+  background-color: transparent;
+  border-color: transparent;
+  font-family: $slabBold;
+  font-size: 1em;
+  .navbar-nav > li > a {
+    color: $color_mine_shaft_approx;
+    &:hover {
+      color: $color_fuchsia_pink_approx;
+    }
+    &:focus {
+      color: $color_fuchsia_pink_approx;
+    }
+  }
+}
+.btn-nav-ogin-signup {
+  color: $color_fuchsia_pink_approx;
+  a {
+    color: $color_fuchsia_pink_approx;
+    &:hover {
+      color: $color_mine_shaft_approx;
+    }
+  }
+}
+.byline {
+  position: absolute;
+  top: 150px;
+  left: 30%;
+  text-align: center;
+  font-size: 18px;
+  a {
+    text-decoration: none;
+    color: $color_valencia_approx;
+  }
+}
+@import 'search';
+.collapse.navbar-collapse {
+  margin-top: 20px;
+}
+.navbar-brand img {
+  width: 60px;
+  height: auto;
+}
+.navbar-nav > li > span {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  display: inline-block;
+}
+.navbar-right .btn-primary {
+  a {
+
+  }
+  span {
+    @extend %extend_navbar;
+    padding: 0 5px;
+  }
+  .sign-in {
+    margin-left: 10px;
+  }
+  .sign-up {
+    margin-right: 10px;
+  }
+}
+
+.nav-btn {
+  border-radius: 40%;
+
+  display: inline-block;
+  .sign-in,
+  .sign-up {
+    border: solid 2px $color_fuchsia_pink_approx;
+    color: $color_fuchsia_pink_approx;
+    display: inline-block;
+    padding: 6px 12px;
+    position: relative;
+    text-decoration: none;
+    text-transform: uppercase;
+    &:hover {
+      background-color: $color_fuchsia_pink_approx;
+      color: $white;
+    }
+  }
+  .sign-in {
+    border-radius: 25px 0 0 25px;
+    border-right: none;
+    margin-right: -2px;
+    &:after {
+      border-color: $color_fuchsia_pink_approx;
+      position: absolute;
+    }
+  }
+  .sign-up {
+    border-left: none;
+    border-radius: 0 25px 25px 0;
+    margin-left: -2px;
+    &:after {
+      border-color: $color_fuchsia_pink_approx;
+      position: absolute;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+<div class="col-md-4 col-md-offset-4">
+  <%= form_for @project, url: [current_user, @project] do |f| %>
+    <div class="row">
+      <div class="form-group">
+        <%= f.text_field :name, class: 'form-control input-sm', placeholder: 'Name' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <%= f.text_area :description, class: 'form-control input-sm', placeholder: 'Description' %>
+      </div>
+    </div>
+    <div class="row">
+      <%= f.file_field :photo, class: 'form-group' %>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <% if @project.persisted? %>
+          <%= f.select :status, Project::STATUSES.collect{|k,v| [k.to_s.titleize,v]}, { include_blank: 'Select Status' }, { class: 'form-control input-sm' } %>
+        <% else %>
+        <%= f.select :status, Project::STATUSES.collect{|k,v| [k.to_s.titleize,v]}, { include_blank: 'Select Status', selected: Project::STATUSES[:active] }, { class: 'form-control input-sm' } %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="text-center row padding-bottom-20">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,20 @@
+@import 'variables';
+
+.btn-primary {
+  @extend %extend_btn;
+
+  .sign-in,
+  .sign-up,
+    span {
+      color: $color_fuchsia_pink_approx;
+    }
+
+  &:hover {
+    @extend %extend_btn_hover;
+    .sign-in,
+    .sign-up,
+    span {
+      color: $white;
+    }
+  }
+}

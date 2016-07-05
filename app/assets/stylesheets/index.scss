@@ -1,0 +1,67 @@
+@import 'variables';
+
+p {
+  font-family: $gotham, $helveticaNeue, $helvetic, $arial, $sansSerif;
+}
+.padding-bottom-40 {
+  padding-bottom: 40px;
+}
+.padding-bottom-120 {
+  padding-bottom: 120px;
+}
+.logo-main-index {
+  padding-bottom: 80px;
+  padding-top: 17vh;
+}
+.page-heading {
+  color: $color_mine_shaft_approx;
+  font-family: $sansRegular;
+  font-size: 1.1em;
+  line-height: 1.5;
+  text-align: justify;
+}
+.bg-highlights {
+  background: image-url(index/highlights-bg);
+  height: 80px;
+  left: 44%;
+  position: absolute;
+  right: 44%;
+  top: 5px;
+  width: 12%;
+  z-index: 111;
+}
+.workshop-section {
+  .bg-highlights {
+    background: image-url(index/workshop-bg);
+  }
+  h2 {
+    font-size: 1.3em;
+    text-align: center;
+    line-height: 1.3;
+    padding-bottom: 20px;
+  }
+  p {
+    padding-bottom: 30px;
+  }
+  .btn-primary {
+    padding: 8px 20px;
+  }
+  .col-md-4 {
+    padding-bottom: 30px;
+  }
+}
+.workshop-date-time-location {
+  font-family: $sansRegular;
+  font-size: 1em;
+  line-height: 1.5;
+  color: $color_mine_shaft_approx;
+  padding-bottom: 20px;
+}
+.desc-heading {
+  font-size: 1.1em;
+  padding-bottom: 10px;
+  font-family: $slabBold;
+}
+.highlights-section p {
+  margin-top: 10px;
+}

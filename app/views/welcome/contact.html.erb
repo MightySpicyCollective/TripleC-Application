@@ -1,0 +1,53 @@
+<%= stylesheet_link_tag 'sign_up' %>
+
+<div class="container padding-top-100 padding-bottom-100 sign-up">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="col-md-12">
+        <%= render 'layouts/logo_header' %>
+
+        <div class="col-md-12">
+
+          <%= form_for @enquiry do |f| %>
+            <div class="row">
+              <div class="form-group">
+                <%= f.text_field :name, class: 'form-control input-sm', placeholder: 'Name' %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group">
+                <%= f.email_field :email, class: 'form-control input-sm', placeholder: 'Email' %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group">
+                <%= f.email_field :subject, class: 'form-control input-sm', placeholder: 'Subject' %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group">
+                <%= f.text_area :message, class: 'form-control input-sm', placeholder: 'Message' %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group">
+                <%= f.label :humanizer_answer, @enquiry.humanizer_question %>
+                <%= f.text_field :humanizer_answer %>
+                <%= f.hidden_field :humanizer_question_id %>
+              </div>
+            </div>
+
+            <div class="actions">
+              <%= f.submit "Submit", class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+        <b>You can also email us at <%= mail_to "info@triplec.global", 'info[at]triplec.global' %>.</b>
+      </div>
+    </div>
+  </div>
+</div>

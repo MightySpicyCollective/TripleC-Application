@@ -1,0 +1,28 @@
+@import 'variables';
+
+.breadcrumb {
+  background-color: transparent;
+  color: $color_mine_shaft_approx;
+  font-family: $sansBold;
+  padding: 15px 0 30px;
+  > li {
+
+    > a {
+      color: $color_mine_shaft_approx;
+      text-decoration: none;
+      font-size: 1em;
+    }
+
+    &.active {
+      font-family: $sansRegular;
+    }
+
+    + li:before {
+      content: "\00bb";
+      color: $color_mine_shaft_approx;
+      font-family: $sansBold;
+      font-size: 1em;
+    }
+
+  }
+}

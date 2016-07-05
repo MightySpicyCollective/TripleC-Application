@@ -1,0 +1,56 @@
+<h3>Project History </h3>
+
+<% unless @version.blank? %>
+  <% @version.each do |version| %>
+
+    <table>
+      <thead>
+        <th>Changed By</th>
+        <th>Classroom</th>
+        <th>School</th>
+        <th>Changed on</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= change_performer(version) %></td>
+          <td><%= performer_user(version).classroom.name %></td>
+          <td><%= performer_user(version).school.name %></td>
+          <td><%= version.created_at.to_date.to_s(:long) %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <thead>
+        <tr>
+          <th colspan=1></th>
+          <th>Field</th>
+          <th>Old</th>
+          <th>New</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% changes = describe_changeset(version.changeset) %>
+        <% s = changes.size %>
+        <tr>
+          <td rowspan="<%= s %>">
+            <%= version.event.titleize %> (<%= version.created_at %>)
+          </td>
+          <% n = changes.shift %>
+          <td><b><%= n[0].titleize if n %></b></td>
+          <td><%= render_value(n, n[1]) if n %></td>
+          <td><%= render_value(n, n[2]) if n %></td>
+        </tr>
+        <% changes.each do |n| %>
+          <tr>
+            <td><b><%= n[0].titleize if n %></b></td>
+            <td><%= render_value(n, n[1]) if n %></td>
+            <td><%= render_value(n, n[2]) if n %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <%= paginate @version %>
+<% end %>

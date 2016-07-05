@@ -1,0 +1,34 @@
+<div class="container padding-top-100 padding-bottom-100 sign-up">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="col-md-12">
+        <%= render 'layouts/logo_header' %>
+
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+          <%= f.hidden_field :reset_password_token %>
+          <div class="col-md-12 text-center">
+            <h1>Change your password</h1>
+          </div>
+          <div class="col-md-12">
+            <div class="row">
+              <div class="form-group">
+                <%= f.password_field :password, class: "form-control input-sm", placeholder: 'New password' %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <%= f.password_field :password_confirmation, class: "form-control input-sm", placeholder: 'Confirm new password' %>
+              </div>
+            </div>
+            <div class="text-center row padding-bottom-20">
+              <%= f.submit 'Change my password', class: 'btn btn-primary' %>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

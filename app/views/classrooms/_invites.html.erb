@@ -1,0 +1,38 @@
+<% unless collection.blank? %>
+  <ul>
+    <li class="heading bg-white">
+      <div class="col-md-12">
+        <div class="col-md-2">Date</div>
+        <% if show_links %>
+          <div class="col-md-3">Class</div>
+          <div class="col-md-3">School</div>
+          <div class="col-md-1">Action</div>
+          <div class="col-md-1 decline"></div>
+        <% else %>
+          <div class="col-md-5">Class</div>
+          <div class="col-md-5">School</div>
+        <% end %>
+      </div>
+      <div class="clearfix"> </div>
+    </li>
+    <% collection.each do |invite| %>
+      <li class="bg-grey">
+        <div class="col-md-12">
+          <div class="col-md-2"><%= invite.created_at.to_date.to_s(:db) %></div>
+          <% if show_links %>
+            <div class="col-md-3"><%= link_to invite.sender.name, classroom_path(invite.sender), class: 'scrap-links' %></div>
+            <div class="col-md-3"><%= link_to invite.sender.school.name, school_path(invite.sender.school), class: 'scrap-links' %></div>
+            <div class="col-md-2"><%= link_to 'APPROVE', accept_invitation_path(invite), data: { method: :patch }, class: 'btn btn-primary' %></div>
+            <div class="col-md-2 decline"><%= link_to 'DECLINE', reject_invitation_path(invite), data: { method: :patch }, class: 'btn btn-primary' %></div>
+          <% else %>
+            <div class="col-md-5"><%= link_to invite.sender.name, classroom_path(invite.sender), class: 'scrap-links' %></div>
+            <div class="col-md-5"><%= link_to invite.sender.school.name, school_path(invite.sender.school), class: 'scrap-links' %></div>
+          <% end %>
+        </div>
+      <div class="clearfix"> </div>
+    </li>
+    <% end %>
+  </ul>
+<% else %>
+  <div class="well">you have no requests.</div>
+<% end %>

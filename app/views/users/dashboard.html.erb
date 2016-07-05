@@ -1,0 +1,101 @@
+<%= stylesheet_link_tag 'classroom' %>
+<%= stylesheet_link_tag 'projects' %>
+
+<%= render 'layouts/breadcrumbs', breadcrumbs: { home: root_path, dashboard: dashboard_path } %>
+
+<div class="container border-top-dotted class-name padding-bottom-30">
+  <div class="row">
+    <div class="col-lg-12 padding-top-50 padding-left-0 padding-right-0">
+      <div class="col-md-8 padding-left-0 padding-right-0">
+        <div class="col-md-2 padding-left-0 padding-right-0 border-radius-50 <%= swatch_class(current_user) %>">
+          <%= image_tag current_user.avatar.url(:medium), class: "img-responsive center-block border-radius-50 #{swatch_class(current_user)}" %>
+        </div>
+        <div class="col-md-8">
+          <div class="col-md-12">
+            <h1><%= current_user.name %></h1>
+            <p><%= current_user.description%></p>
+            <div>
+              <%= link_to 'Edit User profile', edit_user_path(current_user), class: "edit-class-profile" %>
+            </div>
+          </div>
+          <div class="col-md-12 text-center class-profile-status">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <div class="status-number"><%= @projects.count %></div>
+              <div class="status-group">Projects</div>
+            </div>
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+      </div>
+      <div class="col-md-1">&nbsp;</div>
+      <div class="col-md-3 padding-left-0 padding-right-0 classroom-right-col">
+        <div class="col-md-12">
+          <% if current_user && current_user.teacher? && current_user.classroom.teacher_id != current_user.id %>
+            <div class="col-md-10 padding-bottom-30">
+              <a href="#" title="FOLLOW" class="btn btn-primary width-full">FOLLOW</a>
+            </div>
+          <% end %>
+          <% if current_user.school %>
+            <div class="col-md-12 padding-bottom-30">
+              <div class="heading">School</div>
+              <%= link_to current_user.school.name, school_path(current_user.school), class: 'scrap-links'%>
+            </div>
+            <div class="col-md-12 padding-bottom-30">
+              <div class="heading">City</div>
+              <%= link_to current_user.school.location, '#', class: 'scrap-links' %>
+            </div>
+            <div class="col-md-12 padding-bottom-30">
+              <div class="heading">Classroom</div>
+              <%= link_to current_user.classroom.name, classroom_path(current_user.classroom), class: 'scrap-links' %>
+            </div>
+            <div class="col-md-12 padding-bottom-30">
+              <div class="heading">Teacher</div>
+              <% if current_user.teacher %>
+                <%= link_to current_user.teacher.name, user_path(current_user.teacher), class: 'scrap-links' %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container border-top-dotted class-name padding-bottom-30">
+  <div class="row">
+    <div class="col-lg-12 padding-top-50 padding-bottom-30 padding-left-0 padding-right-0">
+      <div class="col-md-8 padding-left-0 padding-right-0">
+        <ul class="nav nav-tabs">
+          <li class="active"><%= link_to 'Projects', '#projects', data: { toggle: 'tab' } %></li>
+          <%# if current_user.teacher? && !@current_user.classroom.recieved_invites.pending.count.zero? %>
+            <li>
+              <a data-target="#pending-requests" data-toggle="tab">Pending Requests
+                <span class="reqest-count"><%= @current_user.classroom.recieved_invites.pending.count %></span>
+              </a>
+            </li>
+          <%# end %>
+        </ul>
+
+        <div class="tab-content class-room-listing request-by-table">
+          <% if current_user.teacher? && !@current_user.classroom.recieved_invites.pending.count.zero?%>
+            <div class="tab-pane" id="pending-requests">
+              <div class="heading">Requests by others</div>
+              <%= render 'classrooms/invites', collection: @current_user.classroom.recieved_invites.pending, show_links: true %>
+              <div class="heading">Requests by this class</div>
+              <%= render 'classrooms/invites', collection: @current_user.classroom.sent_invites.pending, show_links: false %>
+            </div>
+          <% end %>
+          <div class="tab-pane active project-list" id="projects">
+            <ul>
+              <% @projects.each do |project| %>
+                <%= render 'projects/project', project: project %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-1">&nbsp;</div>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Add New Project', new_user_project_path(current_user), class: 'btn btn-primary' %>
