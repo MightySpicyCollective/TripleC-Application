@@ -157,7 +157,7 @@
               <% class_following = ClassroomPresenter.new(class_following) %>
               <li>
                 <div class="col-md-3 col-sm-3 col-xs-3 padding-left-0 padding-right-0">
-                  <%= image_tag class_following.school_logo, class: "img-responsive center-block border-radius-50 swatch-#{class_follower.dummy_swatch_color}" %>
+                  <%= image_tag class_following.school_logo, class: "img-responsive center-block border-radius-50 swatch-#{class_following.dummy_swatch_color}" %>
                 </div>
                 <div class="col-md-9 col-sm-9 col-xs-9">
                   <div><%= link_to class_following.name, classroom_path(class_following), class: 'scrap-links' %></div>

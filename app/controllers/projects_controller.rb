@@ -78,11 +78,9 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    case params[:action]
-    when 'update' then params.require(:project).permit(:name, :description, :status, :photo, :source_code)
-    when 'create' then params.require(:project).permit(:name, :description, :status, :photo)
-    end.merge(school_id: current_user.school_id,
-              classroom_id: current_user.classroom_id)
+    params.require(:project)
+          .permit(:name, :description, :status, :photo, :source_code)
+          .merge(school_id: current_user.school_id, classroom_id: current_user.classroom_id)
   end
 
   def load_project
