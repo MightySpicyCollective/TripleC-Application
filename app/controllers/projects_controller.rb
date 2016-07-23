@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
   before_action :ensure_connected_teachers, only: [:edit, :update, :share, :compare, :accept_changes]
 
   def index
-    @projects = current_user.projects.page(params[:page]).per(10)
+    @projects = current_user.projects.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def new
@@ -62,7 +62,7 @@ class ProjectsController < ApplicationController
   end
 
   def share
-    @project.fork!(user_id: current_user.id)
+    @project.fork!(user_id: current_user.id, classroom_id: current_user.classroom_id)
     redirect_to dashboard_path, notice: 'Successfully Shared project!'
   end
 

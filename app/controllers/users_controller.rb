@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :load_user, only: [:show, :edit, :update]
 
   def dashboard
-    @projects = current_user.projects.page(params[:page]).per(10)
+    @projects = current_user.projects.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def edit
