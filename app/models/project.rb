@@ -49,6 +49,7 @@ class Project < ActiveRecord::Base
       _project.status                      = STATUSES[:active]
       _project.source_code                 = source_code
       _project.completed_sound_snippet_url = completed_sound_snippet_url
+      _project.classroom_id                = attributes[:classroom_id]
       _project.save!
     end
   end

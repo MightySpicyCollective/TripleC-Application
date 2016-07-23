@@ -11,4 +11,8 @@ Rails.application.config.assets.precompile += %w( sign_up.css
                                                   projects/show.js
                                                   projects/form.js
                                                   comments/form.js
-                                                  search.js)
+                                                  search.js
+                                                  prism.js
+                                                  prism-line-numbers.js
+                                                  utopia.js
+                                                  components.js)

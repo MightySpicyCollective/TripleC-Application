@@ -85,10 +85,18 @@
         <div class="col-md-12 heading">
           <div class="col-md-12 padding-left-0">Latest</div>
         </div>
-        <div class="col-md-12 padding-left-0 padding-right-0 entry-content content_highlight">
-          <div class="content_highlight-show">
-            <pre><code><%= @project.source_code %></code></pre>
+        <div class="col-md-12 padding-left-0 padding-right-0 entry-content">
+          <div>
+            <pre class="line-numbers" style="overflow:hidden">
+              <code class="language-ruby"><%= @project.source_code %></code>
+            </pre>
           </div>
+        </div>
+
+        <div class="col-md-12 padding-top-30">
+          <% if @project.sharable?(current_user) %>
+            <%= link_to 'Share', share_project_path(@project), method: :post, class: 'btn btn-primary' %>
+          <% end %>
         </div>
       </div>
       <div class="col-md-3 padding-left-0 padding-right-0 right-col-follow-section">
@@ -124,7 +132,10 @@
   <% end %>
 </table>
 
+<%= javascript_include_tag 'prism' %>
+<%= javascript_include_tag 'prism-line-numbers' %>
 <%= javascript_include_tag 'projects/show' %>
+<%= javascript_include_tag 'components' %>
 
 <% if current_user %>
   <% @comment = @project.comments.build(user_id: current_user.id) %>

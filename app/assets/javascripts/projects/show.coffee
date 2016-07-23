@@ -12,7 +12,6 @@ class Projects.Show extends Projects
     @_initializeBIP()
     @_handleClickEvent()
     @_handleAJAXSuccess()
-    @_initializeLineNumbers()
 
   @_initializeBIP: ->
     $('.best_in_place').best_in_place()
@@ -36,20 +35,6 @@ class Projects.Show extends Projects
   @_handleAJAXSuccess: ->
     $('.project-source-code').bind 'ajax:success', ->
       window.location.reload()
-
-  @_initializeLineNumbers: ->
-    pre = document.getElementsByTagName('pre')
-    pl = pre.length
-    i = 0
-    while i < pl
-      pre[i].innerHTML = '<span class="line-number"></span>' + pre[i].innerHTML + '<span class="cl"></span>'
-      num = pre[i].innerHTML.split(/\n/).length
-      j = 0
-      while j < num
-        line_num = pre[i].getElementsByTagName('span')[0]
-        line_num.innerHTML += "<span>#{j + 1}</span>"
-        j++
-      i++
 
   @_toggleEditView: ->
     $('.row.edit-project-code').addClass('hide')
