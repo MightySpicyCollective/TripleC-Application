@@ -11,7 +11,9 @@ class Projects.Form extends Projects
     @_initializeCodeEditor()
 
   @_initializeCodeEditor: ->
-    $('textarea[name="project[source_code]"].form-control').ace({theme: 'xcode', lang: 'ruby'})
+    $('textarea[name="project[source_code]"].form-control').ace
+      theme: 'xcode'
+      lang: 'ruby'
 
 $ ->
   Projects.Form.bindEvents()

@@ -2,12 +2,12 @@
   <%= form_for @project, url: [current_user, @project], class: 'form-horizontal' do |f| %>
     <div class="row">
       <div class="form-group">
-        <%= f.text_field :name, class: 'form-control input-sm', placeholder: 'Name' %>
+        <%= f.text_field :name, class: 'form-control input-sm', placeholder: 'What do you want to call your project?' %>
       </div>
     </div>
     <div class="row">
       <div class="form-group">
-        <%= f.text_area :description, class: 'form-control input-sm', placeholder: 'Description' %>
+        <%= f.text_area :description, class: 'form-control input-sm', placeholder: 'Describe your project' %>
       </div>
     </div>
 
@@ -19,16 +19,23 @@
 
     <div class="row">
       <div class="form-group">
-        <%= f.file_field :photo, class: 'form-group' %>
+        <%= f.label :photo, "Upload a pic", class: 'col-sm-3' %>
+        <%= f.file_field :photo, class: 'form-group'%>
       </div>
     </div>
     <div class="row">
       <div class="form-group">
-        <% if @project.persisted? %>
-          <%= f.select :status, Project::STATUSES.collect{|k,v| [k.to_s.titleize,v]}, { include_blank: 'Select Status' }, { class: 'form-control input-sm' } %>
-        <% else %>
-        <%= f.select :status, Project::STATUSES.collect{|k,v| [k.to_s.titleize,v]}, { include_blank: 'Select Status', selected: Project::STATUSES[:active] }, { class: 'form-control input-sm' } %>
-        <% end %>
+        <%= f.label :status, 'Is it viewable by others?', class: 'col-sm-3' %>
+
+        <div class="col-sm-4">
+          <%= f.radio_button :status, 1, class: 'col-sm-4', checked: @project.status.present? || @project.new_record? %>
+          <%= f.label :status, bool_value("1"), value: 1 %>
+        </div>
+
+        <div class="col-sm-4">
+          <%= f.radio_button :status, 0, class: 'col-sm-4' %>
+          <%= f.label :status, bool_value("0"), value: 0 %>
+        </div>
       </div>
     </div>
 
