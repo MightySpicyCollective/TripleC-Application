@@ -1,12 +1,28 @@
 @import 'variables';
 
-.navbar-inverse {
-  background-color: transparent;
-  border-color: transparent;
-  font-family: $slabBold;
-  font-size: 1em;
+.navbar {
+    background-color: transparent;
+    border-color: transparent;
+    font-family: $slabBold;
+    font-size: 1em;
+
+  .navbar-nav > li.active > a {
+    background-color: transparent;
+    color: $color_mine_shaft_approx;
+  }
+  .navbar-nav > li.active > a:hover {
+    background-color: transparent;
+    color: $color_fuchsia_pink_approx;
+  }
   .navbar-nav > li > a {
     color: $color_mine_shaft_approx;
+    padding: 10px;
+    &:after {
+      content: '|';
+      display: inline-block;
+      line-height: 20px;
+      padding: 10px 0 0px 20px;
+    }
     &:hover {
       color: $color_fuchsia_pink_approx;
     }
@@ -38,6 +54,9 @@
 @import 'search';
 .collapse.navbar-collapse {
   margin-top: 20px;
+}
+.navbar-brand {
+  height: auto;
 }
 .navbar-brand img {
   width: 60px;
