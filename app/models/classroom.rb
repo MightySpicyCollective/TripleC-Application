@@ -12,7 +12,7 @@ class Classroom < ActiveRecord::Base
   has_many :sent_invites, dependent: :destroy, foreign_key: :sender_id, class_name: Invite
   has_many :recieved_invites, dependent: :destroy, foreign_key: :reciever_id, class_name: Invite
 
-  has_attached_file :photo, styles: { medium: '300x300' },
+  has_attached_file :photo, styles: { medium: '300x300', thumb: '50x50!' },
                             convert_options: {
                               medium: '-resize 300x300 -background black -gravity center -extent 300x300',
                             },

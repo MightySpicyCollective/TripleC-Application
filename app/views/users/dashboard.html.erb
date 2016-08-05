@@ -68,37 +68,33 @@
 <div class="container border-top-dotted class-name padding-bottom-30">
   <div class="row">
     <div class="col-lg-12 padding-top-50 padding-bottom-30 padding-left-0 padding-right-0">
-      <div class="col-md-8 padding-left-0 padding-right-0">
-        <ul class="nav nav-tabs">
-          <li class="active"><%= link_to 'Projects', '#projects', data: { toggle: 'tab' } %></li>
-          <% if current_user.teacher? && !@current_user.classroom.recieved_invites.pending.count.zero? %>
-            <li>
-              <a data-target="#pending-requests" data-toggle="tab">Pending Requests
-                <span class="reqest-count"><%= @current_user.classroom.recieved_invites.pending.count %></span>
-              </a>
-            </li>
-          <% end %>
-        </ul>
-
-        <div class="tab-content class-room-listing request-by-table">
-          <% if current_user.teacher? && !@current_user.classroom.recieved_invites.pending.count.zero?%>
-            <div class="tab-pane" id="pending-requests">
-              <div class="heading">Requests by others</div>
-              <%= render 'classrooms/invites', collection: @current_user.classroom.recieved_invites.pending, show_links: true %>
-              <div class="heading">Requests by this class</div>
-              <%= render 'classrooms/invites', collection: @current_user.classroom.sent_invites.pending, show_links: false %>
-            </div>
-          <% end %>
-          <div class="tab-pane active project-list" id="projects">
-            <ul>
-              <% @projects.each do |project| %>
-                <%= render 'projects/project', project: project %>
-              <% end %>
-            </ul>
+      <ul class="nav nav-tabs">
+        <li class="active"><%= link_to 'Projects', '#projects', data: { toggle: 'tab' } %></li>
+        <% if current_user.teacher? && !@current_user.classroom.recieved_invites.pending.count.zero? %>
+          <li>
+            <a data-target="#pending-requests" data-toggle="tab">Pending Requests
+              <span class="reqest-count"><%= @current_user.classroom.recieved_invites.pending.count %></span>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+      <div class="tab-content class-room-listing request-by-table">
+        <% if current_user.teacher? && !@current_user.classroom.recieved_invites.pending.count.zero?%>
+          <div class="tab-pane" id="pending-requests">
+            <div class="heading">Requests by others</div>
+            <%= render 'classrooms/invites', collection: @current_user.classroom.recieved_invites.pending, show_links: true %>
+            <div class="heading">Requests by this class</div>
+            <%= render 'classrooms/invites', collection: @current_user.classroom.sent_invites.pending, show_links: false %>
           </div>
+        <% end %>
+        <div class="tab-pane active project-list" id="projects">
+          <ul>
+            <% @projects.each do |project| %>
+              <%= render 'projects/project', project: project %>
+            <% end %>
+          </ul>
         </div>
       </div>
-      <div class="col-lg-1">&nbsp;</div>
     </div>
   </div>
 </div>

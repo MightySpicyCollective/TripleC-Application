@@ -7,7 +7,7 @@
     </div>
     <div class="row">
       <div class="form-group">
-        <%= f.text_area :description, class: 'form-control input-sm', placeholder: 'Describe your project' %>
+        <%= f.text_area :description, class: 'form-control input-sm', placeholder: 'Describe your project', rows: 10, cols: 50 %>
       </div>
     </div>
 
@@ -23,6 +23,7 @@
         <%= f.file_field :photo, class: 'form-group'%>
       </div>
     </div>
+
     <div class="row">
       <div class="form-group">
         <%= f.label :status, 'Is it viewable by others?', class: 'col-sm-3' %>
