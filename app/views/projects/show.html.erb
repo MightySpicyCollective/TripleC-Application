@@ -1,5 +1,7 @@
+<%= stylesheet_link_tag 'prism', data: { noprefix: "" } %>
 <%= stylesheet_link_tag 'project' %>
 <%= stylesheet_link_tag 'classroom' %>
+
 
 <%= render 'layouts/breadcrumbs', breadcrumbs: {
   home: root_path,
@@ -94,7 +96,7 @@
         </div>
 
         <div class="col-md-12 padding-top-30">
-          <% if @project.sharable?(current_user) %>
+          <% if current_user && @project.sharable?(current_user) %>
             <%= link_to 'Share', share_project_path(@project), method: :post, class: 'btn btn-primary' %>
           <% end %>
         </div>

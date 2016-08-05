@@ -1,5 +1,6 @@
 <%= stylesheet_link_tag 'classroom' %>
 <%= stylesheet_link_tag 'projects' %>
+<%= stylesheet_link_tag 'sign_up' %>
 
 <%= render 'layouts/breadcrumbs', breadcrumbs: { home: root_path, dashboard: dashboard_path } %>
 
@@ -35,24 +36,24 @@
       <div class="col-md-3 padding-left-0 padding-right-0 classroom-right-col">
         <div class="col-md-12">
           <% if current_user && current_user.teacher? && current_user.classroom.teacher_id != current_user.id %>
-            <div class="col-md-10 padding-bottom-30">
+            <div class="col-md-10 padding-bottom-15">
               <a href="#" title="FOLLOW" class="btn btn-primary width-full">FOLLOW</a>
             </div>
           <% end %>
           <% if current_user.school %>
-            <div class="col-md-12 padding-bottom-30">
+            <div class="col-md-12 padding-bottom-15 col-sm-6 col-xs-6">
               <div class="heading">School</div>
               <%= link_to current_user.school.name, school_path(current_user.school), class: 'scrap-links'%>
             </div>
-            <div class="col-md-12 padding-bottom-30">
+            <div class="col-md-12 padding-bottom-15 col-sm-6 col-xs-6">
               <div class="heading">City</div>
               <%= link_to current_user.school.location, '#', class: 'scrap-links' %>
             </div>
-            <div class="col-md-12 padding-bottom-30">
+            <div class="col-md-12 padding-bottom-15 col-sm-6 col-xs-6">
               <div class="heading">Classroom</div>
               <%= link_to current_user.classroom.name, classroom_path(current_user.classroom), class: 'scrap-links' %>
             </div>
-            <div class="col-md-12 padding-bottom-30">
+            <div class="col-md-12 padding-bottom-15 col-sm-6 col-xs-6">
               <div class="heading">Teacher</div>
               <% if current_user.teacher %>
                 <%= link_to current_user.teacher.name, user_path(current_user.teacher), class: 'scrap-links' %>
@@ -70,13 +71,13 @@
       <div class="col-md-8 padding-left-0 padding-right-0">
         <ul class="nav nav-tabs">
           <li class="active"><%= link_to 'Projects', '#projects', data: { toggle: 'tab' } %></li>
-          <%# if current_user.teacher? && !@current_user.classroom.recieved_invites.pending.count.zero? %>
+          <% if current_user.teacher? && !@current_user.classroom.recieved_invites.pending.count.zero? %>
             <li>
               <a data-target="#pending-requests" data-toggle="tab">Pending Requests
                 <span class="reqest-count"><%= @current_user.classroom.recieved_invites.pending.count %></span>
               </a>
             </li>
-          <%# end %>
+          <% end %>
         </ul>
 
         <div class="tab-content class-room-listing request-by-table">

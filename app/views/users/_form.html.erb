@@ -52,7 +52,7 @@
 
             <div class="row">
               <div class="form-group">
-                <%= f.select :classroom_id, [], { include_blank: 'Select Classroom' }, { class: 'classroom-select form-control input-sm' }  %>
+                <%= f.select :classroom_id, [], { include_blank: 'Select Classroom' }, { class: 'classroom-select form-control input-sm', data: { value: f.object.classroom_id } }  %>
               </div>
             </div>
 

@@ -8,7 +8,6 @@
   }
   p {
     font-family: $sansRegular;
-    font-size: 1.1em;
     margin: 0;
     padding-bottom: 20px;
   }
@@ -146,6 +145,7 @@ pre.line-numbers > code {
   padding-top: 5px;
   position: relative;
   white-space: pre;
+  margin: -20px 0 0 0;
 }
 
 .line-numbers .line-numbers-rows {

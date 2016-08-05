@@ -34,9 +34,10 @@ class window.Registrations.Form extends window.Registrations
     _this = @
     _this.$schoolSelect.on 'change', ->
       $firstOption = _this.$classroomSelect.find('option').first()
-      classroomValue = _this.$classroomSelect.val()
+      classroomValue = _this.$classroomSelect.data('value')
       $firstOption.siblings().remove()
       classRooms = _this.schoolClassroomCombination[@value]
+
       if classRooms
         classRooms.forEach (element) ->
           $opt = $('<option />').val(element[1]).text(element[0])

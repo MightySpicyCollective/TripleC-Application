@@ -120,3 +120,80 @@
     }
   }
 }
+
+.navbar .navbar-nav > li > a.dropdown-toggle {
+  &:after {
+    content: ' ';
+    padding: 0;
+  }
+  &:focus {
+    background-color: transparent;
+    color: #d248af;
+  }
+  .img-responsive {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .dropdown-menu {
+    right: -12px;
+  }
+}
+.dropdown .nav a {
+  text-transform: uppercase;
+}
+
+@media only screen and (max-width : 480px) {
+  #search {
+    left: 0;
+    width: 100%;
+    #label {
+      width: 100%;
+    }
+    #input {
+      left: 0;
+      width: 100%;
+    }
+    #input input {
+      border-radius: 4px;
+      left: 10px;
+      width: 94%;
+    }
+    #label label {
+      float: right;
+      width: 40px;
+    }
+    .nav-icon-search {
+      margin-left: 0;
+    }
+  }
+  .navbar-collapse {
+    border-bottom: solid 1px #e7e7e7;
+    padding: 0;
+  }
+  .collapse.navbar-collapse {
+    margin-top: 0;
+  }
+  .navbar-nav {
+    margin: 0;
+  }
+  .navbar-nav > li {
+    display: block;
+  }
+  .navbar .navbar-nav > li > a:after {
+    content: ' ';
+  }
+  .navbar-right {
+    .nav-btn {
+      margin: 0 auto;
+      padding-bottom: 5px;
+      text-align: center;
+      width: 100%;
+    }
+    .nav-btn .sign-in,
+    .nav-btn .sign-up {
+      border: solid 2px #d248af;
+      display: inline-block;
+      width: 45%;
+    }
+  }
+}

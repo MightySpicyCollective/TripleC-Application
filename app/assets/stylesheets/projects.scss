@@ -120,10 +120,11 @@
     }
   }
   p {
+    color: $color_suva_gray_approx;
+    font-family: $sansRegular;
+    font-size: 0.8em;
+    line-height: 2em;
     padding-bottom: 15px;
-    font-size: 1.1em;
-    line-height: 1.5;
-    color: $black;
   }
 }
 .team-activity {

@@ -15,12 +15,22 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
+      <%= form_tag search_index_path, id: 'search', method: 'GET', class: 'hidden-md hidden-lg' do %>
+        <div id="input">
+          <%= text_field_tag :term, params[:term], id: 'search-terms', placeholder: 'Search' %>
+        </div>
+        <div id="label">
+          <label for="search-terms" id="search-label">
+            <%= image_tag 'icon-search.png', class: 'nav-icon-search' %>
+          </label>
+        </div>
+      <% end %>
+      <ul class="nav navbar-nav navbar-left <%= current_user.present? ? 'hidden-sm hidden-xs' : '' %>">
         <li class="active"><%= link_to 'PROJECTS', active_projects_path %></li>
         <li><%= link_to 'ABOUT', root_path %></li>
         <li><%= link_to 'CONTACT', contact_us_path %></li>
       </ul>
-      <%= form_tag search_index_path, id: 'search', method: 'GET' do %>
+      <%= form_tag search_index_path, id: 'search', method: 'GET', class: 'hidden-sm hidden-xs' do %>
         <div id="label">
           <label for="search-terms" id="search-label">
             <%= image_tag 'icon-search.png', class: 'nav-icon-search' %>
@@ -30,7 +40,7 @@
           <%= text_field_tag :term, params[:term], id: 'search-terms', placeholder: 'Search' %>
         </div>
       <% end %>
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right hidden-sm hidden-xs">
         <% unless user_signed_in? %>
           <div class="nav-btn">
             <%= link_to 'Sign In', new_user_session_path, class: 'sign-in' %>
@@ -38,62 +48,53 @@
             <%= link_to 'Sign up', new_user_registration_path, class: 'sign-up' %>
           </div>
         <% else %>
-          <div>
-            <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-xl btn-primary text-uppercase' %>
+        <li class="dropdown">
+          <%= link_to '#', class: 'dropdown-toggle', role: 'button', aria: { haspopup: true, expanded: false }, data: { toggle: 'dropdown' } do %>
+            <% if current_user.avatar.present? %>
+              <%= image_tag current_user.avatar.url(:thumb), class: "img-responsive center-block border-radius-50" %>
+            <% else %>
+              <%= image_tag current_user.avatar.url(:thumb), class: "img-responsive center-block border-radius-50 radius-mobile #{swatch_class(current_user)}" %>
+            <% end %>
+            <%= current_user.username %>
+            <span class="caret"></span>
+          <% end %>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Dashboard', dashboard_path %></li>
+            <li><%= link_to 'Classroom', classroom_path(current_user.classroom) %></li>
+            <li><%= link_to 'My Projects', '#' %></li>
+            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </li>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right hidden-lg hidden-md">
+        <% unless user_signed_in? %>
+          <div class="nav-btn">
+            <%= link_to 'Sign In', new_user_session_path, class: 'sign-in' %>
+            <!-- <span>/</span> -->
+            <%= link_to 'Sign up', new_user_registration_path, class: 'sign-up' %>
           </div>
+        <% else %>
+        <li class="dropdown">
+          <%= link_to '#', class: 'dropdown-toggle hidden-sm hidden-xs', role: 'button', aria: { haspopup: true, expanded: false }, data: { toggle: 'dropdown' } do %>
+            <% if current_user.avatar.present? %>
+              <%= image_tag current_user.avatar.url(:thumb), class: "img-responsive center-block border-radius-50" %>
+            <% else %>
+              <%= image_tag current_user.avatar.url(:thumb), class: "img-responsive center-block border-radius-50 radius-mobile #{swatch_class(current_user)}" %>
+            <% end %>
+            <%= current_user.username %>
+            <span class="caret"></span>
+          <% end %>
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'Dashboard', dashboard_path %></li>
+            <li><%= link_to 'Classroom', classroom_path(current_user.classroom) %></li>
+            <li><%= link_to 'My Projects', '#' %></li>
+            <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
-<nav class="navbar navbar-inverse hidden-sm hidden-xs hidden-md hidden-lg" role="navigation" style="display: none;">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <%= link_to root_path, class: 'navbar-brand v-middle' do %>
-        <%= image_tag 'nav-logo.png' %>
-      <% end %>
-    </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li><%= link_to 'PROJECTS', active_projects_path %></li>
-        <li><span>|</span></li>
-        <li><%= link_to 'ABOUT', page_path('about') %></li>
-        <li><span>|</span></li>
-        <li><%= link_to 'CONTACT', contact_us_path %></li>
-        <li><span>|</span></li>
-        <li>
-          <%= form_tag search_index_path, id: 'search', method: 'GET' do %>
-            <div id="label">
-              <label for="search-terms" id="search-label">
-                <%= image_tag 'icon-search.png', class: 'nav-icon-search' %>
-              </label>
-            </div>
-            <div id="input">
-              <%= text_field_tag :term, params[:term], id: 'search-terms', placeholder: 'Search' %>
-            </div>
-          <% end %>
-        </li>
-      </ul>
-      <div class="navbar-right">
-        <% unless user_signed_in? %>
-          <div class="nav-btn">
-            <%= link_to 'Sign In', new_user_session_path, class: 'sign-in' %>
-            <!-- <span>/</span> -->
-            <%= link_to 'Sign up', new_user_registration_path, class: 'sign-up' %>
-          </div>
-        <% else %>
-          <div>
-            <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-xl btn-primary text-uppercase' %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-    <!-- /.navbar-collapse -->
-  </div>
-  <!-- /.container -->
-</nav>
-
 <%= javascript_include_tag 'search' %>
