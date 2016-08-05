@@ -32,11 +32,32 @@
     padding-top: 10px;
   }
   > .col-md-3 {
-    border-right: solid 3px $color_turquoise_approx;
+    position: relative;
+    > div {
+      display: inline-block;
+      vertical-align: middle;
+    }
     font-family: $slabThin;
     min-height: 55px;
+    &:after {
+      background-color: $color_turquoise_approx;
+      content: ' ';
+      display: inline-block;
+      height: 30px;
+      position: absolute;
+      right: -3px;
+      top: 12px;
+      vertical-align: middle;
+      width: 3px;
+    }
     &:last-child {
       border: none;
+      &:after {
+        background-color: $color_turquoise_approx;
+        border-color: transparent;
+        border: none;
+        content: ' ';
+      }
     }
   }
 }
@@ -130,8 +151,8 @@
 }
 .class-room-listing {
   h3 {
-    font-family: $slabBold;
-    font-size: 2em;
+    font-family: $slabRegular;
+    font-size: 1.3em;
     padding-bottom: 20px;
     margin: 0;
     a {

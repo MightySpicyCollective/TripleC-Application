@@ -1,6 +1,8 @@
 <li>
   <div class="col-md-2 col-sm-2 col-xs-2">
-    <%= image_tag project.photo.url(:thumb), class: "img-responsive center-block swatch-#{project.dummy_swatch_color}" %>
+    <%= link_to view_project_path(project) do %>
+      <%= image_tag project.photo.url(:thumb), class: "img-responsive center-block swatch-#{project.dummy_swatch_color}" %>
+    <% end %>
   </div>
   <div class="col-md-8 col-sm-6 col-xs-6 padding-right-0 padding-left-0">
     <h3><%= link_to project.name, view_project_path(project) %></h3>
@@ -11,21 +13,17 @@
     <% if current_user %>
       <%= link_to 'Keep Coding', edit_user_project_path(current_user, project), class: 'btn btn-xl btn-primary text-uppercase margin-bottom-20' %>
     <% end %>
+
+    <%= link_to 'View Project', view_project_path(project), class: 'btn btn-xl btn-primary text-uppercase margin-bottom-20' %>
   </div>
   <div class="col-md-2 padding-left-0 padding-right-0 classroom-right-col">
     <% if project.school %>
       <div class="col-md-12">
         <div class="col-md-12 padding-bottom-15 col-sm-6 col-xs-6">
-          <div class="heading">School</div>
-          <%= link_to project.school.name, school_path(project.school), class: 'scrap-links' %>
-        </div>
-        <div class="col-md-12 padding-bottom-15 col-sm-6 col-xs-6">
-          <div class="heading">Location</div>
-          <%= link_to project.school.location, '#', class: 'scrap-links' %>
-        </div>
-        <div class="col-md-12 padding-bottom-15 col-sm-6 col-xs-6">
           <div class="heading">Classroom</div>
           <%= link_to project.classroom.name, classroom_path(project.classroom), class: 'scrap-links' %>
+          <br />
+          <%= link_to project.school.name, school_path(project.school), class: 'scrap-links' %>
         </div>
         <% if project.classroom.teacher %>
           <div class="col-md-12 padding-bottom-15 col-sm-6 col-xs-6">

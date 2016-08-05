@@ -27,16 +27,22 @@
           </div>
           <div class="col-md-12 text-center class-profile-status">
             <div class="col-md-3 col-sm-3 col-xs-3">
-              <div class="status-number"><%= @class_users.count %></div>
-              <div class="status-group">Teams</div>
+              <div>
+                <div class="status-number"><%= @class_users.count %></div>
+                <div class="status-group">Teams</div>
+              </div>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-3">
-              <div class="status-number"><%= @class_projects.count %></div>
-              <div class="status-group">Projects</div>
+              <div>
+                <div class="status-number"><%= @class_projects.count %></div>
+                <div class="status-group">Projects</div>
+              </div>
             </div>
             <div class="col-md-3 col-sm-3 col-xs-3">
-              <div class="status-number"><%= @class_followers.count %></div>
-              <div class="status-group">Followers</div>
+              <div>
+                <div class="status-number"><%= @class_followers.count %></div>
+                <div class="status-group">Followers</div>
+              </div>
             </div>
           </div>
           <div class="clearfix"> </div>
@@ -54,10 +60,6 @@
           <div class="col-md-12 col-sm-6 col-xs-6 padding-bottom-30">
             <div class="heading">School</div>
             <%= link_to @classroom.school_name, school_path(@classroom.school), class: 'scrap-links'%>
-          </div>
-          <div class="col-md-12 col-sm-6 col-xs-6 padding-bottom-30">
-            <div class="heading">City</div>
-            <%= link_to @classroom.school.location, '#', class: 'scrap-links' %>
           </div>
           <% if @classroom.teacher %>
             <div class="col-md-12 padding-bottom-30">
