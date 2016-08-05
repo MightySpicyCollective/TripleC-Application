@@ -46,16 +46,16 @@
       <div class="col-md-3 padding-left-0 padding-right-0 classroom-right-col">
         <div class="col-md-12">
           <% if current_user && current_user.teacher? && !@classroom.has_same_teacher?(current_user) && !@classroom.connected?(current_user.classroom_id) %>
-            <div class="col-md-12 padding-bottom-30">
+            <div class="col-md-12 col-sm-6 col-xs-6 padding-bottom-30">
               <%= link_to 'Follow', invitations_path(classroom_id: @classroom.id), data: { method: :post}, class: 'btn btn-primary width-full' %>
             </div>
           <% end %>
 
-          <div class="col-md-12 padding-bottom-30">
+          <div class="col-md-12 col-sm-6 col-xs-6 padding-bottom-30">
             <div class="heading">School</div>
             <%= link_to @classroom.school_name, school_path(@classroom.school), class: 'scrap-links'%>
           </div>
-          <div class="col-md-12 padding-bottom-30">
+          <div class="col-md-12 col-sm-6 col-xs-6 padding-bottom-30">
             <div class="heading">City</div>
             <%= link_to @classroom.school.location, '#', class: 'scrap-links' %>
           </div>

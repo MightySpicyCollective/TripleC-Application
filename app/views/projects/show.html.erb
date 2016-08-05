@@ -47,20 +47,19 @@
           <div class="clearfix"> </div>
         </div>
       </div>
-      <div class="col-lg-1">&nbsp;</div>
       <div class="col-md-3 padding-left-0 padding-right-0 classroom-right-col">
         <% if @project.school %>
           <div class="col-md-12">
-            <div class="col-md-12 padding-bottom-30">
+            <div class="col-md-12 col-sm-6 col-xs-6 padding-bottom-30">
               <div class="heading">School</div>
               <%= link_to @project.school.name, school_path(@project.school), class: 'scrap-links'%>
             </div>
-            <div class="col-md-12 padding-bottom-30">
+            <div class="col-md-12 col-sm-6 col-xs-6 padding-bottom-30">
               <div class="heading">City</div>
               <%= link_to @project.school.location, '#', class: 'scrap-links' %>
             </div>
             <% if @project.teacher %>
-              <div class="col-md-12 padding-bottom-30">
+              <div class="col-md-12 col-sm-6 col-xs-6 padding-bottom-30">
                 <div class="heading">Teacher</div>
                 <%= link_to @project.teacher.name, user_path(@project.teacher), class: 'scrap-links' %>
               </div>
