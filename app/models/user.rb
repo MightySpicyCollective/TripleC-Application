@@ -36,6 +36,8 @@ class User < ActiveRecord::Base
   before_validation :set_role
   before_create :skip_confirmation!
 
+  attr_accessor :email_or_username
+
   after_create :set_teacher_for_classroom, if: :teacher?
 
   def email_required?
@@ -54,5 +56,23 @@ class User < ActiveRecord::Base
 
   def set_teacher_for_classroom
     classroom.update_column(:teacher_id, id)
+  end
+
+  def self.send_reset_password_instructions(attributes={})
+    recoverable = find_by_email_or_username(attributes[:email_or_username]) || initialize_new_with_email_or_username_errors
+    recoverable.send_reset_password_instructions if recoverable.persisted?
+    recoverable
+  end
+
+  def self.find_by_email_or_username(value)
+    where("email = :email_or_username or username = :email_or_username", email_or_username: value).first
+  end
+
+  def self.initialize_new_with_email_or_username_errors
+    record = new
+    record.errors.add(:email, "not found")
+    record.errors.add(:username, "not found")
+    record.errors.add(:email_or_username, "not found")
+    record
   end
 end
