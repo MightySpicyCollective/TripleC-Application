@@ -201,3 +201,33 @@ form.form_in_place {
     margin-top: 12px;
   }
 }
+
+.project-versions {
+  font-size: 14px;
+  font-weight: normal;
+  pre {
+    background-color: #ffffff;
+  }
+}
+.project-history {
+  table td[class*="col-"], table th[class*="col-"] {
+    vertical-align: top;
+  }
+}
+.project-heading div {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: left;
+}
+.project-new {
+  pre {
+    color: green;
+    border-color: #333333;
+  }
+}
+.project-old {
+  pre {
+    border-color: #ff0000;
+    color: #ff0000;
+  }
+}
