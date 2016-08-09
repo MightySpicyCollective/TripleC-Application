@@ -119,10 +119,20 @@
       }
     }
   }
-  p {
-    color: $color_suva_gray_approx;
+  div.activity-block {
+    margin-top: 10px;
+    display: block;
+
+    span {
+      color: $color_suva_gray_approx;
+      font-family: $sansRegular;
+      font-size: 1em;
+      font-style: italic;
+    }
+  }
+  p.description {
     font-family: $sansRegular;
-    font-size: 0.8em;
+    font-size: 1.2em;
     line-height: 2em;
     padding-bottom: 15px;
   }

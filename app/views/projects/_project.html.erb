@@ -8,7 +8,15 @@
     <h3><%= link_to project.name, view_project_path(project) %></h3>
 
     <b>By <%= link_to project.user.username, user_path(project.user), class: 'scrap-links' %></b>
-    <p><%= project.description %></p>
+
+    <div class="activity-block">
+      <span>
+        Latest Activity: <%= latest_activity(project) %><br />
+        Latest Comment: <%= latest_comment(project) %>
+      </span>
+    </div>
+
+    <p class="description"><%= project.description %></p>
 
     <% if current_user %>
       <%= link_to 'Keep Coding', edit_user_project_path(current_user, project), class: 'btn btn-xl btn-primary text-uppercase margin-bottom-20' %>
