@@ -141,7 +141,10 @@
 .dropdown .nav a {
   text-transform: uppercase;
 }
-
+#search {
+  float: none;
+  display: inline-block;
+}
 @media only screen and (max-width : 480px) {
   #search {
     left: 0;
