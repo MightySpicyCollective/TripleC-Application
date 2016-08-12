@@ -10,9 +10,9 @@
       <div class="col-md-10 padding-left-0 padding-right-0">
         <div class="col-md-2 padding-left-0 padding-right-0 border-radius-50">
           <% if current_user.avatar.present? %>
-            <%= image_tag current_user.avatar.url(:medium), class: "img-responsive center-block border-radius-50" %>
+            <%= image_tag current_user.avatar.url(:medium), class: "img-responsive center-block border-radius-50 margin-bottom-20" %>
           <% else %>
-            <%= image_tag current_user.avatar.url(:medium), class: "img-responsive center-block border-radius-50 radius-mobile #{swatch_class(current_user)}" %>
+            <%= image_tag current_user.avatar.url(:medium), class: "img-responsive center-block border-radius-50 radius-mobile #{swatch_class(current_user)} margin-bottom-20" %>
           <% end %>
         </div>
         <div class="col-md-8">
@@ -24,7 +24,7 @@
             </div>
           </div>
           <div class="col-md-12 text-center class-profile-status">
-            <div class="col-md-3 col-sm-3 col-xs-3">
+            <div class="col-md-3 col-sm-3 col-xs-3 margin-bottom-20">
               <div>
                 <div class="status-number"><%= @projects.count %></div>
                 <div class="status-group">Projects</div>
