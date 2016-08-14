@@ -40,4 +40,12 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.smtp_settings = {
+    address: Rails.application.secrets.ses["address"],
+    port: 587,
+    user_name: Rails.application.secrets.ses["username"],
+    password: Rails.application.secrets.ses["password"],
+    authentication: :login,
+    enable_starttls_auto: true
+  }
 end

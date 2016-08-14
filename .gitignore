@@ -4,7 +4,7 @@
 !/log/.keep
 /tmp
 database.yml
-!/config/secrets.yml
+config/secrets.yml
 public/system
 db/sphinx
 config/development.sphinx.conf
