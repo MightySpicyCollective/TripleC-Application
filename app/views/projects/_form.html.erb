@@ -10,12 +10,14 @@
   <%= form_for @project, url: [current_user, @project], class: 'form-horizontal' do |f| %>
     <div class="row">
       <div class="form-group">
-        <%= f.text_field :name, class: 'form-control input-sm', placeholder: 'What do you want to call your project?' %>
+        <%= f.label :name, 'What do you want to call your project?', class: 'col-sm-6' %>
+        <%= f.text_field :name, class: 'form-control input-sm' %>
       </div>
     </div>
 
     <div class="row">
       <div class="form-group">
+        <%= f.label :description, 'Describe your project', class: 'col-sm-6' %>
         <%= f.text_area :description, class: 'form-control input-sm', placeholder: 'Describe your project', rows: 10, cols: 50 %>
       </div>
     </div>

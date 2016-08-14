@@ -2,11 +2,13 @@
   <%= form_for @classroom, class: 'form-horizontal' do |f| %>
     <div class="row">
       <div class="form-group">
+        <%= f.label :name, 'Name', class: 'col-md-6' %>
         <%= f.text_field :name, class: 'form-control input-sm', placeholder: 'Name' %>
       </div>
     </div>
     <div class="row">
       <div class="form-group">
+        <%= f.label :description, 'Description', class: 'col-md-6' %>
         <%= f.text_area :description, class: 'form-control input-sm', placeholder: 'Description', rows: 10, cols: 50 %>
       </div>
     </div>
