@@ -11,6 +11,20 @@
     margin: 0;
     padding-bottom: 20px;
   }
+
+  .activity-block {
+    color: #888888;
+    font-family: source_sans_proregular;
+    font-size: 1em;
+    font-style: italic;
+  }
+
+  .description {
+    font-family: source_sans_proregular;
+    font-size: 1.1em;
+    margin-top: 2px;
+  }
+
   .edit-class-profile {
     color: $color_fuchsia_pink_approx;
     text-decoration: none;

@@ -18,7 +18,7 @@
         <div class="col-md-8">
           <div class="col-md-12">
             <h1><%= @classroom.name %></h1>
-            <p><%= @classroom.description%></p>
+            <p class="description"><%= @classroom.description%></p>
             <div>
               <% if current_user && current_user.teacher? && @classroom.teacher_id.eql?(current_user.id) %>
                 <%= link_to 'Edit Class profile', edit_classroom_path(@classroom), class: "edit-class-profile" %>
@@ -62,7 +62,7 @@
             <%= link_to @classroom.school_name, school_path(@classroom.school), class: 'scrap-links'%>
           </div>
           <% if @classroom.teacher %>
-            <div class="col-md-12 padding-bottom-30">
+            <div class="col-md-12 col-sm-6 col-xs-6 padding-bottom-30">
               <div class="heading">Teacher</div>
               <%= link_to @classroom.teacher_name, user_path(@classroom.teacher), class: 'scrap-links' %>
             </div>

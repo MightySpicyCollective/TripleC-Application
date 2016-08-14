@@ -27,7 +27,15 @@
                 <%= link_to @project.classroom.name, classroom_path(@project.classroom) %>
               </div>
             <% end %>
-            <p><%= @project.description %></p>
+
+            <div class="activity-block">
+              <span>
+                Latest Activity: <%= latest_activity(@project) %><br />
+                Latest Comment: <%= latest_comment(@project) %>
+              </span>
+            </div>
+
+            <p class="description"><%= @project.description %></p>
             <% if current_user && @project.user_id.eql?(current_user.id) %>
               <div>
                 <%= link_to 'Edit Project Details', edit_user_project_path(current_user, @project), class: 'edit-class-profile' %>

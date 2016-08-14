@@ -18,6 +18,14 @@ class ProjectPresenter < SimpleDelegator
     user.approved?
   end
 
+  def username(current_user)
+    if model.user == current_user
+      "me"
+    else
+      model.user.username
+    end
+  end
+
   private
 
   def teachers_connected?(user)
