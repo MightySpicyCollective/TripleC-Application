@@ -87,15 +87,15 @@
           <% end %>
         </ul>
 
-        <div class="tab-content">
-          <div class="tab-pane active class-room-listing" id="team">
+        <div class="tab-content class-room-listing">
+          <div class="tab-pane active project-list" id="team">
             <ul>
               <% @class_users.each do |class_user| %>
                 <li>
                   <div class="col-md-2 col-sm-2 col-xs-2">
                     <%= image_tag class_user.avatar.url(:thumb), class: "img-responsive center-block #{swatch_class(class_user)}" %>
                   </div>
-                  <div class="col-md-10 col-sm-6 col-xs-6">
+                  <div class="col-md-10 col-sm-10 col-xs-10">
                     <h3><%= link_to class_user.username, user_path(class_user) %></h3>
 
                     <div class="activity-block">

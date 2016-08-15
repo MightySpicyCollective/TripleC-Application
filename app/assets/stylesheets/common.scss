@@ -3,7 +3,7 @@
 @import 'breadcrumbs';
 @import 'btn';
 @import 'header';
-@import 'padding';
+@import 'spacing';
 @import 'swatch';
 @import 'form';
 
@@ -55,6 +55,7 @@ h2 {
   .heading {
     font-family: $slabRegular;
     line-height: 1.5;
+    font-size: 1.3em;
   }
 }
 .scrap-links {
