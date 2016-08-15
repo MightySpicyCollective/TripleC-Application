@@ -134,9 +134,6 @@
     display: inline-block;
     margin-right: 10px;
   }
-  .dropdown-menu {
-    right: -12px;
-  }
 }
 .dropdown .nav a {
   text-transform: uppercase;
@@ -197,6 +194,26 @@
       border: solid 2px #d248af;
       display: inline-block;
       width: 45%;
+    }
+  }
+}
+
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  background-color: transparent;
+}
+.dropdown-menu > li > a {
+  font-family: $slabRegular;
+}
+.dropdown-menu {
+  min-width: 140px;
+  right: -12px;
+
+  li a{
+    &:hover,
+    &:focus {
+      background-color: #d1e5f6;
     }
   }
 }
