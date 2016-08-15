@@ -13,17 +13,18 @@
         <div class="col-md-2 col-sm-2 col-xs-2">
           <%= image_tag classroom.school_logo, class: 'img-responsive center-block' %>
         </div>
-        <div class="col-md-7 col-sm-6 col-xs-6 padding-right-0 padding-left-0">
+        <div class="col-md-7 col-sm-10 col-xs-10 padding-right-0 padding-left-0">
           <h3><%= link_to classroom.name, classroom_path(classroom) %></h3>
           <p><%= classroom.description %></p>
         </div>
         <div class="col-md-3 padding-left-0 padding-right-0 classroom-right-col">
-          <div class="col-md-12 col-sm-6 col-xs-6 padding-bottom-30">
+          <div class="col-sm-2 col-xs-2 hiddent-lg hidden-md"> </div>
+          <div class="col-md-12 col-sm-5 col-xs-5 padding-bottom-30">
             <div class="heading">School</div>
             <%= link_to classroom.school_name, school_path(classroom.school), class: 'scrap-links'%>
           </div>
           <% if classroom.teacher %>
-            <div class="col-md-12 col-sm-6 col-xs-6 padding-bottom-30">
+            <div class="col-md-12 col-sm-5 col-xs-5 padding-bottom-30">
               <div class="heading">Teacher</div>
               <%= link_to classroom.teacher_name, user_path(classroom.teacher), class: 'scrap-links' %>
             </div>
@@ -43,26 +44,25 @@
         <div class="col-md-2 col-sm-2 col-xs-2">
           <%= image_tag project.photo.url(:medium), class: "img-responsive center-block swatch-#{project.dummy_swatch_color}" %>
         </div>
-        <div class="col-md-7 col-sm-6 col-xs-6 padding-right-0 padding-left-0">
+        <div class="col-md-7 col-sm-10 col-xs-10 padding-right-0 padding-left-0">
           <h3><%= link_to project.name, view_project_path(project) %></h3>
           <p><%= project.description %></p>
         </div>
         <div class="col-md-3 padding-left-0 padding-right-0 classroom-right-col">
+          <div class="col-xs-2 col-sm-2 hidden-lg hidden-md"> </div>
           <% if project.school %>
-            <div class="col-md-12">
-              <div class="col-md-12 padding-bottom-15 col-sm-6 col-xs-6">
-                <div class="heading">Classroom</div>
-                <%= link_to project.classroom.name, classroom_path(project.classroom), class: 'scrap-links' %>
-                <br />
-                <%= link_to project.school.name, school_path(project.school), class: 'scrap-links' %>
-              </div>
-              <% if project.classroom.teacher %>
-                <div class="col-md-12 padding-bottom-15 col-sm-6 col-xs-6">
-                  <div class="heading">Teacher</div>
-                  <%= link_to project.classroom.teacher.name, user_path(project.classroom.teacher), class: 'scrap-links' %>
-                </div>
-              <% end %>
+            <div class="col-md-12 padding-bottom-15 col-sm-5 col-xs-5">
+              <div class="heading">Classroom</div>
+              <%= link_to project.classroom.name, classroom_path(project.classroom), class: 'scrap-links' %>
+              <br />
+              <%= link_to project.school.name, school_path(project.school), class: 'scrap-links' %>
             </div>
+            <% if project.classroom.teacher %>
+              <div class="col-md-12 padding-bottom-15 col-sm-5 col-xs-5">
+                <div class="heading">Teacher</div>
+                <%= link_to project.classroom.teacher.name, user_path(project.classroom.teacher), class: 'scrap-links' %>
+              </div>
+            <% end %>
           <% end %>
         </div>
         <div class="clearfix"> </div>
@@ -84,13 +84,14 @@
           <p><%= user.description %></p>
         </div>
         <div class="col-md-3 padding-left-0 padding-right-0 classroom-right-col">
+          <div class="col-xs-2 col-sm-2 hidden-lg hidden-md"> </div>
           <% if user.school %>
-            <div class="col-md-12 padding-bottom-15 col-sm-6 col-xs-6">
+            <div class="col-md-12 padding-bottom-15 col-sm-5 col-xs-5">
               <div class="heading">Classroom</div>
               <%= link_to user.classroom.name, classroom_path(user.classroom), class: 'scrap-links' %><br />
               <%= link_to user.school.name, school_path(user.school), class: 'scrap-links'%>
             </div>
-            <div class="col-md-12 padding-bottom-15 col-sm-6 col-xs-6">
+            <div class="col-md-12 padding-bottom-15 col-sm-5 col-xs-5">
               <div class="heading">Teacher</div>
               <% if user.teacher %>
                 <%= link_to user.teacher.name, user_path(user.teacher), class: 'scrap-links' %>
