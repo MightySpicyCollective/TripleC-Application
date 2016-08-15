@@ -97,7 +97,7 @@
   }
   li {
     @extend %extend_project-list_ul;
-    padding: 30px 0;
+    padding: 20px 0 0;
     border-bottom: dotted 1px $color_mine_shaft_approx;
     font-family: $sansRegular;
     list-style: none;
@@ -127,7 +127,7 @@
       color: $color_suva_gray_approx;
       font-family: $sansRegular;
       font-size: 1em;
-      font-style: italic;
+      font-style: normal;
     }
   }
   p.description {
@@ -182,4 +182,9 @@
   height: 9px;
   margin: 5px 0 0 15px;
   width: 15px;
+}
+.tab-pane.project-list {
+  ul {
+    border: none;
+  }
 }
