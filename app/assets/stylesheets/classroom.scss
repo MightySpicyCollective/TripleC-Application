@@ -53,17 +53,17 @@
       background-color: $color_turquoise_approx;
       content: ' ';
       display: inline-block;
-      height: 30px;
+      height: 55px;
       position: absolute;
       right: -3px;
-      top: 12px;
+      top: 0px;
       vertical-align: middle;
       width: 3px;
     }
     &:last-child {
       border: none;
       &:after {
-        background-color: $color_turquoise_approx;
+        background-color: transparent;
         border-color: transparent;
         border: none;
         content: ' ';
