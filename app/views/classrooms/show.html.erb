@@ -10,9 +10,9 @@
 
 <div class="container border-top-dotted class-name">
   <div class="row">
-    <div class="col-lg-12 padding-top-50 padding-left-0 padding-right-0">
-      <div class="col-md-9 padding-left-0 padding-right-0">
-        <div class="col-md-2 padding-left-0 padding-right-0">
+    <div class="col-lg-12 padding-left-0 padding-right-0">
+      <div class="col-md-9 padding-top-50 padding-left-0 padding-right-0">
+        <div class="col-md-2 padding-bottom-30 padding-left-0 padding-right-0">
           <%= image_tag @classroom.photo.url(:medium), class: "img-responsive center-block border-radius-50 swatch-#{@classroom.dummy_swatch_color}" %>
         </div>
         <div class="col-md-8">
@@ -48,7 +48,7 @@
           <div class="clearfix"> </div>
         </div>
       </div>
-      <div class="col-md-3 padding-left-0 padding-right-0 classroom-right-col">
+      <div class="col-md-3 padding-top-50 padding-left-0 padding-right-0 classroom-right-col">
         <div class="col-md-12">
           <% if current_user && current_user.teacher? && !@classroom.has_same_teacher?(current_user) && !@classroom.connected?(current_user.classroom_id) %>
             <div class="col-md-12 col-sm-6 col-xs-6 padding-bottom-30">
