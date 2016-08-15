@@ -95,16 +95,18 @@
                   <div class="col-md-2 col-sm-2 col-xs-2">
                     <%= image_tag class_user.avatar.url(:thumb), class: "img-responsive center-block #{swatch_class(class_user)}" %>
                   </div>
-                  <div class="col-md-6 col-sm-6 col-xs-6">
+                  <div class="col-md-10 col-sm-6 col-xs-6">
                     <h3><%= link_to class_user.username, user_path(class_user) %></h3>
-                    <p><%= class_user.description %></p>
-                  </div>
-                  <div class="col-md-3 col-sm-3 col-xs-3">
-                    <div>
-                      <% class_user.projects.each do |project| %>
-                        <div><%= link_to project.name, view_project_path(project), class: 'scrap-links' %></div>
-                      <% end %>
+
+                    <div class="activity-block">
+                      <span>Latest Activity: <%= latest_comment(class_user) %></span>
                     </div>
+
+                    <p class="description"><%= class_user.description %></p>
+
+                    <% class_user.projects.each do |project| %>
+                      <%= link_to project.name, view_project_path(project), class: 'scrap-links' %>
+                    <% end %>
                   </div>
                   <div class="clearfix"></div>
                 </li>
