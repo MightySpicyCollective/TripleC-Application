@@ -35,5 +35,8 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#dashboard', as: :dashboard
   get '/contact', to: 'welcome#contact', as: :contact_us
   get '/active_projects', to: 'welcome#active_projects', as: :active_projects
+  get "/404", to: "errors#not_found"
+  get "/500", to: "errors#internal_error"
+
   root to: 'welcome#index'
 end
