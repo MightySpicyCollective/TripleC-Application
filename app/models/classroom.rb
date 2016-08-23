@@ -14,7 +14,7 @@ class Classroom < ActiveRecord::Base
 
   has_attached_file :photo, styles: { medium: '300x300', thumb: '50x50!' },
                             convert_options: {
-                              medium: '-resize 300x300 -background black -gravity center -extent 300x300',
+                              medium: '-resize 300x300^ -background black -gravity center -extent 300x300',
                             },
                             default_url: 'paperclip-defaults/:style/missing.png'
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/

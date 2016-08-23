@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar, styles: { medium: "300x300", thumb: "50x50!" },
                              convert_options: {
-                              medium: '-resize 300x300 -background black -gravity center -extent 300x300',
+                              medium: '-resize 300x300^ -background black -gravity center -extent 300x300',
                              },
                              default_url: 'paperclip-defaults/:style/missing.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
