@@ -207,7 +207,7 @@
   background-color: transparent;
 }
 .dropdown-menu > li > a {
-  font-family: $slabRegular;
+  font-family: $slabBold;
   padding: 8px 20px;
 }
 .dropdown-menu {
@@ -225,4 +225,10 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, .5);
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .5);
   border-radius: 6px;
+  border-top-left-radius: 6px !important;
+  border-top-right-radius: 6px !important;
+}
+.caret-icon {
+  font-size: 22px;
+  vertical-align: middle;
 }

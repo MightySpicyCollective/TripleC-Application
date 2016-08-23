@@ -13,11 +13,11 @@
         <div class="col-md-2 col-sm-2 col-xs-2">
           <%= image_tag classroom.school_logo, class: 'img-responsive center-block' %>
         </div>
-        <div class="col-md-7 col-sm-10 col-xs-10 padding-right-0 padding-left-0">
+        <div class="col-md-8 col-sm-10 col-xs-10 padding-right-0 padding-left-0">
           <h3><%= link_to classroom.name, classroom_path(classroom) %></h3>
           <p><%= classroom.description %></p>
         </div>
-        <div class="col-md-3 padding-left-0 padding-right-0 classroom-right-col">
+        <div class="col-md-2 padding-left-0 padding-right-0 classroom-right-col">
           <div class="col-sm-2 col-xs-2 hiddent-lg hidden-md"> </div>
           <div class="col-md-12 col-sm-5 col-xs-5 padding-bottom-30">
             <div class="heading">School</div>
@@ -44,11 +44,11 @@
         <div class="col-md-2 col-sm-2 col-xs-2">
           <%= image_tag project.photo.url(:medium), class: "img-responsive center-block swatch-#{project.dummy_swatch_color}" %>
         </div>
-        <div class="col-md-7 col-sm-10 col-xs-10 padding-right-0 padding-left-0">
+        <div class="col-md-8 col-sm-10 col-xs-10 padding-right-0 padding-left-0">
           <h3><%= link_to project.name, view_project_path(project) %></h3>
           <p><%= project.description %></p>
         </div>
-        <div class="col-md-3 padding-left-0 padding-right-0 classroom-right-col">
+        <div class="col-md-2 padding-left-0 padding-right-0 classroom-right-col">
           <div class="col-xs-2 col-sm-2 hidden-lg hidden-md"> </div>
           <% if project.school %>
             <div class="col-md-12 padding-bottom-15 col-sm-5 col-xs-5">

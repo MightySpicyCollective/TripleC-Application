@@ -46,7 +46,7 @@
               <%= image_tag current_user.avatar.url(:thumb), class: "img-responsive center-block border-radius-50 radius-mobile #{swatch_class(current_user)}" %>
             <% end %>
             <%= current_user.username %>
-            <span class="caret"></span>
+            <i class="fa fa-angle-down caret-icon"> </i>
           <% end %>
           <ul class="dropdown-menu">
             <li><%= link_to 'Dashboard', dashboard_path %></li>

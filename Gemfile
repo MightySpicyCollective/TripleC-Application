@@ -28,6 +28,7 @@ gem 'best_in_place',            '~> 3.1.0'
 gem 'marginalia',               '~> 1.3.0'
 gem 'humanizer',                '~> 2.6.2'
 gem 'jquery-ace-rails',         '~> 1.0.1'
+gem 'font-awesome-rails',       '~> 4.6.3.1'
 
 group :development, :test do
   gem 'byebug',                  '~> 8.0.1'
