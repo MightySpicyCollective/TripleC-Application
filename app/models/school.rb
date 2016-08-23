@@ -8,7 +8,11 @@ class School < ActiveRecord::Base
 
   validates :name, :location, presence: true
 
-  has_attached_file :photo, styles: { medium: '300x300!' }, default_url: 'paperclip-defaults/:style/missing.png'
+  has_attached_file :photo, styles: { medium: '300x300!' },
+                            convert_options: {
+                              medium: '-resize 300x300^ -background black -gravity center -extent 300x300',
+                            },
+                            default_url: 'paperclip-defaults/:style/missing.png'
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
