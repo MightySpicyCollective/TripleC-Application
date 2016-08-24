@@ -28,6 +28,18 @@
       </span>
     </div>
 
+    <div class="row form-group">
+      <span class="btn btn-default btn-file col-md-12">
+        Upload a sound <%= f.file_field :audio %>
+      </span>
+    </div>
+
+    <div class="row form-group">
+      <span class="btn btn-default btn-file col-md-12">
+        Upload a video <%= f.file_field :video %>
+      </span>
+    </div>
+
     <div class="row">
       <%= f.label :status, 'Is it viewable by others?', class: 'col-md-6' %>
       <div class="col-md-3">

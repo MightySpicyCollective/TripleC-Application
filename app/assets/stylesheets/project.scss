@@ -31,6 +31,16 @@
     padding-bottom: 2px;
     border-bottom: solid 1px $color_fuchsia_pink_approx;
   }
+
+  .audio-block audio {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .video-block video {
+    width: 100%;
+    margin-top: 10px;
+  }
 }
 .project-finish-by {
   font-family: $sansBold;

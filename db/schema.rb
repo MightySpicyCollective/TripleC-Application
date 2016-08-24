@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809164923) do
+ActiveRecord::Schema.define(version: 20160824182607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,14 +93,13 @@ ActiveRecord::Schema.define(version: 20160809164923) do
 
   create_table "projects", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at",                                  null: false
-    t.datetime "updated_at",                                  null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "name"
     t.text     "description"
     t.integer  "status"
-    t.boolean  "forked",                      default: false
+    t.boolean  "forked",             default: false
     t.integer  "forked_project_id"
-    t.string   "completed_sound_snippet_url"
     t.text     "source_code"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
@@ -109,6 +108,14 @@ ActiveRecord::Schema.define(version: 20160809164923) do
     t.string   "dummy_swatch_color"
     t.integer  "school_id"
     t.integer  "classroom_id"
+    t.string   "audio_file_name"
+    t.string   "audio_content_type"
+    t.integer  "audio_file_size"
+    t.datetime "audio_updated_at"
+    t.string   "video_file_name"
+    t.string   "video_content_type"
+    t.integer  "video_file_size"
+    t.datetime "video_updated_at"
   end
 
   create_table "roles", force: :cascade do |t|

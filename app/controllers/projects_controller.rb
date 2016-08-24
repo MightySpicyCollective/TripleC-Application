@@ -79,7 +79,7 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project)
-          .permit(:name, :description, :status, :photo, :source_code)
+          .permit(:name, :description, :status, :photo, :audio, :video, :source_code)
           .merge(school_id: current_user.school_id, classroom_id: current_user.classroom_id)
   end
 

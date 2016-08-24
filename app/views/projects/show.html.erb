@@ -35,6 +35,18 @@
               </span>
             </div>
 
+            <div class="audio-block">
+              <% if @project.audio.present? %>
+                <%= audio_tag @project.audio.url, controls: true, autoplay: false %>
+              <% end %>
+            </div>
+
+            <div class="video-block">
+              <% if @project.video.present? %>
+                <%= video_tag @project.video.url, poster: @project.video.url(:poster), controls: true %>
+              <% end %>
+            </div>
+
             <p class="description"><%= @project.description %></p>
             <% if current_user && @project.user_id.eql?(current_user.id) %>
               <div>
