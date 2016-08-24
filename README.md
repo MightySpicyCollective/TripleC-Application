@@ -15,6 +15,7 @@ We assume that you are running Ubuntu or Mac OSX.
 - The system uses PostgreSQL database so we need to install it too.
   - `brew install postgres` for Mac OSX
   - `sudo apt-get install postgresql postgresql-contrib` for Ubuntu
+- We use audio and video uploads, that require `ffmpeg` library. Visit this [link](https://gist.github.com/xdamman/e4f713c8cd1a389a5917) and follow the instructions to install since it was not avialable for Ubuntu 14.04.
 - Clone the application on your system.
 - change directory (`cd`) into the folder where the app is cloned and run `bundle install`.
 - Copy the contents from `database.yml.example` to `database.yml` and fill in the contents according to your system.
