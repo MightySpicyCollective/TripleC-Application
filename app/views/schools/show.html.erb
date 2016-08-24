@@ -1,1 +1,94 @@
-school details comes here..
+<%= stylesheet_link_tag 'classroom' %>
+<%= stylesheet_link_tag 'projects' %>
+
+<%= render 'layouts/breadcrumbs', breadcrumbs: {
+  home: root_path,
+  dashboard: dashboard_path,
+  classroom: school_path(@school) } %>
+
+<div class="container border-top-dotted class-name">
+  <div class="row">
+    <div class="col-lg-12 padding-left-0 padding-right-0">
+      <div class="col-md-10 padding-top-50 padding-left-0 padding-right-0">
+        <div class="col-md-2 padding-bottom-30 padding-left-0 padding-right-0">
+          <%= image_tag @school.photo.url(:medium), class: "img-responsive center-block border-radius-50 swatch-#{@school.dummy_swatch_color}" %>
+        </div>
+        <div class="col-md-8">
+          <div class="col-md-12">
+            <h1><%= @school.name %></h1>
+            <p class="description"><%= @school.description%></p>
+          </div>
+          <div class="col-md-12 text-center class-profile-status">
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <div>
+                <div class="status-number"><%= @school_classrooms.count %></div>
+                <div class="status-group">Classrooms</div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-3">
+              <div>
+                <div class="status-number"><%= @school_projects.count %></div>
+                <div class="status-group">Projects</div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"> </div>
+        </div>
+      </div>
+      <div class="col-md-2 padding-top-50 padding-left-0 padding-right-0 classroom-right-col">
+        <div class="col-md-12">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container class-name">
+  <div class="row">
+    <div class="col-lg-12 padding-top-30 padding-bottom-30 padding-left-0 padding-right-0">
+      <div class="col-md-12 padding-left-0 padding-right-0">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a data-target="#classrooms" data-toggle="tab">Classrooms (<%= @school_classrooms.count %>)</a>
+          </li>
+          <li>
+            <a data-target="#projects" data-toggle="tab">Projects</a>
+          </li>
+        </ul>
+
+        <div class="tab-content class-room-listing">
+          <div class="tab-pane active project-list" id="classrooms">
+            <ul>
+              <% @school_classrooms.each do |school_classroom| %>
+                <li>
+                  <div class="col-md-2 col-sm-2 col-xs-2">
+                    <%= image_tag school_classroom.photo.url(:thumb), class: "img-responsive center-block #{swatch_class(school_classroom)}" %>
+                  </div>
+                  <div class="col-md-10 col-sm-10 col-xs-10">
+                    <h3><%= link_to school_classroom.name, classroom_path(school_classroom) %></h3>
+
+                    <p class="description"><%= school_classroom.description %></p>
+
+                    <% school_classroom.projects.each do |project| %>
+                      <%= link_to project.name, view_project_path(project), class: 'scrap-links' %>
+                    <% end %>
+                  </div>
+                  <div class="clearfix"></div>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="tab-pane project-listing" id="projects">
+            <div class="col-md-12 project-list padding-right-0 padding-left-0">
+              <ul>
+                <% @school_projects.each do |school_project| %>
+                  <%= render 'projects/project', project: school_project %>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -5,6 +5,7 @@ class School < ActiveRecord::Base
   friendly_id :name, use: [:slugged, :finders]
 
   has_many :classrooms, dependent: :destroy
+  has_many :projects
 
   validates :name, :location, presence: true
 
