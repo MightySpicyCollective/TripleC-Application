@@ -5,7 +5,8 @@ class Project < ActiveRecord::Base
     [id, name.parameterize].join("-")
   end
 
-  has_paper_trail ignore: [:created_at, :updated_at, :id, :user_id, :photo, :video, :audio]
+  # has_paper_trail ignore: [:created_at, :updated_at, :id, :user_id, :photo, :audio]
+  has_paper_trail only: [:source_code]
 
   belongs_to :user
   belongs_to :school
@@ -19,12 +20,10 @@ class Project < ActiveRecord::Base
                             },
                             default_url: 'paperclip-defaults/:style/missing.png'
 
-  has_attached_file :video, styles: { poster: { format: 'jpg', time: 2.5 } }, processors: [:transcoder]
   has_attached_file :audio, styles: {}, processors: [:transcoder]
 
   validates_attachment_content_type :audio, content_type: /\Aaudio\/.*\Z/
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
-  validates_attachment_content_type :video, content_type: 'video/mp4'
 
   validates :name, :description, :user, :user_id, presence: true
 
