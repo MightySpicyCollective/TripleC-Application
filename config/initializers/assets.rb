@@ -9,6 +9,7 @@ Rails.application.config.assets.precompile += %w( sign_up.css
                                                   searches/index.css
                                                   compare.css
                                                   best_in_place.js
+                                                  dashboard.js
                                                   projects/show.js
                                                   projects/form.js
                                                   comments/form.js

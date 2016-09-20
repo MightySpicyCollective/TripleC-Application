@@ -93,4 +93,14 @@
   </div>
 </div>
 
-<%= link_to 'Add New Project', new_user_project_path(current_user), class: 'btn btn-primary' %>
+<div class="container padding-bottom-30">
+  <%= link_to 'Add New Project', new_user_project_path(current_user), class: 'btn btn-primary' %>
+</div>
+
+<div class="container class-name padding-bottom-30">
+  <div class="audio-block">
+    <%= audio_tag '', controls: true, autoplay: false %>
+  </div>
+</div>
+
+<%= javascript_include_tag 'dashboard' %>

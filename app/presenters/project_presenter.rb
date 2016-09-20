@@ -30,6 +30,10 @@ class ProjectPresenter < SimpleDelegator
     'playerholder' if model.audio.present?
   end
 
+  def audio_url
+    model.audio.url if model.audio.present?
+  end
+
   private
 
   def teachers_connected?(user)

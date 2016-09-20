@@ -1,8 +1,15 @@
 <% project = ProjectPresenter.new(project) %>
 <li>
   <div class="col-md-2 col-sm-2 col-xs-2">
-    <%= link_to view_project_path(project) do %>
-      <%= image_tag project.photo.url(:medium), class: "img-responsive center-block swatch-#{project.dummy_swatch_color} margin-bottom-20 responsive-hover" %>
+    <%= link_to view_project_path(project), class: project.audio_class do %>
+      <%= image_tag project.photo.url(:medium), class: "img-responsive center-block swatch-#{project.dummy_swatch_color} responsive-hover", data: { audio: project.audio_url } %>
+      <% if project.audio_class %>
+        <span class="play">&#9658;</span>
+      <% else %>
+        <span class="play hide">&#9658;</span>
+      <% end %>
+      <span class="pause hide">&#10074;&#10074;</span>
+      <span class="overlay"></span>
     <% end %>
   </div>
   <div class="col-md-8 col-sm-10 col-xs-10 padding-right-0 padding-left-0">
