@@ -27,7 +27,7 @@
       <% end %>
       <ul class="nav navbar-nav navbar-left <%= current_user.present? ? 'hidden-sm hidden-xs' : '' %>">
         <li class="active"><%= link_to 'PROJECTS', active_projects_path %></li>
-        <li><%= link_to 'ABOUT', page_path('about') %></li>
+        <li><%#= link_to 'ABOUT', page_path('about') %></li>
         <li><%= link_to 'CONTACT', contact_us_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right hidden-sm hidden-xs">
