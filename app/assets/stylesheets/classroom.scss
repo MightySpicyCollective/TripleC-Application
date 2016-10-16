@@ -274,12 +274,15 @@
     .play, .pause {
       color: #fff;
       font-size: 50px;
-      left: 61px;
+      left: 0;
       opacity: 1;
       position: absolute;
-      top: 53px;
+      top: 25%;
       visibility: visible;
       z-index: 999;
+      right: 0;
+      width: 100%;
+      text-align: center
     }
   }
 }
