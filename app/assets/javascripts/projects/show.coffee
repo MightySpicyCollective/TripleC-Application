@@ -43,6 +43,7 @@ class Projects.Show extends Projects
         $(this).find('.play').removeClass('hide')
       else
         _this._showAudioBlock()
+        _this.$audioBlock.attr('src', $(this).find('img').data('audio'))
         _this.$audioBlock.trigger('play')
         $(this).removeClass('paused')
         $(this).addClass('started')
